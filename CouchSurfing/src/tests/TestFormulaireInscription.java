@@ -1,8 +1,7 @@
 package tests;
 
-import static org.junit.Assert.*;
-
-import modele.FormulaireConnexion;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import modele.FormulaireInscription;
 
 import org.junit.After;
