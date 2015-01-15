@@ -1,0 +1,90 @@
+@CHARSET "UTF-8";
+body {
+	background: #967C8D;
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 13px;
+	color: #666;
+}
+
+#container{
+width: 800px;
+margin: 0 auto;
+padding: 10px 10px 30px;
+background-color: #fff;
+width: 85%;
+border: 10px solid rgb(169, 171, 171);
+}
+
+.content-accueil{
+height: 350px;
+border: 3px solid rgb(185, 177, 192);
+margin-bottom: 25px;
+
+}
+
+#val {
+width: 156px;
+height: 30px;
+margin-bottom: 20px;
+margin-top: 15px;
+}
+
+#form_connexion {
+padding-top: 100px;
+padding-left: 50px;
+width: 600px;
+margin: 0 auto;
+}
+
+#form_connexion input {
+display: initial;
+width: 150px;
+margin-top: 15px;
+}
+
+#form_connexion input{
+padding: 5px;
+color: #333333;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 13px;
+}
+
+div#guest_menu {
+margin: 0 auto;
+width: 87.4%;
+background: seashell;
+height: 70px;
+margin-bottom: 25px;
+}
+
+div#footer {
+padding: 25px;
+margin: 0 auto;
+background: white;
+width: 84.5%;
+margin-top: 25px;
+margin-bottom: 15px;
+}
+
+#form_inscription input{
+	
+margin-bottom: 20px;
+/*right: 680px;
+position: absolute;
+width: 170px;*/
+}
+
+#form_inscription{
+	
+height: 600px;
+}
+
+#form_inscription div{
+width: 500px;
+border: 3px solid red;
+margin: 0 auto;
+height: 80%;
+	
+}
