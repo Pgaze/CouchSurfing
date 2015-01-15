@@ -13,7 +13,7 @@ public class TestConnnexionBDD {
 		try {
 			Connection c=ConnectionMySQL.getInstance();
 			Statement s = c.createStatement();
-			ResultSet r=s.executeQuery("select name from Utilisateur");
+			ResultSet r=s.executeQuery("select Nom from Utilisateur");
 			r.next();
 			System.out.println(r.getString(1));
 		} catch (SQLException e) {

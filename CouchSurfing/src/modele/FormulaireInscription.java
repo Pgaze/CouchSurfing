@@ -1,6 +1,10 @@
 package modele;
 
+import java.sql.Connection;
 import java.sql.SQLException;
+
+import java.sql.PreparedStatement;
+
 
 public class FormulaireInscription {
 
@@ -24,8 +28,18 @@ public class FormulaireInscription {
 		return  longueurOk && contientMaj && contientMin && contientChiffre;
 	}
 	
+	public int insererUtilisateurDansLaBase(Utilisateur user) throws SQLException{
+		Connection c=ConnectionMySQL.getInstance();
+		PreparedStatement ps=c.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp,Nsecu) values(?,?,?,?,?,?,156)");
+		ps.setInt(1, user.getIdUser());
+		ps.setString(2, user.getName());
+		ps.setString(3, user.getFirstName());
+		ps.setString(4, user.getMail());
+		ps.setString(5, user.getPseudo());
+		ps.setString(6, user.getPassword());
+		return ps.executeUpdate();
 	
-	
+	}
 	
 	
 }

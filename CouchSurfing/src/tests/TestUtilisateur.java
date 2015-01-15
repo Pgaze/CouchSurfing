@@ -26,7 +26,7 @@ public class TestUtilisateur {
 	@Test
 	public void testSetID() throws Exception {
 		assertEquals(0,this.dubois.getIdUser());
-		assertEquals(1,this.dupont.getIdUser());	
+		assertEquals(2,this.dupont.getIdUser());	
 	}
 	
 	@Test

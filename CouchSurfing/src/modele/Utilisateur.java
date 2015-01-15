@@ -151,7 +151,7 @@ public class Utilisateur {
 
 	private void setId() throws SQLException {
 		Connection c=ConnectionMySQL.getInstance();
-		PreparedStatement select=c.prepareStatement("select idUser from USERS where mail=? and name=?");
+		PreparedStatement select=c.prepareStatement("select IdUtilisateur from Utilisateur where Mail=? and Nom=?");
 		select.setString(1, this.mail);
 		select.setString(2,this.name);
 		ResultSet resultSelect=select.executeQuery();
@@ -160,7 +160,7 @@ public class Utilisateur {
 		}
 		else{	
 			Statement count=c.createStatement();
-			ResultSet resultCount=count.executeQuery("select count(idUser) from USERS ");
+			ResultSet resultCount=count.executeQuery("select count(IdUtilisateur) from Utilisateur ");
 			resultCount.next();
 			this.idUser=resultCount.getInt(1);
 

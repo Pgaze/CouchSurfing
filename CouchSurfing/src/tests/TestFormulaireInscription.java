@@ -1,8 +1,8 @@
 package tests;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import modele.FormulaireInscription;
+import modele.Utilisateur;
 
 import org.junit.After;
 import org.junit.Before;
@@ -20,6 +20,12 @@ public class TestFormulaireInscription {
 	@After
 	public void tearDown() throws Exception {
 		this.form=null;
+	}
+	
+	@Test
+	public void testInsertionBase() throws Exception {
+		Utilisateur t = new Utilisateur("utilisateur@mail.com", "Md5", "Dupont", "Pierre", "Pierrot");
+		assertEquals(1, this.form.insererUtilisateurDansLaBase(t));
 	}
 
 	@Test
