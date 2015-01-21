@@ -2,6 +2,7 @@ package modele;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -14,7 +15,6 @@ public class FormulaireInscription {
 	private String mdp;
 	private String confirmMdp;
 	private String pseudo;
-	private String resultatInscription;
 	
 	
 
@@ -67,23 +67,32 @@ public class FormulaireInscription {
 
 	public String procedureInscription() throws SQLException {
 			if(!this.confirmMdp.contentEquals(this.mdp)){
-				this.resultatInscription= "Problème confirmation mot de passe";
+				return "Problème confirmation mot de passe";
 			}
 			else if(!this.testMailValide(this.mail)){
-				this.resultatInscription= "Adresse mail invalide";
+				return "Adresse mail invalide";
+			}
+			else if (this.testUtilisateurExistant(this.mail)){
+				return "Utilisateur existant";
 			}
 			else if(!this.testMotDePasseValide(mdp)){
-				this.resultatInscription= "Mot de passe invalide";
+				return "Mot de passe invalide";
 			}
 			else{
-				this.insererUtilisateurDansLaBase(this.getUser());
-				this.resultatInscription= "Inscription reussie";
+				this.insererUtilisateurDansLaBase(this.getUtilisateur());
+				return "Inscription reussie";
 			}
-			return this.resultatInscription;
 	}
 
 	
 	
+	private boolean testUtilisateurExistant(String mail) throws SQLException {
+		PreparedStatement s=ConnectionMySQL.getInstance().prepareStatement("select nom from Utilisateur where mail=?");
+		s.setString(1, mail);
+		ResultSet r=s.executeQuery();
+		return r.next();
+	}
+
 	public String getNom() {
 		return nom;
 	}
@@ -108,11 +117,8 @@ public class FormulaireInscription {
 		return pseudo;
 	}
 
-	public String getResultatInscription() {
-		return resultatInscription;
-	}
 
-	private Utilisateur getUser() throws SQLException {
+	private Utilisateur getUtilisateur() throws SQLException {
 		return new Utilisateur(this.mail, this.mdp, this.nom, this.prenom, this.pseudo);
 	}
 	
