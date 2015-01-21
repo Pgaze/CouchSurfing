@@ -14,7 +14,7 @@
 		        	<input required name="login" id="login" type="text" placeholder="Votre login">
 		        	<input required name="mdp" id="mdp" type="password" placeholder="Votre mot de passe">
 		            <button id="valLogin" name="loginU">Login</button>
-        			<p>Ou bien <a href="http://localhost:8080/CouchSurfing/incription">inscrivez-vous !</a></p>
+        			<p>Ou bien <a href="http://localhost:8081/CouchSurfing/incription">inscrivez-vous !</a></p>
         		</form>
         		${ resultat }
 				<div class="clear"></div>
