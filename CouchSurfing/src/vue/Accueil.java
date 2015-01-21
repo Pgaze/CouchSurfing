@@ -38,7 +38,10 @@ public class Accueil extends HttpServlet {
 		FormulaireConnexion form =new FormulaireConnexion(logA,mdpA);
 		if (form.verificationCoupleMailMotDePasse()){
 			Utilisateur user= Utilisateur.getUtilisateurParMail(logA);
-			request.setAttribute("nom", user.getPseudo());
+			request.setAttribute("nom", user.getName());
+			request.setAttribute("prenom", user.getFirstName());
+			request.setAttribute("pseudo", user.getPseudo());
+			request.setAttribute("mail", user.getMail());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);
 		}
 		else{

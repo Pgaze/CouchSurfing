@@ -80,6 +80,9 @@ public class FormulaireInscription {
 			}
 			else{
 				this.insererUtilisateurDansLaBase(this.getUtilisateur());
+				//GestionMail m= new GestionMail();
+				//String s= "Bienvenue sur machin";
+				//m.send("TaMere", this.getUtilisateur().getMail(), "Inscription à ClickAndSleep.co.uk réussie", s);
 				return "Inscription reussie";
 			}
 	}

@@ -2,15 +2,15 @@
 <html>
 	<%@ include file="entete.jsp" %>
     <body>
-        <p>Profil de ${ nom }</p>
+        <p>Profil de ${prenom} ${ nom }</p>
         	
 		<div id="profile">
 		    <div id="info">
 		        <div id="infoSession">
-		            <p>nom : </p>
-		            <p>prenom : </p>
-		            <p>email : </p>
-		            <p>pseudo : </p>
+		            <p>Nom : ${ nom }</p>
+		            <p>Prenom : ${ prenom }</p>
+		            <p>Email : ${ mail }</p>
+		            <p>Pseudo : ${ pseudo }</p>
 		        </div>
 		        <div id="infoSession">
 		        	
