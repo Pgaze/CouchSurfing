@@ -2,7 +2,7 @@
 <html>
 	<%@ include file="entete.jsp" %>
     <body>
-        <p>Mon profil !</p>
+        <p>Profil de ${ nom }</p>
         	
 		<div id="profile">
 		    <div id="info">
