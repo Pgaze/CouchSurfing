@@ -1,7 +1,9 @@
 package tests;
 
+import modele.ConnectionMySQL;
 import modele.Utilisateur;
 import static org.junit.Assert.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +15,7 @@ public class TestUtilisateur {
 	
 	@Before
 	public void setUp() throws Exception {
-		this.dubois=new Utilisateur("dubois.paul@mail.com","motDePasse","Dubois","Paul","Paulo");
+		this.dubois=new Utilisateur("duboispaul@mail.com","motDePasse","Dubois","Paul","Paulo");
 		this.dupont=new Utilisateur("dupont.pierre@mail.com","motDePasse","Dupont","Pierre","Pierrot");
 	}
 
@@ -21,6 +23,7 @@ public class TestUtilisateur {
 	public void tearDown() throws Exception {
 		this.dubois=null;
 		this.dupont=null;
+		ConnectionMySQL.getInstance().rollback();
 	}
 
 	@Test
@@ -31,11 +34,11 @@ public class TestUtilisateur {
 	
 	@Test
 	public void testGetUtilisateurParMail() throws Exception {
-		this.dubois=Utilisateur.getUtilisateurParMail("janviermaxime@mail.com");
-		assertEquals("Janvier",dubois.getName());
-		assertEquals("Maxime",dubois.getFirstName());
-		assertEquals("Maxime54",dubois.getPassword());
-		assertEquals("Maksime",dubois.getPseudo());
+		this.dubois=Utilisateur.getUtilisateurParMail("duboisPaul@mail.com");
+		assertEquals("Dubois",dubois.getName());
+		assertEquals("Paul",dubois.getFirstName());
+		assertEquals("motDePasse1",dubois.getPassword());
+		assertEquals("Paulo",dubois.getPseudo());
 	}
 	
 

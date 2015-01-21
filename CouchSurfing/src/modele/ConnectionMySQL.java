@@ -2,6 +2,7 @@ package modele;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 
@@ -13,7 +14,7 @@ public class ConnectionMySQL {
 	}
 
 	
-	public static Connection getInstance(){
+	public static Connection getInstance() throws SQLException{
 		if (ConnectionMySQL.laConnection==null){
 			try{
 				Class.forName("com.mysql.jdbc.Driver");
@@ -25,6 +26,7 @@ public class ConnectionMySQL {
 				exc.printStackTrace();
 			}
 		}
+		ConnectionMySQL.laConnection.setAutoCommit(false);
 		return ConnectionMySQL.laConnection;
 	}
 	

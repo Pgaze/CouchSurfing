@@ -124,6 +124,31 @@ public class FormulaireInscription {
 	private Utilisateur getUtilisateur() throws SQLException {
 		return new Utilisateur(this.mail, this.mdp, this.nom, this.prenom, this.pseudo);
 	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
+	}
+
+	public void setConfirmMdp(String confirmMdp) {
+		this.confirmMdp = confirmMdp;
+	}
+
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
+	
 	
 	
 	
