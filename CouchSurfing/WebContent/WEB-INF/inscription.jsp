@@ -15,6 +15,8 @@
 			        <button id="valI" name="valI">Suite</button>
 			    </div>
 			</form>
+			<p>${ resultat }</p>
+			<p>${ form.resultatInscription }</p>
         </div>
     </body>
 	<%@ include file="basdepage.jsp" %>

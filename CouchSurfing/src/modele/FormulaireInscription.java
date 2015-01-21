@@ -1,12 +1,36 @@
 package modele;
 
 import java.sql.Connection;
-import java.sql.SQLException;
-
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 
 public class FormulaireInscription {
+	
+	//Valeur des champs du formulaire
+	private String nom;
+	private String prenom;
+	private String mail;
+	private String mdp;
+	private String confirmMdp;
+	private String pseudo;
+	private String resultatInscription;
+	
+	
+
+	public FormulaireInscription(String nom, String prenom, String mail,
+			String mdp, String confirmMdp, String pseudo) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.mdp = mdp;
+		this.confirmMdp = confirmMdp;
+		this.pseudo=pseudo;
+	}
+
+	public FormulaireInscription() {
+	}
 
 	public boolean verificationDonnesInscription(String prenom,String nom,String pseudo,String mail,String motDePasse) throws SQLException{
 		boolean result = true;
@@ -40,6 +64,59 @@ public class FormulaireInscription {
 		return ps.executeUpdate();
 	
 	}
+
+	public String procedureInscription() throws SQLException {
+			if(!this.confirmMdp.contentEquals(this.mdp)){
+				this.resultatInscription= "Problème confirmation mot de passe";
+			}
+			else if(!this.testMailValide(this.mail)){
+				this.resultatInscription= "Adresse mail invalide";
+			}
+			else if(!this.testMotDePasseValide(mdp)){
+				this.resultatInscription= "Mot de passe invalide";
+			}
+			else{
+				this.insererUtilisateurDansLaBase(this.getUser());
+				this.resultatInscription= "Inscription reussie";
+			}
+			return this.resultatInscription;
+	}
+
+	
+	
+	public String getNom() {
+		return nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public String getMdp() {
+		return mdp;
+	}
+
+	public String getConfirmMdp() {
+		return confirmMdp;
+	}
+
+	public String getPseudo() {
+		return pseudo;
+	}
+
+	public String getResultatInscription() {
+		return resultatInscription;
+	}
+
+	private Utilisateur getUser() throws SQLException {
+		return new Utilisateur(this.mail, this.mdp, this.nom, this.prenom, this.pseudo);
+	}
+	
+	
 	
 	
 }

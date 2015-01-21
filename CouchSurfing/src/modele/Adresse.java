@@ -28,6 +28,8 @@ public class Adresse {
 		this.numeroAppart = numeroAppart;
 		this.etage = etage;
 	}
+	
+	
 	/**
 	 * @return the ville
 	 */
