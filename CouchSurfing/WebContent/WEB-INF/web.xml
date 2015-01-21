@@ -45,7 +45,7 @@
   
   <servlet>
     <servlet-name>Messagerie</servlet-name>
-    <servlet-class>vue.messagerie</servlet-class>
+    <servlet-class>vue.Messagerie</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Messagerie</servlet-name>

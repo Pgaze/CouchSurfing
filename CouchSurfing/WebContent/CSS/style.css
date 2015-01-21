@@ -125,3 +125,35 @@ text-decoration: none;
 padding-right: 10px;
 padding-top: 11px;
 }
+
+/* formulaire nouvelle annonce */
+
+#saisies_propositionLogement label {
+	width: 40%;
+	margin-top: 15px;
+}
+
+#saisies_propositionLogement input {
+	margin-top: 15px;
+}
+
+
+
+#propoLogMidddle{
+	width: 400px;
+display: inline-block;
+}
+
+#propoLogLeft{
+	width: 380px;
+display: inline-block;
+}
+
+.alignLeft {
+	float: left;
+	margin-left: 30px;
+}
+.alignMiddle {
+	float: left;
+	margin-left: 30px;
+}

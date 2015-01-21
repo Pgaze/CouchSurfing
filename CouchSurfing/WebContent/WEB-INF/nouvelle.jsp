@@ -6,16 +6,20 @@
         <div id="container">
 	        <form id="form_nouvelleAnnonce" method="post" action="nouvelle">
 	    		<h5>Nouvelle annonce !</h5>
-			    <div id="form_in_finscription">
-			    	<div id="saisies_finscription">
-				        <label for="prenom">Prénom :</label><input placeholder="Prenom" required name="prenom" id="prenom" type="text"></input></br>
-				        <label for="nom">Nom :</label><input placeholder="Nom" required name="nom" id="nom" type="text"></input></br>
-				        <label for="pseudo">Pseudo :</label><input placeholder="pseudo" required name="pseudo" id="pseudo" type="text"></input></br>
-				        <label for="mail">Mail :</label><input placeholder="mail" required name="mail" id="mail" type="mail"></input></br>
-				        <label for="mdp">Mot de passe :</label><input placeholder="mdp" required name="mdp" id="mdp" type="password"></input></br>
-				        <label for="mdpC">Confirmer le mot de passe :</label><input placeholder="confirmer mdp" required name="mdpC" id="mailC" type="password"></input></br>
-				        <button id="valI" name="valI">Suite</button>
+	    		<div id="form_in_propositionLogement">
+			    	<div id="saisies_propositionLogement">
+				        <div id="propoLogLeft">
+				        	<label class="alignLeft" for="batimentEscalier">Batiment/Escalier :</label><input required name="batimentEscalier" id="batimentEscalier" type="text"></input>
+				        	<label class="alignLeft" for="numeroEtVoie">N° et voie :</label><input required name="numeroEtVoie" id="numeroEtVoie" type="text"></input>
+				        	<label class="alignLeft" for="cp">Code Postal :</label><input required name="cp" id="cp" type="text"></input></br>
+				 		</div>
+				 		<div id="propoLogMidddle">
+				 			<label class="alignMiddle" for="residence">Residence :</label><input required name="residence" id="residence" type="text"></input></br>
+					        <label class="alignMiddle" for="complementAdresse">Complément d'adresse :</label><input required name="complementAdresse" id="complementAdresse" type="text"></input></br>
+					        <label class="alignMiddle" for="ville">Ville :</label><input required name="ville" id="ville" type="text"></input></br>
+				 		</div>
 			    	</div>
+			    	<button id="val_nouvelleAnnonce" name="val_nouvelleAnnonce">Suite</button>
 			    </div>
 			</form>
         </div>

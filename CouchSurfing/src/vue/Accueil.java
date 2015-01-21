@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import classes.Menu;
+
 /**
  * Servlet implementation class Accueil
  */
@@ -22,18 +24,19 @@ public class Accueil extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("name");
-        request.setAttribute("var_name", name);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
+		Menu invite = new Menu("invite");
+		invite.addLien("Connexion", true);
+		invite.addLien("Presentation", true);
+        request.setAttribute("invite", invite);
+        request.setAttribute("menu", invite.getLiensMenu());
+		this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String logA = request.getParameter("logAdmin");
 		String mdpA = request.getParameter("mdpAdmin");
-		this.getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
-		
-		
+		this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 	}
 
 }
