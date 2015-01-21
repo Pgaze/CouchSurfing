@@ -1,10 +1,7 @@
-<div id="menu">
+<div id="le_menu">
 	<ul>
-	<li><a href="/clikAndSleep/connexion">Annonces</a></li>
-	<li><a href="/clikAndSleep/profile">Profil</a></li>
-	<li><a href="/clikAndSleep/messagerie">Messagerie</a></li>
-	<li><a href="/clikAndSleep/deconnexion">Déconnexion</a></li>
-	<li><a href="/clikAndSleep/connexion/annonces">Mes annonces</a></li>
-	<li><a href="/clikAndSleep/connexion/demandes">Mes demandes</a></li>
-</ul>
+		<c:forEach items="${menu}" var="item">
+				<li><a href=${ item.value }>${item.key}</a></li>
+		</c:forEach>
+	</ul>
 </div>

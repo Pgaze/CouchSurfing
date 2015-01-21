@@ -16,6 +16,51 @@
     <servlet-name>Inscription</servlet-name>
     <url-pattern>/inscription</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>Nouvelle</servlet-name>
+    <servlet-class>vue.Nouvelle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Nouvelle</servlet-name>
+    <url-pattern>/nouvelle</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Deconnexion</servlet-name>
+    <servlet-class>vue.Deconnexion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Deconnexion</servlet-name>
+    <url-pattern>/deconnexion</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Annonces</servlet-name>
+    <servlet-class>vue.Annonces</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Annonces</servlet-name>
+    <url-pattern>/annonces</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Messagerie</servlet-name>
+    <servlet-class>vue.messagerie</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Messagerie</servlet-name>
+    <url-pattern>/messagerie</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Profil</servlet-name>
+    <servlet-class>vue.Profil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Profil</servlet-name>
+    <url-pattern>/profil</url-pattern>
+  </servlet-mapping>
+  
   <jsp-config>
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>

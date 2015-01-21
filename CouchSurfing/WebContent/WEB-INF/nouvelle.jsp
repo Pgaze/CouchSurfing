@@ -1,12 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+	<%@ include file="entete.jsp" %>
+	<%@ include file="menu.jsp" %>
+    <body>
+        <div id="container">
+	        <form id="form_nouvelleAnnonce" method="post" action="nouvelle">
+	    		<h5>Nouvelle annonce !</h5>
+			    <div id="form_in_finscription">
+			    	<div id="saisies_finscription">
+				        <label for="prenom">Prénom :</label><input placeholder="Prenom" required name="prenom" id="prenom" type="text"></input></br>
+				        <label for="nom">Nom :</label><input placeholder="Nom" required name="nom" id="nom" type="text"></input></br>
+				        <label for="pseudo">Pseudo :</label><input placeholder="pseudo" required name="pseudo" id="pseudo" type="text"></input></br>
+				        <label for="mail">Mail :</label><input placeholder="mail" required name="mail" id="mail" type="mail"></input></br>
+				        <label for="mdp">Mot de passe :</label><input placeholder="mdp" required name="mdp" id="mdp" type="password"></input></br>
+				        <label for="mdpC">Confirmer le mot de passe :</label><input placeholder="confirmer mdp" required name="mdpC" id="mailC" type="password"></input></br>
+				        <button id="valI" name="valI">Suite</button>
+			    	</div>
+			    </div>
+			</form>
+        </div>
+    </body>
+	<%@ include file="basdepage.jsp" %>
 </html>
