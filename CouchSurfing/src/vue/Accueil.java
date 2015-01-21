@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modele.FormulaireConnexion;
+
 /**
  * Servlet implementation class Accueil
  */
@@ -29,10 +31,18 @@ public class Accueil extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try{
 		String logA = request.getParameter("logAdmin");
 		String mdpA = request.getParameter("mdpAdmin");
+		FormulaireConnexion form =new FormulaireConnexion(logA,mdpA);
+		if (form.verificationCoupleMailMotDePasse()){
+			
+		}
 		this.getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
-		
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 		
 	}
 

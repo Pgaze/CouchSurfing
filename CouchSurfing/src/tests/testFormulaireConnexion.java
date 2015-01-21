@@ -26,7 +26,9 @@ public class testFormulaireConnexion {
 
 	@Test
 	public void testTrue() throws SQLException {
-		assertTrue(this.form.verificationCoupleMailMotDePasse("dubois.paul@mail.com", "motDePasse"));
+		this.form.setLogin("dubois.paul@mail.com");
+		this.form.setMdp("motDePasse");
+		assertTrue(this.form.verificationCoupleMailMotDePasse());
 	}
 
 }
