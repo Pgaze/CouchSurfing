@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modele.FormulaireConnexion;
+import modele.Utilisateur;
 
 /**
  * Servlet implementation class Accueil
@@ -32,13 +33,18 @@ public class Accueil extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
-		String logA = request.getParameter("logAdmin");
-		String mdpA = request.getParameter("mdpAdmin");
+		String logA = request.getParameter("login");
+		String mdpA = request.getParameter("mdp");
 		FormulaireConnexion form =new FormulaireConnexion(logA,mdpA);
 		if (form.verificationCoupleMailMotDePasse()){
-			
+			Utilisateur user= Utilisateur.getUtilisateurParMail(logA);
+			request.setAttribute("nom", user.getPseudo());
+			this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);
 		}
-		this.getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
+		else{
+			request.setAttribute("resultat","Echec authentification" );
+			this.getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
+		}
 		}
 		catch(Exception e){
 			e.printStackTrace();

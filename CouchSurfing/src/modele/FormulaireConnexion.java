@@ -44,11 +44,13 @@ public class FormulaireConnexion {
 	public FormulaireConnexion() {
 	}
 
-
-
 	public boolean verificationCoupleMailMotDePasse() throws SQLException{
 		Utilisateur user = Utilisateur.getUtilisateurParMail(this.login);
-		return user.getPassword().contentEquals(this.mdp);
+		System.out.println(this.login);
+		if(user!=null){
+			return user.getPassword().contentEquals(this.mdp);	
+		}
+		return false;
 	}
 
 }

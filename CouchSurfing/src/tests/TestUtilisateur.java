@@ -31,11 +31,11 @@ public class TestUtilisateur {
 	
 	@Test
 	public void testGetUtilisateurParMail() throws Exception {
-		this.dubois=Utilisateur.getUtilisateurParMail("dubois.paul@mail.com");
-		assertEquals("Dubois",dubois.getName());
-		assertEquals("Paul",dubois.getFirstName());
-		assertEquals("motDePasse",dubois.getPassword());
-		assertEquals("Paulo",dubois.getPseudo());
+		this.dubois=Utilisateur.getUtilisateurParMail("janviermaxime@mail.com");
+		assertEquals("Janvier",dubois.getName());
+		assertEquals("Maxime",dubois.getFirstName());
+		assertEquals("Maxime54",dubois.getPassword());
+		assertEquals("Maksime",dubois.getPseudo());
 	}
 	
 

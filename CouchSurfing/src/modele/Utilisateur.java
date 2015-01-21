@@ -51,7 +51,7 @@ public class Utilisateur {
 	public static Utilisateur getUtilisateurParMail(String mail) throws SQLException{
 		Utilisateur result = new Utilisateur(mail);
 		PreparedStatement select = ConnectionMySQL.getInstance().prepareStatement("" +
-				"select name,firstName,password,pseudo from USERS where mail=?");
+				"select Nom,Prenom,Mdp,Pseudo from Utilisateur where Mail=?");
 		select.setString(1, mail);
 		ResultSet rs=select.executeQuery();
 		if(rs.next()){
