@@ -11,17 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import classes.Menu;
 
 /**
- * Servlet implementation class Profil
+ * Servlet implementation class Demandes
  */
-@WebServlet("/Profil")
-public class Profil extends HttpServlet {
+@WebServlet("/Demandes")
+public class Demandes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Profil() {
+    public Demandes() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -29,7 +30,7 @@ public class Profil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
-				
+			
 			Menu membre = new Menu("membre");
 			membre.addLien("Deconnexion", false);
 			membre.addLien("Annonces", false);
@@ -38,7 +39,7 @@ public class Profil extends HttpServlet {
 			membre.addLien("Messagerie", false);
 			membre.addLien("Nouvelle annonce", false);
 	        request.setAttribute("menu", membre.getLiensMenu());
-			this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/annonces.jsp").forward(request, response);
 		}
 	}
 
@@ -47,7 +48,6 @@ public class Profil extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);
 	}
 
 }

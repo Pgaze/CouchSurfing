@@ -10,7 +10,7 @@
 	        	
 	        </div>
 		    <div id="connexion" class="content-accueil">
-                <form id="form_connexion" action="home" method="post">
+                <form id="form_connexion" action="accueil" method="post">
 		        	<input required name="login" id="login" type="text" placeholder="Votre login">
 		        	<input required name="mdp" id="mdp" type="password" placeholder="Votre mot de passe">
 		            <button id="valLogin" name="loginU">Login</button>
