@@ -17,6 +17,9 @@ public class Logement {
 		this.setId();
 	}
 	
+	public Logement() {
+	}
+
 	private void setId() throws SQLException {
 		Connection c=ConnectionMySQL.getInstance();
 		PreparedStatement select=c.prepareStatement("select IdLogement from Logement where"
@@ -36,7 +39,7 @@ public class Logement {
 			Statement count=c.createStatement();
 			ResultSet resultCount=count.executeQuery("select count(IdLogement) from Logement ");
 			resultCount.next();
-			this.idLogement=resultCount.getInt(1);
+			this.idLogement=resultCount.getInt(1)+1;
 
 		}
 
