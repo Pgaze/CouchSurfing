@@ -1,7 +1,6 @@
 package tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 import modele.Adresse;
 import modele.ConnectionMySQL;
 import modele.Logement;
@@ -23,11 +22,15 @@ public class TestLogement {
 	}
 
 	@Test
-	public void testSetID() throws Exception {
+	public void testSetIDExistant() throws Exception {
 		Logement l1= new Logement(new Adresse("1", "35 Avenue Rangueil", "31400","Les Pigeons", "0", "Toulouse"));
-		Logement l2= new Logement(new Adresse("10", "35 RueRangueil", "31400","Les oies", "0", "Toulouse"));
-		assertEquals(0,l1.getIdLogement());
-		assertEquals(1,l2.getIdLogement());	
+		assertEquals(2,l1.getIdLogement());
+	}
+	
+	@Test
+	public void testSetIdNonExistant() throws Exception {
+		Logement l2= new Logement(new Adresse("10", "35 Rue Rangueil", "31400","Les oies", "0", "Toulouse"));
+		assertEquals(3,l2.getIdLogement());			
 	}
 
 }

@@ -39,7 +39,7 @@ public class Logement {
 			Statement count=c.createStatement();
 			ResultSet resultCount=count.executeQuery("select count(IdLogement) from Logement ");
 			resultCount.next();
-			this.idLogement=resultCount.getInt(1);
+			this.idLogement=resultCount.getInt(1)+1;
 
 		}
 
