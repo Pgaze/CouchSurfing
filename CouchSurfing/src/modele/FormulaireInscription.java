@@ -80,9 +80,10 @@ public class FormulaireInscription {
 			}
 			else{
 				this.insererUtilisateurDansLaBase(this.getUtilisateur());
-				//GestionMail m= new GestionMail();
-				//String s= "Bienvenue sur machin";
-				//m.send("TaMere", this.getUtilisateur().getMail(), "Inscription à ClickAndSleep.co.uk réussie", s);
+				ConnectionMySQL.getInstance().commit();
+				String s= "Bienvenue sur machin";
+				GestionMail.send("clicknsleep@gmail.com", this.getUtilisateur().getMail(), "Inscription à ClickAndSleep.co.uk réussie", s);
+				GestionMail.send(this.getUtilisateur().getMail(),"clicknsleep@gmail.com" , "Nouvelle inscription sur le site", this.getUtilisateur().getFirstName()+" "+this.getUtilisateur().getName() +"s'est inscrit");
 				return "Inscription reussie";
 			}
 	}
