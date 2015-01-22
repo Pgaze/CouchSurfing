@@ -48,6 +48,7 @@ public class Accueil extends HttpServlet {
 			if (form.verificationCoupleMailMotDePasse()){
 				Utilisateur user= Utilisateur.getUtilisateurParMail(logA);
 				sessionUtilisateur.setAttribute("sessionUtilisateur", user);
+				System.out.println(sessionUtilisateur.getAttribute("sessionUtilisateur"));
 				response.sendRedirect( "profil" );
 			    return;				
 		        
