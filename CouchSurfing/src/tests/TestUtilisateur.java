@@ -1,8 +1,8 @@
 package tests;
 
+import static org.junit.Assert.assertEquals;
 import modele.ConnectionMySQL;
 import modele.Utilisateur;
-import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;

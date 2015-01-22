@@ -191,12 +191,16 @@ public class Utilisateur {
 	public int getIdHebergeur() {
 		return idHebergeur;
 	}
+	
+	public void setIdHebergeur(int theId){
+		this.idHebergeur=theId;
+	}
 
 	/**
 	 * Set l idHebergeur avec un id existant s il y en a un, sinon en cree un
 	 * @throws SQLException 
 	 */
-	public void setIdHebergeur() throws SQLException {
+	public int createIdHebergeur() throws SQLException {
 		Connection c = ConnectionMySQL.getInstance();
 		PreparedStatement select = c.prepareStatement("select IdHebergeur from Utilisateur where IdHebergeur=? ");
 		select.setInt(1, this.getIdHebergeur());
@@ -209,8 +213,8 @@ public class Utilisateur {
 			ResultSet resultCount = count.executeQuery("select count(IdHebergeur) from Hebergeur ");
 			resultCount.next();
 			this.idHebergeur = resultCount.getInt(1);
-
 		}
+		return this.idHebergeur;
 	}
 
 }

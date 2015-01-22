@@ -95,26 +95,31 @@ public class Hebergeur {
 	}
 
 
-	/**
+	/** Retrouve l'id de l'utilisateur qui a un tel id hebergeur
 	 * @param idHebergeur
+	 * @return id de l'utilisateur s'il existe, 0 sinon
+	 * @throws SQLException
 	 */
-	public void creerIdHebergeur(int idHebergeur) {
+	public int getIdUtilisateurByIdHebergeur(int idHebergeur) throws SQLException {
 		Connection c = ConnectionMySQL.getInstance();
-		PreparedStatement select = c.prepareStatement("select IdUtilisateur from Utilisateur where Mail=? and Nom=?");
-		select.setString(1, this.mail);
-		select.setString(2,this.name);
+		PreparedStatement select = c.prepareStatement("select IdUtilisateur from Utilisateur where IdHebergeur=? ");
+		select.setInt(1, this.getIdHebergeur());
 		ResultSet resultSelect = select.executeQuery();
 		if(resultSelect.next()){
-			this.idHebergeur = resultSelect.getInt(1);
+			return resultSelect.getInt(1);
 		}
-		else{	
-			Statement count = c.createStatement();
-			ResultSet resultCount = count.executeQuery("select count(IdHebergeur) from Hebergeur ");
-			resultCount.next();
-			this.idHebergeur = resultCount.getInt(1);
-
-		}
+		return 0;
 	}
 	
-	
+	public void deleteHebergeurInBDD() throws SQLException{
+		Connection c = ConnectionMySQL.getInstance();
+		PreparedStatement delete = c.prepareStatement("DELETE FROM Hebergeur WHERE IdHebergeur IN (SELECT * FROM (SELECT IdHebergeur FROM Hebergeur WHERE IdHebergeur=?");
+		delete.setInt(1, this.getIdHebergeur());
+		ResultSet resultDelete = delete.executeQuery();
+		/*if(resultDelete.deleteRow()){
+			System.out.println("Succes");
+		}else
+			System.out.println("Failed to delete IdHebergeur : "+ this.getIdHebergeur());
+			*/
+	}
 }
