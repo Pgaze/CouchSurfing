@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modele.FormulaireInscription;
 import classes.Menu;
 
 /**
@@ -16,23 +17,39 @@ import classes.Menu;
 @WebServlet("/incription")
 public class Inscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public Inscription() {
-        super();
-    }
 
-	
+	public Inscription() {
+		super();
+	}
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Menu invite = new Menu("invite");
 		invite.addLien("Accueil", false);
-        request.setAttribute("menu", invite.getLiensMenu());
+		request.setAttribute("menu", invite.getLiensMenu());
 		this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
 	}
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		try{
+			String nom=request.getParameter("nom");
+			String prenom=request.getParameter("prenom");
+			String mail=request.getParameter("mail");
+			String mdp=request.getParameter("mdp");
+			String confirmMdp=request.getParameter("mdpC");
+			String pseudo = request.getParameter("pseudo");
+			FormulaireInscription form=new FormulaireInscription(nom,prenom,mail,mdp,confirmMdp,pseudo);
+			String resultatInscription=form.procedureInscription();
+			request.setAttribute("resultat", resultatInscription);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 }
+
+
