@@ -27,33 +27,32 @@ public class Accueil extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Menu invite = new Menu("invite");
-		invite.addLien("Connexion", true);
-		invite.addLien("Presentation", true);
-        request.setAttribute("invite", invite);
-        request.setAttribute("menu", invite.getLiensMenu());
-		this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
+		if (request.getSession().getAttribute("sessionUtilisateur") == null) {
+			Menu invite = new Menu("invite");
+			invite.addLien("Connexion", true);
+			invite.addLien("Presentation", true);
+	        request.setAttribute("invite", invite);
+	        request.setAttribute("menu", invite.getLiensMenu());
+			this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
+		}
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		HttpSession sessionUtilisateur = request.getSession();
 		try{
 			String logA = request.getParameter("login");
 			String mdpA = request.getParameter("mdp");
 			FormulaireConnexion form =new FormulaireConnexion(logA,mdpA);
+			
 			if (form.verificationCoupleMailMotDePasse()){
 				Utilisateur user= Utilisateur.getUtilisateurParMail(logA);
-				request.setAttribute("nom", user.getName());
-				request.setAttribute("prenom", user.getFirstName());
-				request.setAttribute("pseudo", user.getPseudo());
-				request.setAttribute("mail", user.getMail());
-				
-				HttpSession session_utilisateur = request.getSession();
-				session_utilisateur.setAttribute("sessionUtilisateur", user);
-				
-				this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);
-			} else{
+				sessionUtilisateur.setAttribute("sessionUtilisateur", user);
+				response.sendRedirect( "profil" );
+			    return;				
+		        
+			} else {
+				sessionUtilisateur.setAttribute("sessionUtilisateur", null);
 				request.setAttribute("resultat","Echec authentification" );
 				this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 			}

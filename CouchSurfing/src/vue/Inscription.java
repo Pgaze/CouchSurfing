@@ -25,17 +25,16 @@ public class Inscription extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		Menu invite = new Menu("invite");
-		invite.addLien("Accueil", false);
-		request.setAttribute("menu", invite.getLiensMenu());
-		this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
+		if (request.getSession().getAttribute("sessionUtilisateur") == null) {				
+			Menu invite = new Menu("invite");
+			invite.addLien("Accueil", false);
+			request.setAttribute("menu", invite.getLiensMenu());
+			this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
+		}
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		
 		try{
 			String nom=request.getParameter("nom");
 			String prenom=request.getParameter("prenom");
@@ -47,8 +46,7 @@ public class Inscription extends HttpServlet {
 			String resultatInscription=form.procedureInscription();
 			request.setAttribute("resultat", resultatInscription);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
-		}
-		catch(Exception e){
+		} catch(Exception e){
 			e.printStackTrace();
 		}
 	}
