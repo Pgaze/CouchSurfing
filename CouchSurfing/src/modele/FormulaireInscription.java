@@ -79,7 +79,7 @@ public class FormulaireInscription {
 				return "Mot de passe invalide";
 			}
 			else{
-				this.insererUtilisateurDansLaBase(this.getUtilisateur());
+				this.getUtilisateur().inserDansLaBase();
 				ConnectionMySQL.getInstance().commit();
 				String s= "Bienvenue sur machin";
 				GestionMail.send("clicknsleep@gmail.com", this.getUtilisateur().getMail(), "Inscription à ClickAndSleep.co.uk réussie", s);

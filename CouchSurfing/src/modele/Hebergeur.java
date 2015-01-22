@@ -73,20 +73,32 @@ public class Hebergeur {
 		this.adresse = adresse;
 		this.indiceConfort = indiceConfort;
 	}
+	
+	
+	/**
+	 * ConstructeurVide
+	 */
+	public Hebergeur(){
+		
+	}
 
 
 	/**
 	 * @return idHebergeur
 	 */
 	public int getIdHebergeur() {
-		return idHebergeur;
+		return this.idHebergeur;
+	}
+	
+	public void setIdHebergeur(int theId){
+		this.idHebergeur=theId;
 	}
 
 
 	/**
 	 * @param idHebergeur
 	 */
-	/*public void setIdHebergeur(int idHebergeur) {
+	public void creerIdHebergeur(int idHebergeur) {
 		Connection c = ConnectionMySQL.getInstance();
 		PreparedStatement select = c.prepareStatement("select IdUtilisateur from Utilisateur where Mail=? and Nom=?");
 		select.setString(1, this.mail);
@@ -102,8 +114,7 @@ public class Hebergeur {
 			this.idHebergeur = resultCount.getInt(1);
 
 		}
-
-	}*/
+	}
 	
 	
 }

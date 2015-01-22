@@ -8,12 +8,15 @@ import java.sql.Statement;
 
 public class Utilisateur {
 
+	private int idUser;
 	private String mail;
 	private String password;
 	private String name;
 	private String firstName;
-	private int idUser;
 	private String pseudo;
+	private int idHebergeur;
+
+	
 	/**
 	 * @return the pseudo
 	 */
@@ -41,11 +44,13 @@ public class Utilisateur {
 		this.name = name;
 		this.firstName = firstName;
 		this.pseudo=pseudo;
+		this.idHebergeur=0;
 		this.setId();
 	}
 
 	public Utilisateur(String mail){
 		this.mail=mail;
+		this.idHebergeur=0;
 	}
 
 	public static Utilisateur getUtilisateurParMail(String mail) throws SQLException{
@@ -163,6 +168,47 @@ public class Utilisateur {
 			ResultSet resultCount=count.executeQuery("select count(IdUtilisateur) from Utilisateur ");
 			resultCount.next();
 			this.idUser=resultCount.getInt(1);
+
+		}
+	}
+	
+	public boolean inserDansLaBase() throws SQLException{
+		Connection c=ConnectionMySQL.getInstance();
+		PreparedStatement ps=c.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp,Nsecu) values(?,?,?,?,?,?,156)");
+		ps.setInt(1, this.idUser);
+		ps.setString(2, this.name);
+		ps.setString(3, this.firstName);
+		ps.setString(4, this.mail);
+		ps.setString(5, this.pseudo);
+		ps.setString(6, this.password);
+		if(ps.executeUpdate() ==1){
+			return true;
+		}
+		return false;
+
+	}
+	
+	public int getIdHebergeur() {
+		return idHebergeur;
+	}
+
+	/**
+	 * Set l idHebergeur avec un id existant s il y en a un, sinon en cree un
+	 * @throws SQLException 
+	 */
+	public void setIdHebergeur() throws SQLException {
+		Connection c = ConnectionMySQL.getInstance();
+		PreparedStatement select = c.prepareStatement("select IdHebergeur from Utilisateur where IdHebergeur=? ");
+		select.setInt(1, this.getIdHebergeur());
+		ResultSet resultSelect = select.executeQuery();
+		if(resultSelect.next()){
+			this.idHebergeur = resultSelect.getInt(1);
+		}
+		else{
+			Statement count = c.createStatement();
+			ResultSet resultCount = count.executeQuery("select count(IdHebergeur) from Hebergeur ");
+			resultCount.next();
+			this.idHebergeur = resultCount.getInt(1);
 
 		}
 	}

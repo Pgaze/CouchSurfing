@@ -1,5 +1,8 @@
 package modele;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class FormulaireProposerLogement {
 	
 	private String batimentEscalier;
@@ -65,7 +68,31 @@ public class FormulaireProposerLogement {
 		this.user = user;
 	}
 	
+	public boolean verificationCp(){
+		return this.cp.matches("[0-9]{5}");
+	}
 	
+	public String procedureAjoutLogement() throws SQLException{
+		String result="";
+		Logement l=this.getLogement();
+		boolean resultatInsertionLogement=l.insererDansLaBase();
+		String sql= "insert into Offre (idLogement,idHebergeur) values(?,?)";
+		PreparedStatement insert=ConnectionMySQL.getInstance().prepareStatement(sql);
+		insert.setInt(1, l.getIdLogement());
+		insert.setInt(2, this.user.getIdUser());
+		int res= insert.executeUpdate();
+		if (res==1 && resultatInsertionLogement){
+			result="Logement ajoute";
+		}
+		else{
+			result="Echec création logement";
+		}
+		return result;
+	}
+	
+	public Logement getLogement() throws SQLException{
+		return new Logement(new Adresse(batimentEscalier, numeroEtVoie, cp, residence, complementAdresse, ville));
+	}
 	
 
 }
