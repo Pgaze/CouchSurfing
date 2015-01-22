@@ -166,5 +166,21 @@ public class Utilisateur {
 
 		}
 	}
+	
+	public boolean inserDansLaBase() throws SQLException{
+		Connection c=ConnectionMySQL.getInstance();
+		PreparedStatement ps=c.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp,Nsecu) values(?,?,?,?,?,?,156)");
+		ps.setInt(1, this.idUser);
+		ps.setString(2, this.name);
+		ps.setString(3, this.firstName);
+		ps.setString(4, this.mail);
+		ps.setString(5, this.pseudo);
+		ps.setString(6, this.password);
+		if(ps.executeUpdate() ==1){
+			return true;
+		}
+		return false;
+
+	}
 
 }
