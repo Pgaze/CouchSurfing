@@ -10,12 +10,13 @@
 	        	
 	        </div>
 		    <div id="connexion" class="content-accueil">
-                <form id="form_connexion" action="traite_connexion.jsp" method="post">
+                <form id="form_connexion" action="home" method="post">
 		        	<input required name="login" id="login" type="text" placeholder="Votre login">
 		        	<input required name="mdp" id="mdp" type="password" placeholder="Votre mot de passe">
 		            <button id="valLogin" name="loginU">Login</button>
-        			<p>Ou bien <a href="http://localhost:8080/clickAndSleep/incription">inscrivez-vous !</a></p>
+        			<p>Ou bien <a href="incription">inscrivez-vous !</a></p>
         		</form>
+        		${ resultat }
 				<div class="clear"></div>
         	</div>
         </div>
