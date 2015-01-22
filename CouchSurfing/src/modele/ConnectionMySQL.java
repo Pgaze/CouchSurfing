@@ -12,8 +12,6 @@ public class ConnectionMySQL {
 
 	private ConnectionMySQL() {
 	}
-
-	
 	public static Connection getInstance() throws SQLException{
 		if (ConnectionMySQL.laConnection==null){
 			try{
