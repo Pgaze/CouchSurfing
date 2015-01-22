@@ -31,6 +31,8 @@ public class Nouvelle extends HttpServlet {
 		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
 				
 			Menu membre = new Menu("membre");
+			membre.addLien("Deconnexion", false);
+			membre.addLien("Demandes", false);
 			membre.addLien("Annonces", false);
 			membre.addLien("Profil", false);
 			membre.addLien("Messagerie", false);

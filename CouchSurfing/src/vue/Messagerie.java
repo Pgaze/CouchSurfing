@@ -33,6 +33,7 @@ public class Messagerie extends HttpServlet {
 			Menu membre = new Menu("membre");
 			membre.addLien("Deconnexion", false);
 			membre.addLien("Annonces", false);
+			membre.addLien("Demandes", false);
 			membre.addLien("Profil", false);
 			membre.addLien("Messagerie", false);
 			membre.addLien("Nouvelle annonce", false);
