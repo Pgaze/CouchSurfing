@@ -65,7 +65,13 @@ public class FormulaireProposerLogement {
 		this.user = user;
 	}
 	
+	public boolean verificationCp(){
+		return this.cp.matches("[0-9]{5}");
+	}
 	
+	public String procedureAjoutLogement(){
+		return null;
+	}
 	
 
 }
