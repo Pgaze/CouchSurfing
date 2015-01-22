@@ -157,3 +157,10 @@ display: inline-block;
 	float: left;
 	margin-left: 30px;
 }
+
+/* messagerie */
+#maBoite {
+	
+border: 1px solid red;
+width: 100%;
+}

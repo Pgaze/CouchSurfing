@@ -21,7 +21,7 @@ public class GestionMail {
 	 * @param text	texte du mail
 	 * @return succesStatut
 	 */
-	public boolean send(String mailFrom, String mailTo , String objet, String text){    		
+	public static boolean send(String mailFrom, String mailTo , String objet, String text){    		
 		// Sender's email ID needs to be mentioned
 		final String from = "clicknsleep@gmail.com";
 		final String pwd = "teamBifle";
@@ -51,7 +51,7 @@ public class GestionMail {
 			MimeMessage message = new MimeMessage(session);
 
 			// Set From: header field of the header.
-			message.setFrom(mailFrom);
+			message.setFrom(new InternetAddress(from));
 
 			// Set To: header field of the header.
 			message.addRecipient(Message.RecipientType.TO,
@@ -61,7 +61,7 @@ public class GestionMail {
 			message.setSubject(objet);
 
 			// Now set the actual message
-			message.setText(text);
+			message.setText(mailFrom+" vous a envoyé le message suivant : \n"+text);
 
 			// Send message
 			transport.connect();

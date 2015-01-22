@@ -9,6 +9,8 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="/usr/local/tomcat/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sitan/git/leBonRepo/CouchSurfing/EchangeFichier/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sitan/git/leBonRepo/CouchSurfing/EchangeFichier/mysql-connector-java-5.1.34-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sitan/git/leBonRepo/CouchSurfing/EchangeFichier/javax.mail.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

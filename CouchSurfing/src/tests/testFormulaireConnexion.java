@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.sql.SQLException;
 
+import modele.ConnectionMySQL;
 import modele.FormulaireConnexion;
 
 import org.junit.After;
@@ -22,11 +23,14 @@ public class testFormulaireConnexion {
 	@After
 	public void tearDown() throws Exception {
 		this.form=null;
+		ConnectionMySQL.getInstance().rollback();
 	}
 
 	@Test
 	public void testTrue() throws SQLException {
-		assertTrue(this.form.verificationCoupleMailMotDePasse("dubois.paul@mail.com", "motDePasse"));
+		this.form.setLogin("duboispaul@mail.com");
+		this.form.setMdp("motDePasse1");
+		assertTrue(this.form.verificationCoupleMailMotDePasse());
 	}
 
 }

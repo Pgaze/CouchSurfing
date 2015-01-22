@@ -1,6 +1,7 @@
 package tests;
 
 import static org.junit.Assert.*;
+import modele.ConnectionMySQL;
 import modele.FormulaireInscription;
 import modele.Utilisateur;
 
@@ -19,6 +20,7 @@ public class TestFormulaireInscription {
 	
 	@After
 	public void tearDown() throws Exception {
+		ConnectionMySQL.getInstance().rollback();
 		this.form=null;
 	}
 	
@@ -42,6 +44,16 @@ public class TestFormulaireInscription {
 		assertFalse(this.form.testMotDePasseValide("court"));
 		assertFalse(this.form.testMotDePasseValide("motDePasseBeaucoupBeacoupBeaucoupTropLong"));
 		
+	}
+	
+	@Test
+	public void testProcedureInscription() throws Exception {
+		this.form.setPrenom("Louis");
+		this.form.setNom("Ouistiti");
+		this.form.setMdp("lm");
+		this.form.setMail("louisouistiti@mail.com");
+		this.form.setConfirmMdp("lm");
+		assertEquals("Mot de passe invalide",this.form.procedureInscription());
 	}
 
 }
