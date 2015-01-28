@@ -10,7 +10,7 @@
 			<div id="profile">
 			    <div id="info">
 			        <div id="infoSession">
-			        	<p>Vous êtes connecté avec l'adresse ${sessionScope.sessionUtilisateur.mail} </p>
+			        	<p>Vous ï¿½tes connectï¿½ avec l'adresse ${sessionScope.sessionUtilisateur.mail} </p>
 			        </div>
 			        <div id="infoSession">
 			        	

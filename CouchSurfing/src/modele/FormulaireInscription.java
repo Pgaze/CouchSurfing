@@ -67,7 +67,7 @@ public class FormulaireInscription {
 
 	public String procedureInscription() throws SQLException {
 			if(!this.confirmMdp.contentEquals(this.mdp)){
-				return "Problème confirmation mot de passe";
+				return "Probleme confirmation mot de passe";
 			}
 			else if(!this.testMailValide(this.mail)){
 				return "Adresse mail invalide";
@@ -149,9 +149,5 @@ public class FormulaireInscription {
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
-	
-	
-	
-	
 	
 }

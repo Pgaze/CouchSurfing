@@ -51,7 +51,12 @@ public class Accueil extends HttpServlet {
 			if (form.verificationCoupleMailMotDePasse()){
 				Utilisateur user= Utilisateur.getUtilisateurParMail(logA);
 				sessionUtilisateur.setAttribute("sessionUtilisateur", user);
+<<<<<<< HEAD
 				response.sendRedirect( "recherche" );
+=======
+				System.out.println(sessionUtilisateur.getAttribute("sessionUtilisateur"));
+				response.sendRedirect( "profil" );
+>>>>>>> branch 'master' of git@192.168.1.11:~/leBonRepo.git
 			    return;				
 		        
 			} else {
