@@ -56,7 +56,7 @@ public class Utilisateur {
 	public static Utilisateur getUtilisateurParMail(String mail) throws SQLException{
 		Utilisateur result = new Utilisateur(mail);
 		PreparedStatement select = ConnectionMySQL.getInstance().prepareStatement("" +
-				"select Nom,Prenom,Mdp,Pseudo from Utilisateur where Mail=?");
+				"select Nom,Prenom,Mdp,Pseudo,Hebergeur from Utilisateur where Mail=?");
 		select.setString(1, mail);
 		ResultSet rs=select.executeQuery();
 		if(rs.next()){
@@ -64,6 +64,7 @@ public class Utilisateur {
 			result.setFirstName(rs.getString(2));
 			result.setPassword(rs.getString(3));
 			result.setPseudo(rs.getString(4));
+			result.setIdHebergeur(rs.getInt(5));
 			result.setId();
 		}
 		else{
@@ -197,29 +198,28 @@ public class Utilisateur {
 	}
 
 	/**
-	 * Set l idHebergeur avec un id existant s il y en a un, sinon en cree un
-	 * @throws SQLException 
+	 * cree 1 idHebergeur si l'utilisateur n'en possède pas, le retourne sinon
+	 * @throws Exception 
 	 */
-	public int createIdHebergeur() throws SQLException {
+	public int createIdHebergeur() throws Exception {
 		Hebergeur hebergeur=new Hebergeur();
 		Connection c = ConnectionMySQL.getInstance();
 		PreparedStatement select = c.prepareStatement("select Hebergeur from Utilisateur where IdUtilisateur=? ");
 		select.setInt(1, this.idUser);
 		ResultSet resultSelect=select.executeQuery();
 		if(resultSelect.next()){
-			if(resultSelect.getInt(1)==0){
-				//TODO : chercher int null
+			resultSelect.getInt(1); // Necessaire pour que le wasNull fonctionne ! >_<
+			if (resultSelect.wasNull()) {
+				Statement count = c.createStatement();
+				ResultSet resultCount = count.executeQuery("select count(IdHebergeur) from Hebergeur ");
+				resultCount.next();
+				
+				this.idHebergeur = resultCount.getInt(1);
+				hebergeur.setIdHebergeur(this.idHebergeur);
+				hebergeur.inserDansLaBase();
 			}
 		}
-		Statement count = c.createStatement();
-		ResultSet resultCount = count.executeQuery("select count(IdHebergeur) from Hebergeur ");
-		resultCount.next();
 		
-		this.idHebergeur = resultCount.getInt(1);
-		hebergeur.setIdHebergeur(this.idHebergeur);
-		hebergeur.inserDansLaBase();
-
 		return this.idHebergeur;
 	}
-
 }
