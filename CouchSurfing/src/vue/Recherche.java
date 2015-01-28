@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modele.FormulaireRechercheAnnonce;
 import classes.Menu;
 
 /**
@@ -48,7 +49,7 @@ public class Recherche extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		FormulaireRechercheAnnonce form= new FormulaireRechercheAnnonce(request.getParameter("ville"));
 		this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
 	}
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 import modele.ConnectionMySQL;
 import modele.FormulaireRechercheAnnonce;
-import modele.Logement;
+import modele.Offre;
 
 import org.junit.After;
 import org.junit.Before;
@@ -30,8 +30,14 @@ public class TestFormulaireRechercheAnnonce {
 	@Test
 	public void testLogementToulouse() throws Exception {
 		this.form=new FormulaireRechercheAnnonce("Toulouse");
-		List<Logement> l=this.form.getListeLogement();
-		assertEquals(2,l.get(0).getIdLogement());
+		List<Offre> l = this.form.getListeOffre();
+		assertEquals(2,l.get(0).getLogement().getIdLogement());
+	}
+	
+	@Test(expected = Exception.class)
+	public void testLogementInconnu() throws Exception {
+		this.form=new FormulaireRechercheAnnonce("Albi");
+		this.form.getListeOffre();
 	}
 
 }
