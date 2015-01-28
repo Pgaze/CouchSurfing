@@ -2,9 +2,6 @@ package tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-
-import java.sql.SQLException;
-
 import modele.ConnectionMySQL;
 import modele.Hebergeur;
 import modele.Utilisateur;
@@ -16,11 +13,15 @@ import org.junit.Test;
 public class TestHebergeur {
 	
 	private Utilisateur utilisateur;
+	private Utilisateur utilisateurHebergeur;
+
 	private Hebergeur herbergeur;
 
 	@Before
 	public void setUp() throws Exception {
-		this.utilisateur = new Utilisateur("duboispaul@mail.com","motDePasse","Dubois","Paul","Paulo");
+		this.utilisateur = Utilisateur.getUtilisateurParMail("duboispaul@mail.com");
+		this.utilisateurHebergeur = Utilisateur.getUtilisateurParMail("lolo.patate@jardin.com");
+
 		this.herbergeur = new Hebergeur(0563424242,"42 chemin des patates\nToulouse",2);
 	}
 
@@ -30,15 +31,26 @@ public class TestHebergeur {
 		this.herbergeur=null;
 		ConnectionMySQL.getInstance().rollback();
 	}
-
+	
 	@Test
-	public void testSetIDHebergeur() {
+	public void testCreateIDHebergeur() {
 		try {
 			this.herbergeur.setIdHebergeur(this.utilisateur.createIdHebergeur());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			fail();
 		}
 		assertEquals(2,this.herbergeur.getIdHebergeur());
+	}
+	
+	@Test
+	public void testCreateIDHebergeurExistant() {
+		try {
+			this.herbergeur.setIdHebergeur(this.utilisateurHebergeur.createIdHebergeur());
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail();
+		}
+		assertEquals(0,this.herbergeur.getIdHebergeur());
 	}
 }
