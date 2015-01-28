@@ -34,7 +34,7 @@ public class TestUtilisateur {
 	
 	@Test
 	public void testGetUtilisateurParMail() throws Exception {
-		this.dubois=Utilisateur.getUtilisateurParMail("duboisPaul@mail.com");
+		this.dubois=Utilisateur.getUtilisateurParMail("duboispaul@mail.com");
 		assertEquals("Dubois",dubois.getName());
 		assertEquals("Paul",dubois.getFirstName());
 		assertEquals("motDePasse1",dubois.getPassword());
