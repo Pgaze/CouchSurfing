@@ -67,7 +67,7 @@ public class Hebergeur {
 	 * @param indiceConfort
 	 */
 	public Hebergeur(int telephone, String adresse, int indiceConfort) {
-		this.idHebergeur=getIdHebergeur();
+		this.idHebergeur= -1;
 		this.telephone = telephone;
 		this.adresse = adresse;
 		this.indiceConfort = indiceConfort;
@@ -78,7 +78,7 @@ public class Hebergeur {
 	 * ConstructeurVide
 	 */
 	public Hebergeur(){
-		
+		this.idHebergeur= -1;
 	}
 
 
@@ -93,6 +93,10 @@ public class Hebergeur {
 		this.idHebergeur=theId;
 	}
 	
+	/** 
+	 * @return statut
+	 * @throws SQLException
+	 */
 	public boolean inserDansLaBase() throws SQLException{
 		Connection c = ConnectionMySQL.getInstance();
 		PreparedStatement ps=c.prepareStatement("insert into Hebergeur (IdHebergeur,Adresse) values(?,?)");
@@ -105,6 +109,11 @@ public class Hebergeur {
 
 	}
 
+	/**
+	 * @param theId
+	 * @return Hebergeur avec les données trouvées dans la base
+	 * @throws SQLException
+	 */
 	public static Hebergeur getHebergeurById(int theId) throws SQLException{
 		Hebergeur result = new Hebergeur();
 		PreparedStatement select = ConnectionMySQL.getInstance().prepareStatement(""
@@ -115,6 +124,7 @@ public class Hebergeur {
 			result.setTelephone(rs.getInt(1));
 			result.setIndiceConfort(rs.getInt(2));
 			result.setAdresse(rs.getString(3));
+			result.setIdHebergeur(theId);
 		}
 		else{
 			result = null;

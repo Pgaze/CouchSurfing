@@ -1,3 +1,4 @@
+
 package modele;
 
 import java.sql.Connection;
@@ -197,8 +198,7 @@ public class Utilisateur {
 		this.idHebergeur=theId;
 	}
 
-	/**
-	 * cree 1 idHebergeur si l'utilisateur n'en possède pas, le retourne sinon
+	/** Cree 1 idHebergeur si l'utilisateur n'en possède pas, le retourne sinon
 	 * @throws SQLException 
 	 * @throws Exception 
 	 */
