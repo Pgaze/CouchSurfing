@@ -67,7 +67,7 @@ public class Hebergeur {
 	 * @param indiceConfort
 	 */
 	public Hebergeur(int telephone, String adresse, int indiceConfort) {
-		this.idHebergeur=getIdHebergeur();
+		this.idHebergeur= -1;
 		this.telephone = telephone;
 		this.adresse = adresse;
 		this.indiceConfort = indiceConfort;
@@ -78,7 +78,7 @@ public class Hebergeur {
 	 * ConstructeurVide
 	 */
 	public Hebergeur(){
-		
+		this.idHebergeur= -1;
 	}
 
 
@@ -115,6 +115,7 @@ public class Hebergeur {
 			result.setTelephone(rs.getInt(1));
 			result.setIndiceConfort(rs.getInt(2));
 			result.setAdresse(rs.getString(3));
+			result.setIdHebergeur(theId);
 		}
 		else{
 			result = null;

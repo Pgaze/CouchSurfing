@@ -60,7 +60,7 @@ public class TestHebergeur {
 	
 	@Test
 	public void testGetIdUtilisateurByIdHebergeur() {
-		int idUtilisateur=-1;
+		int idUtilisateur = -1;
 		try {
 			idUtilisateur = this.hebergeurExistant.getIdUtilisateurByIdHebergeur();
 		} catch (SQLException e) {
