@@ -1,6 +1,7 @@
 package vue;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modele.FormulaireRechercheAnnonce;
+import modele.Offre;
 import classes.Menu;
 
 /**
@@ -43,14 +45,26 @@ public class Recherche extends HttpServlet {
 			this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
 		
 		}
+		if (request.getAttribute("lesOffres")!=null){
+			
+		}
+		if (request.getAttribute("erreur")!=null){
+			
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try{
 		FormulaireRechercheAnnonce form= new FormulaireRechercheAnnonce(request.getParameter("ville"));
+		List<Offre> lesOffres=form.getListeOffre();
+		request.setAttribute("lesOffres", lesOffres);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
+		}
+		catch (Exception e){
+			request.setAttribute("erreur", "Aucun Logement disponible dans cette ville");
+		}
 	}
-
 }
