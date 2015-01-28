@@ -7,16 +7,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Logement {
-	
+
 	private int idLogement;
 	private Adresse adresse;
-	
+
 	public Logement(Adresse adresse) throws SQLException {
 		super();
 		this.adresse = adresse;
 		this.setId();
 	}
-	
+
 	public Logement() {
 	}
 
@@ -79,6 +79,26 @@ public class Logement {
 		this.adresse = adresse;
 	}
 
-	
-	
+	public static Logement getLogementById(int idLogement) throws Exception{
+		Logement result= new Logement();
+		PreparedStatement ps=ConnectionMySQL.getInstance().prepareStatement("select batimentEscalier,complementAdresse,cp,numeroEtVoie,residence,ville from Logement where IdLogement=?");
+		ps.setInt(1, idLogement);
+		ResultSet rs= ps.executeQuery();
+		if (rs.next()){
+			String batimentEscalier = rs.getString(1);
+			String complementAdresse = rs.getString(2);
+			String cp = rs.getString(3);
+			String numeroEtVoie = rs.getString(4);
+			String residence = rs.getString(5);
+			String ville = rs.getString(6);
+			result=new Logement(new Adresse(batimentEscalier, numeroEtVoie, cp, residence, complementAdresse, ville));
+			result.setIdLogement(idLogement);
+		}
+		else{
+			throw new Exception("Id inexistant");
+		}
+		return result;
+	}
+
+
 }

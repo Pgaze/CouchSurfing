@@ -15,23 +15,20 @@ public class FormulaireRechercheAnnonce {
 		this.ville = ville;
 	}
 	
-	public List<Logement> getListeLogement() throws Exception{
-		List<Logement> result = new ArrayList<Logement>();
-		PreparedStatement s = ConnectionMySQL.getInstance().prepareStatement("select batimentEscalier,complementAdresse,cp,numeroEtVoie,residence,ville from Logement where ville=?");
+	public List<Offre> getListeOffre() throws Exception{
+		List<Offre> result = new ArrayList<Offre>();
+		PreparedStatement s = ConnectionMySQL.getInstance().prepareStatement(
+					"select Offre.IdLogement,Offre.IdHebergeur from Offre,Logement "
+					+ "where Logement.IdLogement=Offre.IdLogement and Logement.ville=?");
 		s.setString(1, this.ville);
 		ResultSet rs=s.executeQuery();
 		while (rs.next()){
-			String batimentEscalier = rs.getString(1);
-			String complementAdresse = rs.getString(2);
-			String cp = rs.getString(3);
-			String numeroEtVoie = rs.getString(4);
-			String residence = rs.getString(5);
-			String ville = rs.getString(6);
-			Adresse a = new Adresse(batimentEscalier, numeroEtVoie, cp, residence, complementAdresse, ville);
-			result.add(new Logement(a));
+			Logement l=Logement.getLogementById(rs.getInt(1));
+			Hebergeur h=Hebergeur.getHebergeurById(rs.getInt(2));
+			result.add(new Offre(l, h, "01-01-1901", "01-01-1901"));
 		}
 		if (result.isEmpty()){
-			throw new Exception("Aucun logement dans cette ville");
+			throw new Exception("Aucun logement a "+this.ville);
 		}
 		return result;
 	}
