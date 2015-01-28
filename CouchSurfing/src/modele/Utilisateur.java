@@ -222,5 +222,4 @@ public class Utilisateur {
 		
 		return this.idHebergeur;
 	}
-
 }
