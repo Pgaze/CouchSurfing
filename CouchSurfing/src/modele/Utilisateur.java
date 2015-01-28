@@ -201,19 +201,24 @@ public class Utilisateur {
 	 * @throws SQLException 
 	 */
 	public int createIdHebergeur() throws SQLException {
+		Hebergeur hebergeur=new Hebergeur();
 		Connection c = ConnectionMySQL.getInstance();
-		PreparedStatement select = c.prepareStatement("select IdHebergeur from Utilisateur where IdHebergeur=? ");
-		select.setInt(1, this.getIdHebergeur());
-		ResultSet resultSelect = select.executeQuery();
+		PreparedStatement select = c.prepareStatement("select Hebergeur from Utilisateur where IdUtilisateur=? ");
+		select.setInt(1, this.idUser);
+		ResultSet resultSelect=select.executeQuery();
 		if(resultSelect.next()){
-			this.idHebergeur = resultSelect.getInt(1);
+			if(resultSelect.getInt(1)==0){
+				//TODO : chercher int null
+			}
 		}
-		else{
-			Statement count = c.createStatement();
-			ResultSet resultCount = count.executeQuery("select count(IdHebergeur) from Hebergeur ");
-			resultCount.next();
-			this.idHebergeur = resultCount.getInt(1);
-		}
+		Statement count = c.createStatement();
+		ResultSet resultCount = count.executeQuery("select count(IdHebergeur) from Hebergeur ");
+		resultCount.next();
+		
+		this.idHebergeur = resultCount.getInt(1);
+		hebergeur.setIdHebergeur(this.idHebergeur);
+		hebergeur.inserDansLaBase();
+
 		return this.idHebergeur;
 	}
 

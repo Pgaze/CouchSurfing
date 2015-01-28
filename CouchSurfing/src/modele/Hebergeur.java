@@ -93,6 +93,18 @@ public class Hebergeur {
 	public void setIdHebergeur(int theId){
 		this.idHebergeur=theId;
 	}
+	
+	public boolean inserDansLaBase() throws SQLException{
+		Connection c=ConnectionMySQL.getInstance();
+		PreparedStatement ps=c.prepareStatement("insert into Hebergeur (IdHebergeur,Adresse) values(?,?)");
+		ps.setInt(1, this.getIdHebergeur());
+		ps.setString(2, "");
+		if(ps.executeUpdate() ==1){
+			return true;
+		}
+		return false;
+
+	}
 
 
 	/** Retrouve l'id de l'utilisateur qui a un tel id hebergeur
@@ -102,7 +114,7 @@ public class Hebergeur {
 	 */
 	public int getIdUtilisateurByIdHebergeur(int idHebergeur) throws SQLException {
 		Connection c = ConnectionMySQL.getInstance();
-		PreparedStatement select = c.prepareStatement("select IdUtilisateur from Utilisateur where IdHebergeur=? ");
+		PreparedStatement select = c.prepareStatement("select IdUtilisateur from Utilisateur where Hebergeur=? ");
 		select.setInt(1, this.getIdHebergeur());
 		ResultSet resultSelect = select.executeQuery();
 		if(resultSelect.next()){
