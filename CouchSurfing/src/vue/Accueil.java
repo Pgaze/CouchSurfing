@@ -27,7 +27,7 @@ public class Accueil extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
+		if (request.getSession().getAttribute("sessionUtilisateur") == null) {
 			Menu invite = new Menu("invite");
 			invite.addLien("Connexion", true);
 			invite.addLien("Presentation", true);
@@ -51,12 +51,9 @@ public class Accueil extends HttpServlet {
 			if (form.verificationCoupleMailMotDePasse()){
 				Utilisateur user= Utilisateur.getUtilisateurParMail(logA);
 				sessionUtilisateur.setAttribute("sessionUtilisateur", user);
-<<<<<<< HEAD
-				response.sendRedirect( "recherche" );
-=======
-				System.out.println(sessionUtilisateur.getAttribute("sessionUtilisateur"));
 				response.sendRedirect( "profil" );
->>>>>>> branch 'master' of git@192.168.1.11:~/leBonRepo.git
+
+				System.out.println(sessionUtilisateur.getAttribute("sessionUtilisateur"));
 			    return;				
 		        
 			} else {

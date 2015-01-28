@@ -4,6 +4,7 @@
 
 #le_menu a {
 	text-decoration: none;
+	color: rgb(245, 12, 83);
 }
 
 /* */
@@ -64,14 +65,21 @@ font-size: 13px;
 }
 
 div#le_menu {
-margin: 0 auto;
+/*margin: 0 auto;
 width: 87.4%;
 background: seashell;
 height: 70px;
-margin-bottom: 25px;
+margin-bottom: 25px;*/
+
+background: white;
+width: 100%;
+margin-top: 0;
+height: 60px;
+margin-bottom: 15px;
+padding: 11px;
 }
 
-div#footer, div#le_menu, div#menu{
+div#footer, div#menu{
 padding: 11px;
 margin: 0 auto;
 background: white;
@@ -196,6 +204,9 @@ height: 30px;
 	
 }
 
+#titreMessagerie {
+	/*text-align:center;*/
+}
 /* recherche */
 #inputCherche{
 	width: 33%;
@@ -211,11 +222,11 @@ height: 30px;
 
 #btCherche {
 	
+	width:90px;
 border-radius: 0px !important;
 }
 
 #contenuFormRecherche input {
-	
 height: 20px;
 border-radius: 6px;
 }

@@ -4,6 +4,7 @@
 	<%@ include file="menu.jsp" %>
     <body>
         <div id="container">
+        <h1 id="titreMessagerie">Messagerie</h1>
         	<div id="grandeBoite">
 				<table id="maBoite">
 					<tbody>

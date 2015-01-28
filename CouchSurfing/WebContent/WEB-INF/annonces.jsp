@@ -7,14 +7,15 @@
         <div id="container">
 	        <p>Mes annonces</p>
 	        	
-			<div id="profile">
-			    <div id="info">
-			        <div id="infoSession">
-			        	<p>Vous �tes connect� avec l'adresse ${sessionScope.sessionUtilisateur.mail} </p>
-			        </div>
-			        <div id="infoSession">
-			        	
-			        </div>
+			<div id="annonces">
+			    <div id="uneAnnonce">
+			        
+			    </div>
+			    <div id="uneAnnonce">
+			        
+			    </div>
+			    <div id="uneAnnonce">
+			        
 			    </div>
 			</div>
         </div>
