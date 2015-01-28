@@ -199,9 +199,10 @@ public class Utilisateur {
 
 	/**
 	 * cree 1 idHebergeur si l'utilisateur n'en possède pas, le retourne sinon
+	 * @throws SQLException 
 	 * @throws Exception 
 	 */
-	public int createIdHebergeur() throws Exception {
+	public int createIdHebergeur() throws SQLException {
 		Hebergeur hebergeur=new Hebergeur();
 		Connection c = ConnectionMySQL.getInstance();
 		PreparedStatement select = c.prepareStatement("select Hebergeur from Utilisateur where IdUtilisateur=? ");

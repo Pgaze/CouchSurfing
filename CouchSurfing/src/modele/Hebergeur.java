@@ -94,7 +94,7 @@ public class Hebergeur {
 	}
 	
 	public boolean inserDansLaBase() throws SQLException{
-		Connection c=ConnectionMySQL.getInstance();
+		Connection c = ConnectionMySQL.getInstance();
 		PreparedStatement ps=c.prepareStatement("insert into Hebergeur (IdHebergeur,Adresse) values(?,?)");
 		ps.setInt(1, this.getIdHebergeur());
 		ps.setString(2, "");
@@ -105,32 +105,51 @@ public class Hebergeur {
 
 	}
 
+	public static Hebergeur getHebergeurById(int theId) throws SQLException{
+		Hebergeur result = new Hebergeur();
+		PreparedStatement select = ConnectionMySQL.getInstance().prepareStatement(""
+				+ "select Telephone,IndiceConfort,Adresse from Hebergeur where IdHebergeur=?");
+		select.setInt(1, theId);
+		ResultSet rs=select.executeQuery();
+		if(rs.next()){
+			result.setTelephone(rs.getInt(1));
+			result.setIndiceConfort(rs.getInt(2));
+			result.setAdresse(rs.getString(3));
+		}
+		else{
+			result = null;
+		}
+		return result;
+	}
 
 	/** Retrouve l'id de l'utilisateur qui a un tel id hebergeur
 	 * @param idHebergeur
-	 * @return id de l'utilisateur s'il existe, 0 sinon
+	 * @return id de l'utilisateur s'il existe, -1 sinon
 	 * @throws SQLException
 	 */
-	public int getIdUtilisateurByIdHebergeur(int idHebergeur) throws SQLException {
+	public int getIdUtilisateurByIdHebergeur() throws SQLException {
 		Connection c = ConnectionMySQL.getInstance();
-		PreparedStatement select = c.prepareStatement("select IdUtilisateur from Utilisateur where Hebergeur=? ");
+		PreparedStatement select = c.prepareStatement("SELECT IdUtilisateur FROM Utilisateur WHERE Hebergeur=? ");
 		select.setInt(1, this.getIdHebergeur());
 		ResultSet resultSelect = select.executeQuery();
 		if(resultSelect.next()){
 			return resultSelect.getInt(1);
 		}
-		return 0;
+		return -1;
 	}
 	
+	/** Supprime l'Hebergeur de la table Hebergeur, et et a NULL le champ Hebergeur pour l'Utilisateur concerné
+	 * @throws SQLException
+	 */
 	public void deleteHebergeurInBDD() throws SQLException{
 		Connection c = ConnectionMySQL.getInstance();
-		PreparedStatement delete = c.prepareStatement("DELETE FROM Hebergeur WHERE IdHebergeur IN (SELECT * FROM (SELECT IdHebergeur FROM Hebergeur WHERE IdHebergeur=?");
+		PreparedStatement delete = c.prepareStatement("DELETE FROM Hebergeur WHERE IdHebergeur IN (SELECT * FROM (SELECT IdHebergeur FROM Hebergeur WHERE IdHebergeur=?) AS ListHebergeur)");
 		delete.setInt(1, this.getIdHebergeur());
-		ResultSet resultDelete = delete.executeQuery();
-		/*if(resultDelete.deleteRow()){
-			System.out.println("Succes");
-		}else
-			System.out.println("Failed to delete IdHebergeur : "+ this.getIdHebergeur());
-			*/
+		int resultDelete = delete.executeUpdate();
+		
+		PreparedStatement majUser = c.prepareStatement("UPDATE TABLE Utilisateur SET Hebergeur = NULL WHERE IdUtilisateur=?");
+		majUser.setInt(1,this.getIdUtilisateurByIdHebergeur());
+		
+		this.setIdHebergeur(-1);
 	}
 }
