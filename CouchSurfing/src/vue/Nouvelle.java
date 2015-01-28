@@ -41,6 +41,7 @@ public class Nouvelle extends HttpServlet {
 			membre.addLien("Profil", false);
 			membre.addLien("Messagerie", false);
 			membre.addLien("Nouvelle annonce", false);
+			membre.addLien("Recherche", false);
 	        request.setAttribute("menu", membre.getLiensMenu());
 			
 			this.getServletContext().getRequestDispatcher("/WEB-INF/nouvelle.jsp").forward(request, response);

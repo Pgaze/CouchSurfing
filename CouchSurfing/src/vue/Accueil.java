@@ -27,13 +27,16 @@ public class Accueil extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("sessionUtilisateur") == null) {
+		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
 			Menu invite = new Menu("invite");
 			invite.addLien("Connexion", true);
 			invite.addLien("Presentation", true);
 	        request.setAttribute("invite", invite);
 	        request.setAttribute("menu", invite.getLiensMenu());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
+		}else {
+			response.sendRedirect( "recherche" );
+		    return;	
 		}
 	}
 
@@ -48,7 +51,7 @@ public class Accueil extends HttpServlet {
 			if (form.verificationCoupleMailMotDePasse()){
 				Utilisateur user= Utilisateur.getUtilisateurParMail(logA);
 				sessionUtilisateur.setAttribute("sessionUtilisateur", user);
-				response.sendRedirect( "profil" );
+				response.sendRedirect( "recherche" );
 			    return;				
 		        
 			} else {

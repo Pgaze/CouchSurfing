@@ -64,6 +64,14 @@
     <servlet-name>Demandes</servlet-name>
     <url-pattern>/demandes</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>Recherche</servlet-name>
+    <servlet-class>vue.Recherche</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Recherche</servlet-name>
+    <url-pattern>/recherche</url-pattern>
+  </servlet-mapping>
   <jsp-config>
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>

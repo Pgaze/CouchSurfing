@@ -37,6 +37,7 @@ public class Messagerie extends HttpServlet {
 			membre.addLien("Profil", false);
 			membre.addLien("Messagerie", false);
 			membre.addLien("Nouvelle annonce", false);
+			membre.addLien("Recherche", false);
 	        request.setAttribute("menu", membre.getLiensMenu());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/messagerie.jsp").forward(request, response);
 		}

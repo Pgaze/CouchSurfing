@@ -20,7 +20,7 @@
 					        <label class="alignMiddle" for="ville">Ville :</label><input required name="ville" id="ville" type="text"></input></br>
 				 		</div>
 			    	</div>
-			    	<button id="val_nouvelleAnnonce" name="val_nouvelleAnnonce">Suite</button>
+			    	<button id="valNouvelleAnnonce" name="val_nouvelleAnnonce">Suite</button>
 			    </div>
 			</form>
         </div>
