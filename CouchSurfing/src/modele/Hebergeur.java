@@ -93,6 +93,10 @@ public class Hebergeur {
 		this.idHebergeur=theId;
 	}
 	
+	/** 
+	 * @return statut
+	 * @throws SQLException
+	 */
 	public boolean inserDansLaBase() throws SQLException{
 		Connection c = ConnectionMySQL.getInstance();
 		PreparedStatement ps=c.prepareStatement("insert into Hebergeur (IdHebergeur,Adresse) values(?,?)");
@@ -105,6 +109,11 @@ public class Hebergeur {
 
 	}
 
+	/**
+	 * @param theId
+	 * @return Hebergeur avec les données trouvées dans la base
+	 * @throws SQLException
+	 */
 	public static Hebergeur getHebergeurById(int theId) throws SQLException{
 		Hebergeur result = new Hebergeur();
 		PreparedStatement select = ConnectionMySQL.getInstance().prepareStatement(""
