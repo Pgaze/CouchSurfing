@@ -46,7 +46,6 @@ public class FormulaireConnexion {
 
 	public boolean verificationCoupleMailMotDePasse() throws SQLException{
 		Utilisateur user = Utilisateur.getUtilisateurParMail(this.login);
-		System.out.println(this.login);
 		if(user!=null){
 			return user.getPassword().contentEquals(this.mdp);	
 		}
