@@ -43,9 +43,7 @@ public class Recherche extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
-			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
-		}
+		request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
 		try{
 		FormulaireRechercheAnnonce form= new FormulaireRechercheAnnonce(request.getParameter("ville"));
 		List<Offre> lesOffres=form.getListeOffre();
