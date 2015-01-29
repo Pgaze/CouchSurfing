@@ -60,7 +60,6 @@ public class Nouvelle extends HttpServlet {
 				request.getParameter("batimentEscalier"), request.getParameter("numeroEtVoie"), 
 				request.getParameter("cp"), request.getParameter("residence"), 
 				request.getParameter("complementAdresse"), request.getParameter("ville"), user);
-		System.out.println(user);
 		if(form.verificationCp()){
 			String result = form.procedureAjoutLogement();
 			if(result.contentEquals("Logement ajoute")){

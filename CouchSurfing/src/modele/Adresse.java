@@ -55,6 +55,13 @@ public class Adresse {
 		this.ville = ville;
 	}
 	
+	@Override
+	public String toString() {
+		return numeroEtVoie +" "+cp+" "+ville+"\n"+
+				"Residence: "+ residence +" "+batimentEscalier+"\n"+
+				complementAdresse ;
+	}
+	
 	
 
 

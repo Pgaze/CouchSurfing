@@ -16,7 +16,6 @@ body {
     font-size: 13px;
     color: #666;
 }
-
 #container {
     width: 800px;
     margin: 0 auto;
@@ -24,6 +23,7 @@ body {
     background-color: #fff;
     width: 85%;
     border: 30px solid rgb(224, 88, 71);
+
 }
 
 .content-accueil {

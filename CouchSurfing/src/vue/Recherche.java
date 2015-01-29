@@ -1,6 +1,8 @@
 package vue;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modele.FormulaireRechercheAnnonce;
+import modele.Offre;
 import classes.Menu;
 
 /**
@@ -17,21 +20,12 @@ import classes.Menu;
 @WebServlet("/Recherche")
 public class Recherche extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Menu membre;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Recherche() {
         super();
-        this.membre = new Menu("membre");
-		membre.addLien("Deconnexion", false);
-		membre.addLien("Annonces", false);
-		membre.addLien("Demandes", false);
-		membre.addLien("Profil", false);
-		membre.addLien("Messagerie", false);
-		membre.addLien("Nouvelle annonce", false);
-		membre.addLien("Recherche", false);
         
         // TODO Auto-generated constructor stub
     }
@@ -41,9 +35,9 @@ public class Recherche extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
-	        request.setAttribute("menu", membre.getLiensMenu());
+
+			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
-		
 		}
 	}
 
@@ -51,9 +45,19 @@ public class Recherche extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("menu", membre.getLiensMenu());
-		FormulaireRechercheAnnonce form= new FormulaireRechercheAnnonce(request.getParameter("ville"));
-		this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
-	}
 
+		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
+			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
+			this.getServletContext().getRequestDispatcher("/WEB-INF/annonces.jsp").forward(request, response);
+		}
+		try{
+			FormulaireRechercheAnnonce form= new FormulaireRechercheAnnonce(request.getParameter("ville"));
+			List<Offre> lesOffres=form.getListeOffre();
+			request.setAttribute("lesOffres", lesOffres);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
+			}
+		catch (Exception e){
+			request.setAttribute("erreur", "Aucun Logement disponible dans cette ville");
+		}
+	}
 }

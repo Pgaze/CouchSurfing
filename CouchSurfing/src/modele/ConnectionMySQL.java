@@ -12,13 +12,14 @@ public class ConnectionMySQL {
 
 	private ConnectionMySQL() {
 	}
+	
 	public static Connection getInstance() throws SQLException{
 		if (ConnectionMySQL.laConnection==null){
 			try{
 				Class.forName("com.mysql.jdbc.Driver");
 				ConnectionMySQL.laConnection  = DriverManager.getConnection(
-						"jdbc:mysql://192.168.1.7:3306/CouchSurfing", "serveur",
-						"teamBifle");
+						"jdbc:mysql://"+ Data.HOST_IP+":"+Data.BDD_PORT+"/CouchSurfing", Data.BDD_USER,
+						Data.HOST_PWD);
 			}
 			catch(Exception exc){
 				exc.printStackTrace();

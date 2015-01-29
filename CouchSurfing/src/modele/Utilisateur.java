@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Utilisateur {
 
@@ -54,6 +56,9 @@ public class Utilisateur {
 		this.idHebergeur=0;
 	}
 
+	public Utilisateur() {
+	}
+
 	public static Utilisateur getUtilisateurParMail(String mail) throws SQLException{
 		Utilisateur result = new Utilisateur(mail);
 		PreparedStatement select = ConnectionMySQL.getInstance().prepareStatement("" +
@@ -72,6 +77,28 @@ public class Utilisateur {
 			result =null;
 		}
 		return result;
+	}
+	
+	public static Utilisateur getUtilisateurById(int idUtilisateur) throws SQLException{
+		Utilisateur result = new Utilisateur();
+		PreparedStatement select = ConnectionMySQL.getInstance().prepareStatement("" +
+				"select Nom,Prenom,Mdp,Pseudo,Hebergeur,Mail from Utilisateur where IdUtilisateur=?");
+		select.setInt(1, idUtilisateur);
+		ResultSet rs=select.executeQuery();
+		if(rs.next()){
+			result.setName(rs.getString(1));
+			result.setFirstName(rs.getString(2));
+			result.setPassword(rs.getString(3));
+			result.setPseudo(rs.getString(4));
+			result.setIdHebergeur(rs.getInt(5));
+			result.setMail(rs.getString(6));
+			result.setId();
+		}
+		else{
+			result =null;
+		}
+		return result;
+		
 	}
 
 
@@ -218,9 +245,14 @@ public class Utilisateur {
 				this.idHebergeur = resultCount.getInt(1);
 				hebergeur.setIdHebergeur(this.idHebergeur);
 				hebergeur.inserDansLaBase();
+				PreparedStatement update = c.prepareStatement("update Utilisateur set Hebergeur=? where IdUtilisateur=?");
+				update.setInt(1, this.idHebergeur);
+				update.setInt(2, this.idUser);
+				update.executeUpdate();
 			}
 		}
 		
 		return this.idHebergeur;
 	}
+	
 }
