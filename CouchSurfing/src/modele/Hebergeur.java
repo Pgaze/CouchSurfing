@@ -162,4 +162,19 @@ public class Hebergeur {
 		
 		this.setIdHebergeur(-1);
 	}
+
+
+	@Override
+	public String toString() {
+		String result ="Le nom de ta maman";
+		try {
+			Utilisateur user =Utilisateur.getUtilisateurById(this.getIdUtilisateurByIdHebergeur());
+			result = user.getFirstName() +" "+user.getName();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
 }

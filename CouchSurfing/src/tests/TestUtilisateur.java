@@ -1,6 +1,6 @@
 package tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import modele.ConnectionMySQL;
 import modele.Utilisateur;
 
@@ -39,6 +39,12 @@ public class TestUtilisateur {
 		assertEquals("Paul",dubois.getFirstName());
 		assertEquals("motDePasse1",dubois.getPassword());
 		assertEquals("Paulo",dubois.getPseudo());
+	}
+	
+	@Test
+	public void testGetUtilisateurById() throws Exception {
+		this.dubois=Utilisateur.getUtilisateurById(0);
+		assertEquals("Dubois",dubois.getName());
 	}
 	
 
