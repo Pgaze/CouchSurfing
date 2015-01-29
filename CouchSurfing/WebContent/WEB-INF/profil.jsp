@@ -6,21 +6,21 @@
     <body>
         
         <div id="profil_container" class="content-accueil">
-	        <h1 id="titre_Profil">Profil de ${prenom} ${ nom }</h1>
+	        <h1 id="titre_Profil">Profil de ${sessionUtilisateur.firstName} ${ sessionUtilisateur.name }</h1>
 			<div id="profile" >
 			    <div id="info">
 			        <div class="infoSession">
 			        	<div class = "infoSessionContainer">
-			            <p class="intitule_profil">Nom</p><p class="info_profil"> ${ nom }</p>
+			            <p class="intitule_profil">Nom</p><p class="info_profil"> ${sessionUtilisateur.firstName}</p>
 			            </div>
 			            <div class = "infoSessionContainer">
-			            <p class="intitule_profil">Prenom</p><p class="info_profil"> ${ prenom }</p>
+			            <p class="intitule_profil">Prenom</p><p class="info_profil"> ${ sessionUtilisateur.name }</p>
 			            </div>
 			            <div class = "infoSessionContainer">
-			            <p class="intitule_profil">Email</p><p class="info_profil">${ mail }</p>
+			            <p class="intitule_profil">Email</p><p class="info_profil">${ sessionUtilisateur.firstName }</p>
 			            </div>
 			            <div class = "infoSessionContainer">
-			            <p class="intitule_profil">Pseudo</p><p class="info_profil">${ pseudo }</p>
+			            <p class="intitule_profil">Pseudo</p><p class="info_profil">${ user.pseudo }</p>
 			            </div>
 			        </div>
 			        <div class="infoSession">
