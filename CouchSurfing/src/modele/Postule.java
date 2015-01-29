@@ -60,10 +60,11 @@ public class Postule {
 		String myDate = sdf.format(date);
 		
 		Connection c=ConnectionMySQL.getInstance();
-		PreparedStatement ps=c.prepareStatement("INSERT INTO Postule (IdUtilisateur,IdOffre,DateInvalidationAuto,Statut) values(?,?,"+myDate+",?)");
+		PreparedStatement ps=c.prepareStatement("INSERT INTO Postule (IdUtilisateur,IdOffre,DateInvalidationAuto,Statut) values(?,?,?,?)");
 		ps.setInt(1, theIdUser);
 		ps.setInt(2, theIdOffre);
-		ps.setInt(3, 3);
+		ps.setString(3, myDate);
+		ps.setInt(4, 3);
 		if(ps.executeUpdate() == 1){
 			return true;
 		}		

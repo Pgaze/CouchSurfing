@@ -1,11 +1,7 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-
 import modele.ConnectionMySQL;
-import modele.Postule;
 import modele.Utilisateur;
 
 import org.junit.After;
