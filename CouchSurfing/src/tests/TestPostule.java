@@ -18,33 +18,41 @@ import org.junit.Test;
 
 public class TestPostule {
 
-	private Utilisateur dubois;
 	private Utilisateur leblanc;
+	private Utilisateur lolo;
+
 	
 	@Before
 	public void setUp() throws Exception {
-		this.dubois=new Utilisateur("duboispaul@mail.com","motDePasse","Dubois","Paul","Paulo");
-		this.dubois=Utilisateur.getUtilisateurParMail("duboispaul@mail.com");
-		this.leblanc=new Utilisateur("herveleblanc@mail.com","motDePasse","Leblanc","Herve","Rv");
+		this.leblanc=new Utilisateur("herveleblanc@mail.com","motDePasse1","Leblanc","Herve","Rv");
 		this.leblanc=Utilisateur.getUtilisateurParMail("herveleblanc@mail.com");
+		this.lolo=new Utilisateur("lolo.patate@jardin.com","motDePasse1","LoLolo","Patate","LoloPatate");
+		this.lolo=Utilisateur.getUtilisateurParMail("lolo.patate@jardin.com");
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		this.dubois=null;
 		this.leblanc=null;
+		this.lolo=null;
 		ConnectionMySQL.getInstance().rollback();
 	}
 
 	@Test
 	public void testPostuler() throws Exception {
-		List<Offre> liste = new FormulaireRechercheAnnonce("Toulouse").getListeOffre();
-		assertTrue(Postule.postulerAUneOffre(liste.get(0).getIdOffre(),this.leblanc.getIdUser()));
+		List<Offre> liste = new FormulaireRechercheAnnonce("Paris").getListeOffre();
+		assertTrue(Postule.postulerAUneOffre(liste.get(0).getIdOffre(),this.lolo.getIdUser()));
 	}
 
 	@Test
 	public void testGetAllPostulationsEnCours() throws Exception {
-		ArrayList<Integer> liste = Postule.getPostulationsEnCours(this.dubois.getIdUser());
+		ArrayList<Integer> liste = Postule.getPostulationsEnCours(this.lolo.getIdUser());
 		assertEquals(1,liste.size());
 	}
+	
+	@Test
+	public void testDeletePostulationsPerimees() throws Exception {
+		ArrayList<Integer> liste = Postule.deletePostulationsPerimees(this.leblanc.getIdUser());
+		assertEquals(1,liste.size());
+	}
+	
 }

@@ -37,11 +37,6 @@ public class Recherche extends HttpServlet {
 			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
 		}
-
-
-		if (request.getAttribute("erreur")!=null){
-			
-		}
 	}
 
 	/**
