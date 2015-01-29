@@ -18,7 +18,7 @@ public class TestLogement {
 
 	@After
 	public void tearDown() throws Exception {
-		Data.connection.rollback();
+		Data.BDD_Connection.rollback();
 	}
 
 	@Test

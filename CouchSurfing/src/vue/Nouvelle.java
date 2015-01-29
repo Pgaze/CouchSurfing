@@ -63,7 +63,7 @@ public class Nouvelle extends HttpServlet {
 		if(form.verificationCp()){
 			String result = form.procedureAjoutLogement();
 			if(result.contentEquals("Logement ajoute")){
-				Data.connection.commit();
+				Data.BDD_Connection.commit();
 			}
 			request.setAttribute("resultat", result);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/nouvelle.jsp").forward(request, response);

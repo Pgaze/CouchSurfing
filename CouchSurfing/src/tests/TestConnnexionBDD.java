@@ -10,7 +10,7 @@ public class TestConnnexionBDD {
 
 	public static void main(String[] args) {
 		try {
-			Statement s = Data.connection.createStatement();
+			Statement s = Data.BDD_Connection.createStatement();
 			ResultSet r=s.executeQuery("select Nom from Utilisateur");
 			r.next();
 			System.out.println(r.getString(1));

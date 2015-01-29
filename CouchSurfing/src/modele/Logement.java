@@ -20,7 +20,7 @@ public class Logement {
 	}
 
 	private void setId() throws SQLException {
-		PreparedStatement select=Data.connection.prepareStatement("select IdLogement from Logement where"
+		PreparedStatement select=Data.BDD_Connection.prepareStatement("select IdLogement from Logement where"
 				+ " batimentEscalier=? and numeroEtVoie=? and cp=? and residence=? "
 				+ "and complementAdresse=? and ville=?");
 		select.setString(1, this.adresse.getBatimentEscalier());
@@ -34,7 +34,7 @@ public class Logement {
 			this.idLogement=resultSelect.getInt(1);
 		}
 		else{	
-			Statement count=Data.connection.createStatement();
+			Statement count=Data.BDD_Connection.createStatement();
 			ResultSet resultCount=count.executeQuery("select count(IdLogement) from Logement ");
 			resultCount.next();
 			this.idLogement=resultCount.getInt(1)+1;
@@ -44,7 +44,7 @@ public class Logement {
 	}
 
 	public boolean insererDansLaBase() throws SQLException{
-		PreparedStatement insert= Data.connection.prepareStatement(""
+		PreparedStatement insert= Data.BDD_Connection.prepareStatement(""
 				+ "insert into Logement (idLogement,batimentEscalier,numeroEtVoie,cp,residence,complementAdresse,ville)"
 				+ "values (?,?,?,?,?,?,?)");
 		insert.setInt(1, this.idLogement);
@@ -79,7 +79,7 @@ public class Logement {
 
 	public static Logement getLogementById(int idLogement) throws Exception{
 		Logement result= new Logement();
-		PreparedStatement ps=Data.connection.prepareStatement("select batimentEscalier,complementAdresse,cp,numeroEtVoie,residence,ville from Logement where IdLogement=?");
+		PreparedStatement ps=Data.BDD_Connection.prepareStatement("select batimentEscalier,complementAdresse,cp,numeroEtVoie,residence,ville from Logement where IdLogement=?");
 		ps.setInt(1, idLogement);
 		ResultSet rs= ps.executeQuery();
 		if (rs.next()){

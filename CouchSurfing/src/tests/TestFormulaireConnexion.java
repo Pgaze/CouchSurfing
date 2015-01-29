@@ -23,7 +23,7 @@ public class TestFormulaireConnexion {
 	@After
 	public void tearDown() throws Exception {
 		this.form=null;
-		Data.connection.rollback();
+		Data.BDD_Connection.rollback();
 	}
 
 	@Test

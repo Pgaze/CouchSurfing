@@ -97,7 +97,7 @@ public class Hebergeur {
 	 * @throws SQLException
 	 */
 	public boolean inserDansLaBase() throws SQLException{
-		PreparedStatement ps=Data.connection.prepareStatement("insert into Hebergeur (IdHebergeur,Adresse) values(?,?)");
+		PreparedStatement ps=Data.BDD_Connection.prepareStatement("insert into Hebergeur (IdHebergeur,Adresse) values(?,?)");
 		ps.setInt(1, this.getIdHebergeur());
 		ps.setString(2, "");
 		if(ps.executeUpdate() ==1){
@@ -114,7 +114,7 @@ public class Hebergeur {
 	 */
 	public static Hebergeur getHebergeurById(int theId) throws SQLException{
 		Hebergeur result = new Hebergeur();
-		PreparedStatement select = Data.connection.prepareStatement(""
+		PreparedStatement select = Data.BDD_Connection.prepareStatement(""
 				+ "select Telephone,IndiceConfort,Adresse from Hebergeur where IdHebergeur=?");
 		select.setInt(1, theId);
 		ResultSet rs=select.executeQuery();
@@ -136,7 +136,7 @@ public class Hebergeur {
 	 * @throws SQLException
 	 */
 	public int getIdUtilisateurByIdHebergeur() throws SQLException {
-		PreparedStatement select = Data.connection.prepareStatement("SELECT IdUtilisateur FROM Utilisateur WHERE Hebergeur=? ");
+		PreparedStatement select = Data.BDD_Connection.prepareStatement("SELECT IdUtilisateur FROM Utilisateur WHERE Hebergeur=? ");
 		select.setInt(1, this.getIdHebergeur());
 		ResultSet resultSelect = select.executeQuery();
 		if(resultSelect.next()){
@@ -149,7 +149,7 @@ public class Hebergeur {
 	 * @throws SQLException
 	 */
 	public void deleteHebergeurInBDD() throws SQLException{
-		PreparedStatement delete = Data.connection.prepareStatement("DELETE FROM Hebergeur WHERE IdHebergeur IN (SELECT * FROM (SELECT IdHebergeur FROM Hebergeur WHERE IdHebergeur=?) AS ListHebergeur)");
+		PreparedStatement delete = Data.BDD_Connection.prepareStatement("DELETE FROM Hebergeur WHERE IdHebergeur IN (SELECT * FROM (SELECT IdHebergeur FROM Hebergeur WHERE IdHebergeur=?) AS ListHebergeur)");
 		delete.setInt(1, this.getIdHebergeur());
 		delete.executeUpdate();
 		

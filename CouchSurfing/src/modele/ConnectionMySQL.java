@@ -19,9 +19,9 @@ public class ConnectionMySQL {
 			if (ConnectionMySQL.laConnection==null){
 				
 					Class.forName("com.mysql.jdbc.Driver");
-					ConnectionMySQL.laConnection  = DriverManager.getConnection(
-							"jdbc:mysql://"+ Data.HOST_IP+":"+Data.BDD_PORT+"/CouchSurfing"+test, Data.BDD_USER,
-							Data.HOST_PWD);
+					ConnectionMySQL.laConnection = DriverManager.getConnection(
+							"jdbc:mysql://"+ Data.BDD_IP+":"+Data.BDD_PORT+"/CouchSurfing"+test, Data.BDD_USER,
+							Data.BDD_PWD);
 			}
 			ConnectionMySQL.laConnection.setAutoCommit(false);
 		} catch (ClassNotFoundException | SQLException e) {

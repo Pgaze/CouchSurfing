@@ -8,7 +8,6 @@ public class FormulaireConnexion {
 	private String mdp;
 		
 	public FormulaireConnexion(String login, String mdp) {
-		super();
 		this.login = login;
 		this.mdp = mdp;
 	}

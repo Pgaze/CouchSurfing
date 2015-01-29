@@ -23,7 +23,7 @@ public class TestUtilisateur {
 	public void tearDown() throws Exception {
 		this.dubois=null;
 		this.dupont=null;
-		Data.connection.rollback();
+		Data.BDD_Connection.rollback();
 	}
 
 	@Test

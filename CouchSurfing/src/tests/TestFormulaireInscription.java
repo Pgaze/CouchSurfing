@@ -22,7 +22,7 @@ public class TestFormulaireInscription {
 	
 	@After
 	public void tearDown() throws Exception {
-		Data.connection.rollback();
+		Data.BDD_Connection.rollback();
 		this.form=null;
 	}
 	

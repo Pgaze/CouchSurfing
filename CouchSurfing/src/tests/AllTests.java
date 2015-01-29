@@ -27,6 +27,6 @@ public class AllTests {
 
 	@After
 	public void tearDown() throws Exception {
-		Data.connection.rollback();
+		Data.BDD_Connection.rollback();
 	}
 }

@@ -34,7 +34,7 @@ public class TestPostule {
 	public void tearDown() throws Exception {
 		this.leblanc=null;
 		this.lolo=null;
-		Data.connection.rollback();
+		Data.BDD_Connection.rollback();
 	}
 
 	@Test
