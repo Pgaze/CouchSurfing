@@ -1,0 +1,64 @@
+@CHARSET "ISO-8859-1";
+
+/*Profil */
+.infoSession {
+	width: 50%;
+}
+
+#titre_Profil {
+	margin-top: 30px;
+	width: 50%;
+	margin-left: 20px;
+	padding-left: 30px;
+	margin-bottom: -7px;
+	font-size: 20px;
+	-moz-box-shadow: inset 2px -1px 0px 0px #A9A9A9;
+	-webkit-box-shadow: inset 2px -1px 0px 0px #A9A9A9;
+	-o-box-shadow: inset 2px -1px 0px 0px #A9A9A9;
+	box-shadow: inset 2px -1px 0px 0px #A9A9A9;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=#656565,
+		Direction=45, Strength=0);
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 20px;
+	height: 30px;
+	color: rgb(61, 61, 61);
+}
+
+.infoSession {
+	width: 45%;
+	margin-top: 35px;
+	margin-left: 35px;
+	border-left: solid 2px #A9A9A9;
+}
+
+.intitule_profil {
+	font-size: 20px;
+	width: 25%;
+	height: 29px;
+	line-height: 29px;
+	margin: 0;
+	background-color: rgb(231, 231, 231);
+	font-family: monospace;
+	display: inline-block;
+}
+
+.info_profil {
+	font-size: 18px;
+	width: 55%;
+	height: 29px;
+	margin-left: 15px !important;
+	margin: 0;
+	line-height: 30px;
+	padding-left: 5px;
+	background-color: rgb(231, 231, 231);
+	font-family: monospace;
+	display: inline-block;
+}
+
+.infoSessionContainer {
+	display: block;
+	width: 95%;
+	margin: 0 auto;
+	margin-top: 17px !important;
+}
