@@ -6,9 +6,7 @@ public class FormulaireConnexion {
 	
 	private String login;
 	private String mdp;
-	
-	
-	
+		
 	public FormulaireConnexion(String login, String mdp) {
 		super();
 		this.login = login;
