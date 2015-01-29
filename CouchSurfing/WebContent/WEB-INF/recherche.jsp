@@ -5,8 +5,8 @@
 	<%@ include file="entete.jsp" %>
 	<%@ include file="menu.jsp" %>
     <body>
-        <div id="container" style="height:500px;">
-	        <h1>Recherche ton canapé </h1>
+        <div id="container" ">
+	        <h3>Recherche ton canapé </h3>
 			<div id="formRecherche">
 	        	<form id="leFormRecherche" method="post">
 					<div id="contenuFormRecherche">

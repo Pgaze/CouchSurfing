@@ -41,7 +41,7 @@ public class Demandes extends HttpServlet {
 			membre.addLien("Nouvelle annonce", false);
 			membre.addLien("Recherche", false);
 	        request.setAttribute("menu", membre.getLiensMenu());
-			this.getServletContext().getRequestDispatcher("/WEB-INF/annonces.jsp").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/demandes.jsp").forward(request, response);
 		}
 	}
 

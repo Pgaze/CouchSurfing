@@ -19,7 +19,7 @@ import modele.Utilisateur;
 @WebServlet("/Accueil")
 public class Accueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+      
     
     public Accueil() {
         super();

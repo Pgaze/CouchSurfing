@@ -9,9 +9,14 @@
 	        	
 			<div id="demandes">
 			    <div id="infosDemandes">
-			        <div class="uneDemande"">
-			        	
-			        </div>
+					<ol>
+						<li><div class="uneDemande" id=""></div></li>
+						<li><div class="uneDemande" id=""></div></li>
+						<li><div class="uneDemande" id=""></div></li>
+						<li><div class="uneDemande" id=""></div></li>
+						<li><div class="uneDemande" id=""></div></li>
+						<li><div class="uneDemande" id=""></div></li>
+					</ol>
 			    </div>
 			</div>
         </div>
