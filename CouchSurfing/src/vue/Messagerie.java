@@ -30,15 +30,7 @@ public class Messagerie extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
 				
-			Menu membre = new Menu("membre");
-			membre.addLien("Deconnexion", false);
-			membre.addLien("Annonces", false);
-			membre.addLien("Demandes", false);
-			membre.addLien("Profil", false);
-			membre.addLien("Messagerie", false);
-			membre.addLien("Nouvelle annonce", false);
-			membre.addLien("Recherche", false);
-	        request.setAttribute("menu", membre.getLiensMenu());
+			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/messagerie.jsp").forward(request, response);
 		}
 	}

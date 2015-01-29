@@ -20,18 +20,19 @@
 		</div>
 	</div>
 	<div id="containerResultat">
+		<p>${ errreur }</p>
 		<c:forEach items="${lesOffres}" var="uneOffre">
 		<div id="uneOffre">
-			<div id="enTeteOffre"><h1 id="intituleEnTeteOffre">${ uneOffre.hebergeur}</h1></div>
+			<div id="enTeteOffre"><h1 id="intituleEnTeteOffre"><c:out value="${ uneOffre.hebergeur}"/></h1></div>
 				<div id="corpsOffre">
 					<div id="critereAdresse" class="critereOffre">
-						<h1 id="intituleCritere">Adresse: </h1><p id="valeurCritere">${ uneOffre.logement.adresse }</p>
+						<h1 id="intituleCritere">Adresse: </h1><p id="valeurCritere"><c:out value="${ uneOffre.logement.adresse }"/></p>
 					</div>
 				</div>
-		
 			</div>
-		</div>
 		</c:forEach>
+		
+	</div>
 </body>
 
 <%@ include file="basdepage.jsp"%>

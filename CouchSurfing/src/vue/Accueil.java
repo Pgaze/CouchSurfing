@@ -28,11 +28,7 @@ public class Accueil extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("sessionUtilisateur") == null) {
-			Menu invite = new Menu("invite");
-			invite.addLien("Connexion", true);
-			invite.addLien("Presentation", true);
-	        request.setAttribute("invite", invite);
-	        request.setAttribute("menu", invite.getLiensMenu());
+			request.setAttribute("menu", Menu.getMenuAcceuil().getLiensMenu());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 		}else {
 			response.sendRedirect( "recherche" );
@@ -42,6 +38,9 @@ public class Accueil extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (request.getSession().getAttribute("sessionUtilisateur") == null) {
+			request.setAttribute("menu", Menu.getMenuAcceuil().getLiensMenu());
+		}
 		HttpSession sessionUtilisateur = request.getSession();
 		try{
 			String logA = request.getParameter("login");
