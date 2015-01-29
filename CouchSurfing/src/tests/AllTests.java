@@ -12,6 +12,7 @@ import org.junit.runners.Suite.SuiteClasses;
 				TestHebergeur.class, 
 				TestLogement.class,
 				TestUtilisateur.class,
+				MenuTest.class,
 				TestPostule.class
 				})
 public class AllTests {

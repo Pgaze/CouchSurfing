@@ -1,8 +1,10 @@
-package classes;
+package tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import classes.Menu;
 
 public class MenuTest {
 	
@@ -28,5 +30,6 @@ public class MenuTest {
 		test.addLien("Lien1", true);
 		assertEquals("{Lien1=#lien1}",test.getLiensMenu().toString());
 	}
+
 
 }

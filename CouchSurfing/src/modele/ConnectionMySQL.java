@@ -18,7 +18,7 @@ public class ConnectionMySQL {
 			try{
 				Class.forName("com.mysql.jdbc.Driver");
 				ConnectionMySQL.laConnection  = DriverManager.getConnection(
-						"jdbc:mysql://"+ Data.HOST_IP+":"+Data.BDD_PORT+"/CouchSurfing", "serveur",
+						"jdbc:mysql://"+ Data.HOST_IP+":"+Data.BDD_PORT+"/CouchSurfing", Data.BDD_USER,
 						Data.HOST_PWD);
 			}
 			catch(Exception exc){
