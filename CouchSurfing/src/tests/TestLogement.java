@@ -1,8 +1,8 @@
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import modele.Adresse;
-import modele.ConnectionMySQL;
+import modele.Data;
 import modele.Logement;
 
 import org.junit.After;
@@ -18,7 +18,7 @@ public class TestLogement {
 
 	@After
 	public void tearDown() throws Exception {
-		ConnectionMySQL.getInstance().rollback();
+		Data.connection.rollback();
 	}
 
 	@Test

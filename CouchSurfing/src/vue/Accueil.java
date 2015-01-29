@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import classes.Menu;
 import modele.FormulaireConnexion;
 import modele.Utilisateur;
+import classes.Menu;
 
 /**
  * Servlet implementation class Accueil

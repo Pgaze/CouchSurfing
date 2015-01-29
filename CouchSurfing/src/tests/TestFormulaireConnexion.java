@@ -1,10 +1,10 @@
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.sql.SQLException;
 
-import modele.ConnectionMySQL;
+import modele.Data;
 import modele.FormulaireConnexion;
 
 import org.junit.After;
@@ -23,7 +23,7 @@ public class TestFormulaireConnexion {
 	@After
 	public void tearDown() throws Exception {
 		this.form=null;
-		ConnectionMySQL.getInstance().rollback();
+		Data.connection.rollback();
 	}
 
 	@Test

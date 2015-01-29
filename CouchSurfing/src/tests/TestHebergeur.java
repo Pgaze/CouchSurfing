@@ -7,7 +7,7 @@ import static org.junit.Assert.fail;
 
 import java.sql.SQLException;
 
-import modele.ConnectionMySQL;
+import modele.Data;
 import modele.Hebergeur;
 import modele.Utilisateur;
 
@@ -35,7 +35,7 @@ public class TestHebergeur {
 	public void tearDown() throws Exception {
 		this.utilisateur=null;
 		this.hebergeur=null;
-		ConnectionMySQL.getInstance().rollback();
+		Data.connection.rollback();
 	}
 	
 	@Test

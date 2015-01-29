@@ -1,6 +1,5 @@
 package modele;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,8 +14,7 @@ public class Postule {
 	 */
 	public static ArrayList<Integer> getPostulationsEnCours(int theIdUser) throws SQLException{
 		ArrayList<Integer> tablePostulation = new ArrayList<Integer>();
-		Connection c = ConnectionMySQL.getInstance();
-		PreparedStatement select = c.prepareStatement("SELECT IdOffre FROM Postule WHERE IdUtilisateur=? AND DateInvalidationAuto > CURDATE() ORDER BY DateInvalidationAuto"); //SORT BY DateInvalidationAuto
+		PreparedStatement select = Data.connection.prepareStatement("SELECT IdOffre FROM Postule WHERE IdUtilisateur=? AND DateInvalidationAuto > CURDATE() ORDER BY DateInvalidationAuto"); //SORT BY DateInvalidationAuto
 		select.setInt(1, theIdUser);
 		ResultSet resultSelect=select.executeQuery();
 		while(resultSelect.next()){
@@ -31,16 +29,15 @@ public class Postule {
 	 */
 	public static ArrayList<Integer> deletePostulationsPerimees(int theIdUser) throws SQLException{
 		ArrayList<Integer> tablePostulation = new ArrayList<Integer>();
-		Connection c = ConnectionMySQL.getInstance();
 		//Selection des entrées a supprimer	
-		PreparedStatement select = c.prepareStatement("SELECT IdOffre FROM Postule WHERE IdUtilisateur=? AND DateInvalidationAuto < CURDATE() ORDER BY DateInvalidationAuto"); //SORT BY DateInvalidationAuto
+		PreparedStatement select = Data.connection.prepareStatement("SELECT IdOffre FROM Postule WHERE IdUtilisateur=? AND DateInvalidationAuto < CURDATE() ORDER BY DateInvalidationAuto"); //SORT BY DateInvalidationAuto
 		select.setInt(1, theIdUser);
 		ResultSet resultSelect=select.executeQuery();
 		while(resultSelect.next()){
 			tablePostulation.add(resultSelect.getInt(1));
 		}
 		//suppresion
-		PreparedStatement delete = c.prepareStatement("DELETE FROM Postule WHERE IdOffre IN (SELECT * FROM (SELECT IdOffre FROM Postule WHERE IdUtilisateur=? AND DateInvalidationAuto < CURDATE()) AS ListePostulPerimee)");
+		PreparedStatement delete = Data.connection.prepareStatement("DELETE FROM Postule WHERE IdOffre IN (SELECT * FROM (SELECT IdOffre FROM Postule WHERE IdUtilisateur=? AND DateInvalidationAuto < CURDATE()) AS ListePostulPerimee)");
 		delete.setInt(1, theIdUser);
 		int resultDelete = delete.executeUpdate();
 		
@@ -59,8 +56,7 @@ public class Postule {
 		java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String myDate = sdf.format(date);
 		
-		Connection c=ConnectionMySQL.getInstance();
-		PreparedStatement ps=c.prepareStatement("INSERT INTO Postule (IdUtilisateur,IdOffre,DateInvalidationAuto,Statut) values(?,?,?,?)");
+		PreparedStatement ps=Data.connection.prepareStatement("INSERT INTO Postule (IdUtilisateur,IdOffre,DateInvalidationAuto,Statut) values(?,?,?,?)");
 		ps.setInt(1, theIdUser);
 		ps.setInt(2, theIdOffre);
 		ps.setString(3, myDate);

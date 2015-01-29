@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-import modele.ConnectionMySQL;
+import modele.Data;
 import modele.FormulaireRechercheAnnonce;
 import modele.Offre;
 import modele.Postule;
@@ -34,7 +34,7 @@ public class TestPostule {
 	public void tearDown() throws Exception {
 		this.leblanc=null;
 		this.lolo=null;
-		ConnectionMySQL.getInstance().rollback();
+		Data.connection.rollback();
 	}
 
 	@Test

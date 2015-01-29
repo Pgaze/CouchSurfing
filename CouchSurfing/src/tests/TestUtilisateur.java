@@ -1,7 +1,7 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
-import modele.ConnectionMySQL;
+import modele.Data;
 import modele.Utilisateur;
 
 import org.junit.After;
@@ -23,7 +23,7 @@ public class TestUtilisateur {
 	public void tearDown() throws Exception {
 		this.dubois=null;
 		this.dupont=null;
-		ConnectionMySQL.getInstance().rollback();
+		Data.connection.rollback();
 	}
 
 	@Test

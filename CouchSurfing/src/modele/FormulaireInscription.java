@@ -1,6 +1,5 @@
 package modele;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -53,8 +52,7 @@ public class FormulaireInscription {
 	}
 	
 	public int insererUtilisateurDansLaBase(Utilisateur user) throws SQLException{
-		Connection c=ConnectionMySQL.getInstance();
-		PreparedStatement ps=c.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp,Nsecu) values(?,?,?,?,?,?,156)");
+		PreparedStatement ps=Data.connection.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp,Nsecu) values(?,?,?,?,?,?,156)");
 		ps.setInt(1, user.getIdUser());
 		ps.setString(2, user.getName());
 		ps.setString(3, user.getFirstName());
@@ -80,7 +78,7 @@ public class FormulaireInscription {
 			}
 			else{
 				this.getUtilisateur().inserDansLaBase();
-				ConnectionMySQL.getInstance().commit();
+				Data.connection.commit();
 				String s= "Bienvenue sur machin";
 				//GestionMail.send("clicknsleep@gmail.com", this.getUtilisateur().getMail(), "Inscription à ClickAndSleep.co.uk réussie", s);
 				//GestionMail.send(this.getUtilisateur().getMail(),"clicknsleep@gmail.com" , "Nouvelle inscription sur le site", this.getUtilisateur().getFirstName()+" "+this.getUtilisateur().getName() +"s'est inscrit");
@@ -91,7 +89,7 @@ public class FormulaireInscription {
 	
 	
 	private boolean testUtilisateurExistant(String mail) throws SQLException {
-		PreparedStatement s=ConnectionMySQL.getInstance().prepareStatement("select nom from Utilisateur where mail=?");
+		PreparedStatement s=Data.connection.prepareStatement("select nom from Utilisateur where mail=?");
 		s.setString(1, mail);
 		ResultSet r=s.executeQuery();
 		return r.next();
