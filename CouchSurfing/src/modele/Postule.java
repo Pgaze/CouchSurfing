@@ -65,6 +65,7 @@ public class Postule {
 		ps.setInt(2, theIdOffre);
 		ps.setString(3, myDate);
 		ps.setInt(4, 3);
+		
 		if(ps.executeUpdate() == 1){
 			return true;
 		}		

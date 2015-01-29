@@ -47,4 +47,11 @@ public class TestPostule {
 		ArrayList<Integer> liste = Postule.getPostulationsEnCours(this.dubois.getIdUser());
 		assertEquals(1,liste.size());
 	}
+	
+	@Test
+	public void testDeletePostulationsPerimees() throws Exception {
+		ArrayList<Integer> liste = Postule.deletePostulationsPerimees(this.leblanc.getIdUser());
+		assertEquals(1,liste.size());
+	}
+	
 }
