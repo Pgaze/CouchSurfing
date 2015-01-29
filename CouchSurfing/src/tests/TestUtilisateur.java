@@ -44,4 +44,12 @@ public class TestUtilisateur {
 		assertEquals("motDePasse1",dubois.getPassword());
 		assertEquals("Paulo",dubois.getPseudo());
 	}
+	
+	@Test
+	public void testGetUtilisateurById() throws Exception {
+		this.dubois=Utilisateur.getUtilisateurById(0);
+		assertEquals("Dubois",dubois.getName());
+	}
+	
+
 }

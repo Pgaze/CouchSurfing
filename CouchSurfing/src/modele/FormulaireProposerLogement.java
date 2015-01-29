@@ -79,7 +79,7 @@ public class FormulaireProposerLogement {
 		String sql= "insert into Offre (idLogement,idHebergeur) values(?,?)";
 		PreparedStatement insert=ConnectionMySQL.getInstance().prepareStatement(sql);
 		insert.setInt(1, l.getIdLogement());
-		insert.setInt(2, this.user.getIdUser());
+		insert.setInt(2, this.user.createIdHebergeur());
 		int res= insert.executeUpdate();
 		if (res==1 && resultatInsertionLogement){
 			result="Logement ajoute";
