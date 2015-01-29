@@ -52,7 +52,7 @@ public class Recherche extends HttpServlet {
 		request.setAttribute("lesOffres", lesOffres);
 		}
 		catch (Exception e){
-			request.setAttribute("erreur", "Aucun Logement disponible dans cette ville");
+			request.setAttribute("erreur", e.getMessage());
 		}
 		this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
 
