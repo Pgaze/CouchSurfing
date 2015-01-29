@@ -2,9 +2,12 @@
 <html>
 	<%@ include file="entete.jsp" %>
 	<%@ include file="menu.jsp" %>
+ 
+
     <body>
         <div id="container">
 	        <div id="presentation" class="content-accueil">
+	        	
 	        </div>
 	        <div id="explain" class="content-accueil">
 	        	
