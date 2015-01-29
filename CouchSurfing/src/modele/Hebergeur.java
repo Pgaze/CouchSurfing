@@ -153,12 +153,10 @@ public class Hebergeur {
 	 */
 	public void deleteHebergeurInBDD() throws SQLException{
 		Connection c = ConnectionMySQL.getInstance();
+		
 		PreparedStatement delete = c.prepareStatement("DELETE FROM Hebergeur WHERE IdHebergeur IN (SELECT * FROM (SELECT IdHebergeur FROM Hebergeur WHERE IdHebergeur=?) AS ListHebergeur)");
 		delete.setInt(1, this.getIdHebergeur());
-		int resultDelete = delete.executeUpdate();
-		
-		PreparedStatement majUser = c.prepareStatement("UPDATE TABLE Utilisateur SET Hebergeur = NULL WHERE IdUtilisateur=?");
-		majUser.setInt(1,this.getIdUtilisateurByIdHebergeur());
+		delete.executeUpdate();
 		
 		this.setIdHebergeur(-1);
 	}
