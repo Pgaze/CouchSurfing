@@ -25,8 +25,8 @@ public class FormulaireRechercheAnnonce {
 		s.setString(1, this.ville);
 		ResultSet rs=s.executeQuery();
 		while (rs.next()){
-			Logement l=Logement.getLogementById(rs.getInt(1));
-			Hebergeur h=Hebergeur.getHebergeurById(rs.getInt(2));
+			Logement l=Logement.getLogementById(rs.getInt(2));
+			Hebergeur h=Hebergeur.getHebergeurById(rs.getInt(3));
 			result.add(new Offre(rs.getInt(1),l, h, "01-01-1901", "01-01-1901"));
 		}
 		if (result.isEmpty()){
