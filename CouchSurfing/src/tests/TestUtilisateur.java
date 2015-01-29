@@ -1,7 +1,11 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+
 import modele.ConnectionMySQL;
+import modele.Postule;
 import modele.Utilisateur;
 
 import org.junit.After;
@@ -40,6 +44,4 @@ public class TestUtilisateur {
 		assertEquals("motDePasse1",dubois.getPassword());
 		assertEquals("Paulo",dubois.getPseudo());
 	}
-	
-
 }

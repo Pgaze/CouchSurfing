@@ -2,17 +2,25 @@ package modele;
 
 public class Offre {
 
+	private int idOffre;
 	private Logement logement;
 	private Hebergeur hebergeur;
 	private String dateDebut,dateFin;
 	
-	public Offre(Logement logement, Hebergeur hebergeur, String dateDebut,
-			String dateFin) {
-		super();
+	public Offre(int idOffre, Logement logement, Hebergeur hebergeur, String dateDebut, String dateFin) {
+		this.idOffre = idOffre;
 		this.logement = logement;
 		this.hebergeur = hebergeur;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
+	}
+	
+	public int getIdOffre() {
+		return idOffre;
+	}
+
+	public void setIdOffre(int idOffre) {
+		this.idOffre = idOffre;
 	}
 
 	public Logement getLogement() {
