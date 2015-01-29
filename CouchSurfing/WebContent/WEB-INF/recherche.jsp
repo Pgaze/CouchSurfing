@@ -21,15 +21,15 @@
 	</div>
 	<div id="containerResultat">
 		<div id="uneOffre">
-		<div id="enTeteOffre"><h1 id="intituleEnTeteOffre">${ nom} ${ prenom}LeNomDeTaMere</h1></div>
-		<div id="corpsOffre">
-			<div id="critereAdresse" class="critereOffre">
-				<h1 id="intituleCritere">Adresse</h1><p id="valeurCritere">L'adresseDeTaMere</p>
+			<div id="enTeteOffre"><h1 id="intituleEnTeteOffre">${ nom} ${ prenom}LeNomDeTaMere</h1></div>
+				<div id="corpsOffre">
+					<div id="critereAdresse" class="critereOffre">
+						<h1 id="intituleCritere">Adresse</h1><p id="valeurCritere">L'adresseDeTaMere</p>
+					</div>
+				</div>
+		
 			</div>
 		</div>
-		
-		</div>
-	</div>
 </body>
 
 <%@ include file="basdepage.jsp"%>
