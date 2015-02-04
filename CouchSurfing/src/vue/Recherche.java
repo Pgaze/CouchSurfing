@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modele.Data;
 import modele.FormulaireRechercheAnnonce;
 import modele.Offre;
+import modele.Postule;
+import modele.Utilisateur;
 import classes.Menu;
 
 /**
@@ -44,7 +47,6 @@ public class Recherche extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Cas du bouton recherche
-		getBoutonClique(request);
 		if (request.getParameter("btCherche")!=null){
 			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
 			try{
@@ -59,18 +61,30 @@ public class Recherche extends HttpServlet {
 		}
 		//Appui sur un autre bouton
 		else{
-			Offre offrePostulerOffre;
+			Offre offrePostulee;
+			try {
+				offrePostulee = Offre.getOffreByIdLogement(getBoutonClique(request));
+				Utilisateur user= (Utilisateur)request.getSession().getAttribute("sessionUtilisateur");
+				System.out.println(offrePostulee+" "+  user);
+				Postule.postulerAUneOffre(offrePostulee.getLogement().getIdLogement(), user.getIdUser());
+				Data.BDD_Connection.commit();
+				this.getServletContext().getRequestDispatcher("/WEB-INF/demandes.jsp").forward(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
 	private int getBoutonClique(HttpServletRequest request){
 		Map<String,String[]> mapParameter = request.getParameterMap();
 		for (Map.Entry<String, String[]> entry : mapParameter.entrySet()){
+			System.out.println(entry.getKey() + " "+entry.getValue()[0]);
 			if(entry.getValue()[0].contentEquals("Postuler")){
 				return Integer.parseInt(entry.getKey());
 			}
 		}
 		return -1;
 		
+
 	}
 }

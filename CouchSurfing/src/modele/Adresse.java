@@ -10,7 +10,6 @@ public class Adresse {
 	private String ville;
 	public Adresse(String batimentEscalier, String numeroEtVoie, String cp,
 			String residence, String complementAdresse, String ville) {
-		super();
 		this.batimentEscalier = batimentEscalier;
 		this.numeroEtVoie = numeroEtVoie;
 		this.cp = cp;

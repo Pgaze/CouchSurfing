@@ -74,9 +74,9 @@ public class FormulaireProposerLogement {
 	
 	public String procedureAjoutLogement() throws SQLException{
 		String result="";
-		Logement l=this.getLogement();
+		Logement l = this.getLogement();
 		boolean resultatInsertionLogement=l.insererDansLaBase();
-		String update= "update Utilisateur set IdLogement= ? where IdUtilisateur=?";
+		String update= "UPDATE Utilisateur SET IdLogement= ? WHERE IdUtilisateur=?";
 		PreparedStatement req=ConnectionMySQL.getInstance().prepareStatement(update);
 		req.setInt(1, this.getLogement().getIdLogement());
 		req.setInt(2, this.getUser().getIdUser());

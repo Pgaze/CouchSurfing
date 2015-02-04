@@ -12,7 +12,6 @@ public class Logement {
 	private Adresse adresse;
 
 	public Logement(Adresse adresse) throws SQLException {
-		super();
 		this.adresse = adresse;
 		this.setId();
 	}
@@ -21,9 +20,9 @@ public class Logement {
 	}
 
 	private void setId() throws SQLException {
-		PreparedStatement select=Data.BDD_Connection.prepareStatement("select IdLogement from Logement where"
-				+ " BatimentEscalier=? and NumeroEtVoie=? and CodePostal=? and Residence=? "
-				+ "and ComplementAdresse=? and Ville=?");
+		PreparedStatement select=Data.BDD_Connection.prepareStatement("SELECT IdLogement FROM Logement WHERE"
+				+ " BatimentEscalier=? AND NumeroEtVoie=? AND CodePostal=? AND Residence=? "
+				+ "AND ComplementAdresse=? AND Ville=?");
 		select.setString(1, this.adresse.getBatimentEscalier());
 		select.setString(2,this.adresse.getNumeroEtVoie());
 		select.setString(3, this.adresse.getCp());
@@ -33,13 +32,11 @@ public class Logement {
 		ResultSet resultSelect=select.executeQuery();
 		if(resultSelect.next()){
 			this.idLogement=resultSelect.getInt(1);
-		}
-		else{	
-			Statement count=Data.BDD_Connection.createStatement();
-			ResultSet resultCount=count.executeQuery("select count(IdLogement) from Logement ");
-			resultCount.next();
-			this.idLogement=resultCount.getInt(1)+1;
-
+		}else{	
+			Statement getMax=Data.BDD_Connection.createStatement();
+			ResultSet resultMax=getMax.executeQuery("SELECT MAX(IdLogement) FROM Logement ");
+			resultMax.next();
+			this.idLogement=resultMax.getInt(1)+1;
 		}
 
 	}
@@ -57,8 +54,10 @@ public class Logement {
 		insert.setString(7,this.adresse.getVille());
 		int res=insert.executeUpdate();
 		if (res==1){
+			insert.close();
 			return true;
 		}
+		insert.close();
 		return false;
 	}
 

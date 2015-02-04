@@ -1,254 +1,346 @@
 @CHARSET "UTF-8";
-
+@import url(http://fonts.googleapis.com/css?family=Lato:100);
 
 /* */
-body {
-    background: #E05847;
-    margin: 0;
-    padding: 0;
-    font-family: Verdana, Geneva, sans-serif;
-    font-size: 13px;
-    color: #666;
-}
-#container {
-    width: 800px;
-    margin: 0 auto;
-    padding: 10px 10px 30px;
-    background-color: #fff;
-    width: 85%;
-    border: 30px solid rgb(224, 88, 71);
-
+body
+{
+  background: /*rgb(213, 73, 12) #A85D63 #BE4D3F */rgb(237, 109, 53);
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 13px;
+  color: #666;
 }
 
-.content-accueil {
-    height: 350px;
-    border: 3px solid rgb(185, 177, 192);
-    margin-bottom: 25px;
+#container
+{
+  width: 800px;
+  margin: 0 auto;
+  padding: 10px 10px 30px;
+  background-color: #fff;
+  width: 86.5%;
+  border: 30px solid rgb(237, 109, 53)/* rgb(190, 77, 63) rgb(213, 73, 12) #A85D63*/;
 }
 
-#valLogin {
-    width: 156px;
-    height: 30px;
-    margin-bottom: 20px;
-    margin-top: 15px;
-}
-
-#form_connexion {
-    padding-top: 100px;
-    padding-left: 50px;
-    width: 600px;
-    margin: 0 auto;
-}
-
-#form_connexion input {
-    margin-bottom: 20px;
-/* width: 200px; */
-/* clear: both; */
-/* float: right; */
-    display: initial;
-    width: 150px;
-    margin-top: 15px;
-}
-
-#form_connexion input {
-    padding: 5px;
-    color: #333333;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
-}
-
-div#le_menu {
-/*margin: 0 auto;
-width: 87.4%;
-background: seashell;
-height: 70px;
-margin-bottom: 25px;*/
-    background: white;
-    width: 100%;
-    margin-top: 0;
-    height: 60px;
-    margin-bottom: 15px;
-    padding: 11px;
+div#le_menu
+{
+background: white;
+width: 100%;
+/* margin-top: 0px; */
+height: 55px;
+margin-bottom: 17px;
+padding-top: 11px;
+padding-bottom: 10px;
 border-bottom: 2px solid black;
 }
 
-div#footer, div#menu {
-    padding: 11px;
-    margin: 0 auto;
-    background: white;
-    width: 86.5%;
-    margin-top: 25px;
-    margin-bottom: 15px;
+div#footer, div#menu
+{
+  padding: 11px;
+  margin: 0 auto;
+  background: white;
+  width: 86.5%;
+  margin-top: 25px;
+  margin-bottom: 15px;
 }
 
-#form_inscription input {
-    margin-bottom: 20px;
-    font-size: 14px;
-    width: 35%;
-    height: 18px;
+#form_inscription input
+{
+  margin-bottom: 20px;
+  font-size: 14px;
+  width: 35%;
+  height: 18px;
 }
 
-#form_inscription {
-    height: 600px;
+#form_inscription
+{
+  height: 600px;
 }
 
-#form_inscription div {
-    position: relative;
-    width: 50%;
-    font-size: 16px;
-    margin-left: 50%;
-    padding-top: 29px;
-    height: 73%;
-    margin-right: -1px;
+#form_inscription div
+{
+  position: relative;
+  width: 50%;
+  font-size: 16px;
+  margin-left: 50%;
+  padding-top: 29px;
+  height: 73%;
+  margin-right: -1px;
 }
 
-#form_inscription label {
-    width: 57%;
-    display: block;
-    float: left;
-    padding-right: 20px;
+#form_inscription label
+{
+  width: 57%;
+  display: block;
+  float: left;
+  padding-right: 20px;
 }
 
-div#saisies_finscription {
-    margin: 0 auto;
-    width: 95%;
+div#saisies_finscription
+{
+  margin: 0 auto;
+  width: 95%;
 }
 
-#form_inscription h5 {
-    text-align: center;
+#form_inscription h5
+{
+  text-align: center;
 }
 
-#valI {
-    width: 134px;
-    height: 24px;
-    float: right;
-    margin-right: 16px;
+#valI
+{
+  width: 134px;
+  height: 24px;
+  float: right;
+  margin-right: 16px;
 }
 
-ul li {
-    display: inline-block;
-    text-decoration: none;
-    /*padding-right: 10px;
-    padding-top: 11px;*/
-	height: 19px;
-	width: 11%;
-	padding: 10px;
-margin-left: 5px;
-text-align:center;
+#le_menu ul li
+{
+	display: table-cell;
+	text-decoration: none;
+	height: 20px;
+	width: 162px;
+	padding: 9px;
+	text-align: center;
+	border-right: 2px solid white;
+	/*background-color: #A0CE4E;*/
 }
 
-ul li:hover{
-	background-color: rgba(224, 88, 71, 0.89);
-	
-	
+li a
+{
+  text-decoration: none;
+  color: black;
 }
 
-#le_menu a:hover {
-	color:white;
+#le_menu ul li:hover a
+{
+  color: white;
+  
+}
+
+#le_menu ul li:hover
+{
+  background-color: #A0CE4E/*rgb(237, 109, 53)*/;
+  transition-property: background-color .6s linear 0s;
+  -moz-transition: background-color .6s linear 0s;
+  -webkit-transition: background-color .6s linear 0s;
+  -o-transition: background-color .6s linear 0s;
+}
+
+ul
+{
+	width: 84.9%;
+	margin: 0 auto;
+	height: 40px;
+	padding-top: 0.6%;
 }
 
 /* formulaire nouvelle annonce */
-
-#saisies_propositionLogement label {
-    width: 40%;
-    margin-top: 15px;
+div#services {
+	
+width: 261px;
+height: 104px;
+display: inline-block;
+border: 1px solid blue;
 }
 
-#saisies_propositionLogement input {
-    margin-top: 15px;
+#saisies_propositionLogement label
+{
+  width: 40%;
+  margin-top: 15px;
 }
 
-#propoLogMidddle {
-    width: 400px;
-    display: inline-block;
+#saisies_propositionLogement input
+{
+  margin-top: 15px;
 }
 
-#propoLogLeft {
-    width: 380px;
-    display: inline-block;
+#propoLogMidddle
+{
+  width: 400px;
+  display: inline-block;
 }
 
-.alignLeft {
-    float: left;
-    margin-left: 30px;
+#propoLogLeft
+{
+  width: 380px;
+  display: inline-block;
 }
 
-.alignMiddle {
-    float: left;
-    margin-left: 30px;
+.alignLeft
+{
+  float: left;
+  margin-left: 30px;
 }
 
-#valNouvelleAnnonce {
-    float: right;
+.alignMiddle
+{
+  float: left;
+  margin-left: 30px;
 }
+
+#valNouvelleAnnonce
+{
+  float: right;
+}
+
 /* messagerie */
-#maBoite {
-    width: 100%;
-    color: white;
-    text-align: center;
+
+#maBoite
+{
+  width: 100%;
+  color: white;
+  text-align: center;
 }
 
-table#maBoite tr {
-    width: 5%;
-    background-color: rgba(124, 171, 187, 0.88);
-    height: 30px;
+table#maBoite tr
+{
+  width: 5%;
+  background-color: rgba(124, 171, 187, 0.88);
+  height: 30px;
 }
 
-.cbMessagerie {
-    width: 10%;
+.cbMessagerie
+{
+  width: 10%;
 }
 
-.date, .expediteur {
-    width: 11%;
+.date, .expediteur
+{
+  width: 11%;
 }
 
-.objet {
-}
-
-#titreMessagerie {
-	/*text-align:center;*/;
+#titreMessagerie
+{
+	/*text-align:center;*/
 }
 
 
 /* recherche */
 
-
-#inputCherche {
-    width: 33%;
+#inputCherche
+{
+  width: 33%;
 }
 
-.date {
-    width: 13%;
+.date
+{
+  width: 13%;
 }
 
-#leFormRecherche #contenuFormRecherche {
-    margin: 0 auto;
+#leFormRecherche #contenuFormRecherche
+{
+  margin: 0 auto;
 }
 
-#btCherche {
-    width: 90px;
-    border-radius: 0px !important;
+#btCherche
+{
+  width: 90px;
+  border-radius: 0px !important;
 }
 
-#contenuFormRecherche input {
-    height: 20px;
-    border-radius: 6px;
+#contenuFormRecherche input
+{
+  height: 20px;
+  border-radius: 6px;
 }
 
 /* demandes */
 
-
-li div {
-    height: 200px;
-    background-color:rgba(202, 176, 137, 0.29);
+.detailsAnnonce h3
+{
+  background-color: mediumturquoise;
+  padding: 8px;
 }
 
-.uneDemande {
-    position: relative;
-    margin: 0 10px 0 0;
-    width: 90%;
-    
-border-radius: 0px 80px 9px 0px;
+li div.uneDemande
+{
+  height: 200px;
+  background-color: rgba(202, 176, 137, 0.29);
+}
+
+.uneDemande
+{
+  position: relative;
+  margin: 0 10px 0 0;
+  width: 75%;
+  border-radius: /* 0px 80px 9px 0px;*/15px;
+}
+
+.uneImg
+{
+  height: 130px;
+  width: 16%;
+  position: inherit;
+  margin-left: 10px;
+  float: left;
+  border-radius: 25px;
+  border-style: dashed;
+}
+
+.txt
+{
+  height: 110px;
+  width: 73%;
+  float: right;
+  border-radius: 25px;
+  margin-right: 10px;
+  border-style: dashed;
+  padding: 9px;
+}
+
+#infosDemandes ol{
+	list-style: none;
+}
+
+/* accueil */
+
+div#testImg
+{
+  background-image: url("http://localhost:8080/CouchSurfing/imageServlet");
+}
+
+.contentAccueil
+{
+  height: 350px;
+  border: 3px solid rgb(185, 177, 192);
+  margin-bottom: 25px;
+}
+
+#valLogin
+{
+  width: 156px;
+  height: 30px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+div#formConnexion
+{
+  padding-top: 100px;
+  padding-left: 50px;
+  width: 600px;
+  margin: 0 auto;
+}
+
+#formConnexion input
+{
+  margin-bottom: 20px;
+/* width: 200px; */
+/* clear: both; */
+/* float: right; */
+  display: initial;
+  width: 150px;
+  margin-top: 15px;
+}
+
+#formConnexion input
+{
+  padding: 5px;
+  color: #333333;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
 }
 
 /*.uneDemande:after {
@@ -270,4 +362,6 @@ border-radius: 0px 80px 9px 0px;
 	border-top: 100px solid transparent;
 	border-bottom: 100px solid transparent;
 	border-left: 100px solid #3498db;*/
-}*/
+}
+
+*/
