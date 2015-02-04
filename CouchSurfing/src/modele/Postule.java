@@ -38,14 +38,14 @@ public class Postule {
 		}
 		//suppresion
 		PreparedStatement delete = Data.BDD_Connection.prepareStatement("DELETE FROM Postule WHERE DateInvalidite < CURDATE()");
-		int resultDelete = delete.executeUpdate();
+		delete.executeUpdate();
 		
 		return tablePostulation;
 	}
 	
 	/**
 	 * @param theIdOffre
-	 * @return succes
+	 * @return status
 	 * @throws SQLException
 	 */
 	@SuppressWarnings("deprecation")

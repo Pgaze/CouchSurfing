@@ -7,10 +7,10 @@ public class Offre {
 	private String dateDebut,dateFin;
 	
 	public Offre(Logement logement, Utilisateur hebergeur, String dateDebut, String dateFin) {
-		this.logement = logement;
-		this.hebergeur = hebergeur;
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
+		this.setLogement(logement);
+		this.setHebergeur(hebergeur);
+		this.setDateDebut(dateDebut);
+		this.setDateFin(dateFin);
 	}
 	
 

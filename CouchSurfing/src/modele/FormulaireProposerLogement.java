@@ -16,14 +16,13 @@ public class FormulaireProposerLogement {
 	public FormulaireProposerLogement(String batimentEscalier,
 			String numeroEtVoie, String cp, String residence,
 			String complementAdresse, String ville, Utilisateur user) {
-		super();
-		this.batimentEscalier = batimentEscalier;
-		this.numeroEtVoie = numeroEtVoie;
-		this.cp = cp;
-		this.residence = residence;
-		this.complementAdresse = complementAdresse;
-		this.ville = ville;
-		this.user = user;
+		this.setBatimentEscalier(batimentEscalier);
+		this.setNumeroEtVoie(numeroEtVoie);
+		this.setCp(cp);
+		this.setResidence(residence);
+		this.setComplementAdresse(complementAdresse);
+		this.setVille(ville);
+		this.setUser(user);
 	}
 	public String getBatimentEscalier() {
 		return batimentEscalier;
@@ -90,8 +89,13 @@ public class FormulaireProposerLogement {
 		return result;
 	}
 	
-	public Logement getLogement() throws SQLException{
-		return new Logement(new Adresse(batimentEscalier, numeroEtVoie, cp, residence, complementAdresse, ville));
+	public Logement getLogement(){
+		try {
+			return new Logement(new Adresse(batimentEscalier, numeroEtVoie, cp, residence, complementAdresse, ville));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 

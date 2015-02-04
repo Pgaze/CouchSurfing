@@ -16,21 +16,6 @@ public class Utilisateur {
 	private String pseudo;
 	private int idLogement;
 
-	
-	/**
-	 * @return the pseudo
-	 */
-	public String getPseudo() {
-		return pseudo;
-	}
-
-	/**
-	 * @param pseudo the pseudo to set
-	 */
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
-	}
-
 	/**
 	 * @param mail
 	 * @param password
@@ -39,12 +24,12 @@ public class Utilisateur {
 	 * @throws SQLException 
 	 */
 	public Utilisateur(String mail, String password, String name, String firstName,String pseudo) throws SQLException {
-		this.mail = mail;
-		this.password = password;
-		this.name = name;
-		this.firstName = firstName;
-		this.pseudo=pseudo;
-		this.idLogement=0;
+		this.setMail(mail);
+		this.setPassword(password);
+		this.setName(name);
+		this.setFirstName(firstName);
+		this.setPseudo(pseudo);
+		this.setIdLogement(0);
 		this.setId();
 	}
 
@@ -53,8 +38,7 @@ public class Utilisateur {
 		this.idLogement=0;
 	}
 
-	public Utilisateur() {
-	}
+	public Utilisateur() {}
 
 	public static Utilisateur getUtilisateurParMail(String mail) throws SQLException{
 		Utilisateur result = new Utilisateur(mail);
@@ -76,6 +60,11 @@ public class Utilisateur {
 		return result;
 	}
 	
+	/**
+	 * @param idUtilisateur
+	 * @return l'utilisateur
+	 * @throws SQLException
+	 */
 	public static Utilisateur getUtilisateurById(int idUtilisateur) throws SQLException{
 		Utilisateur result = new Utilisateur();
 		PreparedStatement select = Data.BDD_Connection.prepareStatement("" +
@@ -98,15 +87,26 @@ public class Utilisateur {
 		
 	}
 
+	/**
+	 * @return the pseudo
+	 */
+	public String getPseudo() {
+		return pseudo;
+	}
 
+	/**
+	 * @param pseudo the pseudo to set
+	 */
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
+	
 	/**
 	 * @return the mail
 	 */
 	public String getMail() {
 		return mail;
 	}
-
-
 
 	/**
 	 * @param mail the mail to set
@@ -115,16 +115,12 @@ public class Utilisateur {
 		this.mail = mail;
 	}
 
-
-
 	/**
 	 * @return the password
 	 */
 	public String getPassword() {
 		return password;
 	}
-
-
 
 	/**
 	 * @param password the password to set
@@ -133,16 +129,12 @@ public class Utilisateur {
 		this.password = password;
 	}
 
-
-
 	/**
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
-
-
 
 	/**
 	 * @param name the name to set
@@ -151,16 +143,12 @@ public class Utilisateur {
 		this.name = name;
 	}
 
-
-
 	/**
 	 * @return the firstName
 	 */
 	public String getFirstName() {
 		return firstName;
 	}
-
-
 
 	/**
 	 * @param firstName the firstName to set
@@ -169,16 +157,12 @@ public class Utilisateur {
 		this.firstName = firstName;
 	}
 
-
-
 	/**
 	 * @return the idUser
 	 */
 	public int getIdUser() {
 		return idUser;
 	}
-
-
 
 	private void setId() throws SQLException {
 		PreparedStatement select=Data.BDD_Connection.prepareStatement("select IdUtilisateur from Utilisateur where Mail=? and Nom=?");
@@ -219,37 +203,4 @@ public class Utilisateur {
 	public void setIdLogement(int theId){
 		this.idLogement=theId;
 	}
-
-	
-	 /** Cree 1 idHebergeur si l'utilisateur n'en possède pas, le retourne sinon
-	  * 
-	  * @throws SQLException 
-	  * @throws Exception 
-	  */
-	 /*
-	public int createIdLogement() throws SQLException {
-		Logement hebergeur=new Logement();
-		PreparedStatement select = Data.BDD_Connection.prepareStatement("select Hebergeur from Utilisateur where IdUtilisateur=? ");
-		select.setInt(1, this.idUser);
-		ResultSet resultSelect=select.executeQuery();
-		if(resultSelect.next()){
-			resultSelect.getInt(1); // Necessaire pour que le wasNull fonctionne ! >_<
-			if (resultSelect.wasNull()) {
-				Statement count = Data.BDD_Connection.createStatement();
-				ResultSet resultCount = count.executeQuery("select count(IdHebergeur) from Hebergeur ");
-				resultCount.next();
-				
-				this.idLogement = resultCount.getInt(1);
-				hebergeur.setIdHebergeur(this.idLogement);
-				hebergeur.inserDansLaBase();
-				PreparedStatement update = Data.BDD_Connection.prepareStatement("update Utilisateur set Hebergeur=? where IdUtilisateur=?");
-				update.setInt(1, this.idLogement);
-				update.setInt(2, this.idUser);
-				update.executeUpdate();
-			}
-		}
-		
-		return this.idLogement;
-	}
-	*/
 }
