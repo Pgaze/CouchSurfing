@@ -79,7 +79,7 @@ public class Utilisateur {
 	public static Utilisateur getUtilisateurById(int idUtilisateur) throws SQLException{
 		Utilisateur result = new Utilisateur();
 		PreparedStatement select = Data.BDD_Connection.prepareStatement("" +
-				"select Nom,Prenom,Mdp,Pseudo,Hebergeur,Mail from Utilisateur where IdUtilisateur=?");
+				"select Nom,Prenom,Mdp,Pseudo,IdLogement,Mail from Utilisateur where IdUtilisateur=?");
 		select.setInt(1, idUtilisateur);
 		ResultSet rs=select.executeQuery();
 		if(rs.next()){

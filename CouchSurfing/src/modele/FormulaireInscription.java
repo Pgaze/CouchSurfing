@@ -52,7 +52,7 @@ public class FormulaireInscription {
 	}
 	
 	public int insererUtilisateurDansLaBase(Utilisateur user) throws SQLException{
-		PreparedStatement ps=Data.BDD_Connection.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp,Nsecu) values(?,?,?,?,?,?,156)");
+		PreparedStatement ps=Data.BDD_Connection.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp) values(?,?,?,?,?,?)");
 		ps.setInt(1, user.getIdUser());
 		ps.setString(2, user.getName());
 		ps.setString(3, user.getFirstName());
