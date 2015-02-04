@@ -17,7 +17,7 @@ public class Utilisateur {
 	private String name;
 	private String firstName;
 	private String pseudo;
-	private int idHebergeur;
+	private int idLogement;
 
 	
 	/**
@@ -47,13 +47,13 @@ public class Utilisateur {
 		this.name = name;
 		this.firstName = firstName;
 		this.pseudo=pseudo;
-		this.idHebergeur=0;
+		this.idLogement=0;
 		this.setId();
 	}
 
 	public Utilisateur(String mail){
 		this.mail=mail;
-		this.idHebergeur=0;
+		this.idLogement=0;
 	}
 
 	public Utilisateur() {
@@ -62,7 +62,7 @@ public class Utilisateur {
 	public static Utilisateur getUtilisateurParMail(String mail) throws SQLException{
 		Utilisateur result = new Utilisateur(mail);
 		PreparedStatement select = ConnectionMySQL.getInstance().prepareStatement("" +
-				"select Nom,Prenom,Mdp,Pseudo,Hebergeur from Utilisateur where Mail=?");
+				"select Nom,Prenom,Mdp,Pseudo,IdLogement from Utilisateur where Mail=?");
 		select.setString(1, mail);
 		ResultSet rs=select.executeQuery();
 		if(rs.next()){
@@ -70,7 +70,7 @@ public class Utilisateur {
 			result.setFirstName(rs.getString(2));
 			result.setPassword(rs.getString(3));
 			result.setPseudo(rs.getString(4));
-			result.setIdHebergeur(rs.getInt(5));
+			result.setIdLogement(rs.getInt(5));
 			result.setId();
 		}
 		else{
@@ -90,7 +90,7 @@ public class Utilisateur {
 			result.setFirstName(rs.getString(2));
 			result.setPassword(rs.getString(3));
 			result.setPseudo(rs.getString(4));
-			result.setIdHebergeur(rs.getInt(5));
+			result.setIdLogement(rs.getInt(5));
 			result.setMail(rs.getString(6));
 			result.setId();
 		}
@@ -203,7 +203,7 @@ public class Utilisateur {
 	
 	public boolean inserDansLaBase() throws SQLException{
 		Connection c=ConnectionMySQL.getInstance();
-		PreparedStatement ps=c.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp,Nsecu) values(?,?,?,?,?,?,156)");
+		PreparedStatement ps=c.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp) values(?,?,?,?,?,?)");
 		ps.setInt(1, this.idUser);
 		ps.setString(2, this.name);
 		ps.setString(3, this.firstName);
@@ -217,12 +217,12 @@ public class Utilisateur {
 
 	}
 	
-	public int getIdHebergeur() {
-		return idHebergeur;
+	public int getIdLogement() {
+		return idLogement;
 	}
 	
-	public void setIdHebergeur(int theId){
-		this.idHebergeur=theId;
+	public void setIdLogement(int theId){
+		this.idLogement=theId;
 	}
 
 	/** Cree 1 idHebergeur si l'utilisateur n'en possède pas, le retourne sinon
@@ -242,17 +242,17 @@ public class Utilisateur {
 				ResultSet resultCount = count.executeQuery("select count(IdHebergeur) from Hebergeur ");
 				resultCount.next();
 				
-				this.idHebergeur = resultCount.getInt(1);
-				hebergeur.setIdHebergeur(this.idHebergeur);
+				this.idLogement = resultCount.getInt(1);
+				hebergeur.setIdHebergeur(this.idLogement);
 				hebergeur.inserDansLaBase();
 				PreparedStatement update = c.prepareStatement("update Utilisateur set Hebergeur=? where IdUtilisateur=?");
-				update.setInt(1, this.idHebergeur);
+				update.setInt(1, this.idLogement);
 				update.setInt(2, this.idUser);
 				update.executeUpdate();
 			}
 		}
 		
-		return this.idHebergeur;
+		return this.idLogement;
 	}
 	
 }

@@ -23,8 +23,8 @@ public class Logement {
 	private void setId() throws SQLException {
 		Connection c=ConnectionMySQL.getInstance();
 		PreparedStatement select=c.prepareStatement("select IdLogement from Logement where"
-				+ " batimentEscalier=? and numeroEtVoie=? and cp=? and residence=? "
-				+ "and complementAdresse=? and ville=?");
+				+ " BatimentEscalier=? and NumeroEtVoie=? and CodePostal=? and Residence=? "
+				+ "and ComplementAdresse=? and Ville=?");
 		select.setString(1, this.adresse.getBatimentEscalier());
 		select.setString(2,this.adresse.getNumeroEtVoie());
 		select.setString(3, this.adresse.getCp());
@@ -47,7 +47,7 @@ public class Logement {
 
 	public boolean insererDansLaBase() throws SQLException{
 		PreparedStatement insert= ConnectionMySQL.getInstance().prepareStatement(""
-				+ "insert into Logement (idLogement,batimentEscalier,numeroEtVoie,cp,residence,complementAdresse,ville)"
+				+ "insert into Logement (IdLogement,BatimentEscalier,NumeroEtVoie,CodePostal,Residence,ComplementAdresse,Ville)"
 				+ "values (?,?,?,?,?,?,?)");
 		insert.setInt(1, this.idLogement);
 		insert.setString(2, this.adresse.getBatimentEscalier());
