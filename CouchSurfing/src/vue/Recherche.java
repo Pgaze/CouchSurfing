@@ -52,8 +52,7 @@ public class Recherche extends HttpServlet {
 				FormulaireRechercheAnnonce form= new FormulaireRechercheAnnonce(request.getParameter("ville"));
 				List<Offre> lesOffres=form.getListeOffre();
 				request.setAttribute("lesOffres", lesOffres);
-				request.setAttribute("teste1",request.getParameter("dateDepart"));
-				request.setAttribute("teste",request.getParameter("dateArrivee"));
+				request.setAttribute("logement",request.getParameter("dateArrivee"));
 				}
 			catch (Exception e){
 				request.setAttribute("erreur", "Aucun Logement disponible dans cette ville");
