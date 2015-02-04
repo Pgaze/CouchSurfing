@@ -25,7 +25,6 @@ public class Recherche extends HttpServlet {
      */
     public Recherche() {
         super();
-        
         // TODO Auto-generated constructor stub
     }
 
@@ -34,7 +33,6 @@ public class Recherche extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
-
 			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
 		}
@@ -44,19 +42,16 @@ public class Recherche extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
-			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
-			this.getServletContext().getRequestDispatcher("/WEB-INF/annonces.jsp").forward(request, response);
-		}
+		request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
 		try{
-			FormulaireRechercheAnnonce form= new FormulaireRechercheAnnonce(request.getParameter("ville"));
-			List<Offre> lesOffres=form.getListeOffre();
-			request.setAttribute("lesOffres", lesOffres);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
-			}
-		catch (Exception e){
-			request.setAttribute("erreur", "Aucun Logement disponible dans cette ville");
+		FormulaireRechercheAnnonce form= new FormulaireRechercheAnnonce(request.getParameter("ville"));
+		List<Offre> lesOffres=form.getListeOffre();
+		request.setAttribute("lesOffres", lesOffres);
 		}
+		catch (Exception e){
+			request.setAttribute("erreur", e.getMessage());
+		}
+		this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
+
 	}
 }

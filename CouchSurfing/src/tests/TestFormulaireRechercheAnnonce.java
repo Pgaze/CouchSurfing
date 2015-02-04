@@ -39,5 +39,4 @@ public class TestFormulaireRechercheAnnonce {
 		this.form=new FormulaireRechercheAnnonce("Albi");
 		this.form.getListeOffre();
 	}
-
 }

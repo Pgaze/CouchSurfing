@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<div id="containerResultat">
-		<p>${ errreur }</p>
+		<p>${ erreur }</p>
 		<c:forEach items="${lesOffres}" var="uneOffre">
 		<div id="uneOffre">
 			<div id="enTeteOffre"><h1 id="intituleEnTeteOffre"><c:out value="${ uneOffre.hebergeur}"/></h1></div>
