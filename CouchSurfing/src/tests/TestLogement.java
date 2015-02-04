@@ -24,14 +24,14 @@ public class TestLogement {
 
 	@Test
 	public void testSetIDExistant() throws Exception {
-		Logement l1= new Logement(new Adresse("1", "35 Avenue Rangueil", "31400","Les Pigeons", "0", "Toulouse"));
-		assertEquals(2,l1.getIdLogement());
+		Logement l= new Logement(new Adresse("1", "35 Avenue Rangueil", "31400","Les Pigeons", "0", "Toulouse"));
+		assertEquals(1,l.getIdLogement());
 	}
 	
 	@Test
 	public void testSetIdNonExistant() throws Exception {
 		Logement l2= new Logement(new Adresse("10", "35 Rue Rangueil", "31400","Les oies", "0", "Toulouse"));
-		assertEquals(5,l2.getIdLogement());
+		assertEquals(2,l2.getIdLogement());
 	}
 
 }

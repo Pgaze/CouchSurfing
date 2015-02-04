@@ -220,12 +220,15 @@ public class Utilisateur {
 		this.idLogement=theId;
 	}
 
-	/** Cree 1 idHebergeur si l'utilisateur n'en possède pas, le retourne sinon
-	 * @throws SQLException 
-	 * @throws Exception 
-	 */
-	public int createIdHebergeur() throws SQLException {
-		Hebergeur hebergeur=new Hebergeur();
+	
+	 /** Cree 1 idHebergeur si l'utilisateur n'en possède pas, le retourne sinon
+	  * 
+	  * @throws SQLException 
+	  * @throws Exception 
+	  */
+	 /*
+	public int createIdLogement() throws SQLException {
+		Logement hebergeur=new Logement();
 		PreparedStatement select = Data.BDD_Connection.prepareStatement("select Hebergeur from Utilisateur where IdUtilisateur=? ");
 		select.setInt(1, this.idUser);
 		ResultSet resultSelect=select.executeQuery();
@@ -248,5 +251,5 @@ public class Utilisateur {
 		
 		return this.idLogement;
 	}
-	
+	*/
 }
