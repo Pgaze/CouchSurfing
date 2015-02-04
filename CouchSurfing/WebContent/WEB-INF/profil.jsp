@@ -9,6 +9,7 @@
 	        <h1 id="titre_Profil">Profil de ${prenom} ${ nom }</h1>
 			<div id="profile" >
 			    <div id="info">
+			    	${ adresse }
 			        <div class="infoSession">
 			        	<div class = "infoSessionContainer">
 			            <p class="intitule_profil">Nom</p><p class="info_profil"> ${ nom }</p>
@@ -24,7 +25,9 @@
 			            </div>
 			        </div>
 			        <div class="infoSession">
-			        	
+			        	<div class = "infoSessionContainer">
+			            	<p class="intitule_profil">Adresse</p><p class="info_profil">35 Avenue Rangueil 31400 Toulouse Residence: Les Pigeons 1 0</p>
+			            </div>
 			        </div>
 			    </div>
 			</div>
