@@ -13,11 +13,9 @@ public final class Data {
 	
 	public static void switchBDD_or_BDDTest(boolean inTest){
 		if(Data.BDD_NAME.contentEquals("/CouchSurfing") && inTest){
-			Data.BDD_NAME="/CouchSurfingTest";
-		}else if(Data.BDD_NAME.equals("/CouchSurfingTest") && !inTest){
+			Data.BDD_NAME="/CouchSurfingTestN";
+		}else if(Data.BDD_NAME.equals("/CouchSurfingTestN") && !inTest){
 			Data.BDD_NAME="/CouchSurfing";
-		}else{
-			System.out.println("Erreur switch BDD");
 		}
 		Data.BDD_Connection=ConnectionMySQL.getInstance();
 	}
