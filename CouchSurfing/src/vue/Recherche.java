@@ -2,6 +2,7 @@ package vue;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,14 +20,14 @@ import classes.Menu;
 @WebServlet("/Recherche")
 public class Recherche extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Recherche() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Recherche() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -42,16 +43,34 @@ public class Recherche extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
-		try{
-		FormulaireRechercheAnnonce form= new FormulaireRechercheAnnonce(request.getParameter("ville"));
-		List<Offre> lesOffres=form.getListeOffre();
-		request.setAttribute("lesOffres", lesOffres);
+		//Cas du bouton recherche
+		getBoutonClique(request);
+		if (request.getParameter("btCherche")!=null){
+			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
+			try{
+				FormulaireRechercheAnnonce form= new FormulaireRechercheAnnonce(request.getParameter("ville"));
+				List<Offre> lesOffres=form.getListeOffre();
+				request.setAttribute("lesOffres", lesOffres);
+			}
+			catch (Exception e){
+				request.setAttribute("erreur", e.getMessage());
+			}
+			this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
 		}
-		catch (Exception e){
-			request.setAttribute("erreur", e.getMessage());
+		//Appui sur un autre bouton
+		else{
+			Offre offrePostulerOffre;
 		}
-		this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
-
+	}
+	
+	private int getBoutonClique(HttpServletRequest request){
+		Map<String,String[]> mapParameter = request.getParameterMap();
+		for (Map.Entry<String, String[]> entry : mapParameter.entrySet()){
+			if(entry.getValue()[0].contentEquals("Postuler")){
+				return Integer.parseInt(entry.getKey());
+			}
+		}
+		return -1;
+		
 	}
 }

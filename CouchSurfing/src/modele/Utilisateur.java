@@ -98,6 +98,12 @@ public class Utilisateur {
 		
 	}
 
+	
+
+	@Override
+	public String toString() {
+		return name + " " + firstName  ;
+	}
 
 	/**
 	 * @return the mail
