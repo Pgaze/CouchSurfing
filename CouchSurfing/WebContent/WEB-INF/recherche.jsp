@@ -6,22 +6,25 @@
 <%@ include file="menu.jsp"%>
 <body>
 	<div id="container">
-			<div id="containerRecherche">
-				<h1>Recherche ton canapé</h1>
-				<div id="formRecherche">
-					<form id="leFormRecherche" method="post">
-						<div id="contenuFormRecherche">
-							<input id="inputCherche" type="text" name="ville">
-							<input class="date" type="date" name="dateArrivee">
-							<input class="date"	type="date" name="dateDepart">
-							<input type="submit" value="GO !" id="btCherche">
-						</div>
-					</form>
-		
+	
+	<div id="containerRecherche">
+		<h1>Recherche ton canapé</h1>
+		<div id="formRecherche">
+			<form id="leFormRecherche" method="post">
+				<div id="contenuFormRecherche">
+					<input id="inputCherche" type="text" name="ville">
+					<input class="date" type="date" name="dateArrivee">
+					<input class="date" type="date" name="dateDepart">
+					<input type="submit" value="GO !" id="btCherche">
 				</div>
-			</div>
-			<div id="containerResultat">
+			</form>
+
+		</div>
+	</div>
+			<div id="containerResultat"> 
 				<p>${ erreur }</p>
+				<p>${ teste1 }</p>
+				<p>${ teste }</p>
 				<c:forEach items="${lesOffres}" var="uneOffre">
 				<div id="uneOffre">
 					<div id="enTeteOffre"><h1 id="intituleEnTeteOffre"><c:out value="${ uneOffre.hebergeur}"/></h1></div>
@@ -33,9 +36,8 @@
 					</div>
 				</c:forEach>
 			</div>
-			
-				<p>${ arrivee }</p>
 	</div>
+
 </body>
 
 <%@ include file="basdepage.jsp"%>

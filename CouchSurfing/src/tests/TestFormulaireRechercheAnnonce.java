@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import modele.ConnectionMySQL;
+import modele.Data;
 import modele.FormulaireRechercheAnnonce;
 import modele.Offre;
 
@@ -18,13 +18,13 @@ public class TestFormulaireRechercheAnnonce {
 
 	@Before
 	public void setUp() throws Exception {
-		
+		Data.switchBDD_or_BDDTest(true);
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		this.form=null;
-		ConnectionMySQL.getInstance().rollback();
+		Data.BDD_Connection.rollback();
 	}
 
 	@Test
@@ -39,5 +39,4 @@ public class TestFormulaireRechercheAnnonce {
 		this.form=new FormulaireRechercheAnnonce("Albi");
 		this.form.getListeOffre();
 	}
-
 }

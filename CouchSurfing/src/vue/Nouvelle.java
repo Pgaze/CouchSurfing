@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import modele.ConnectionMySQL;
+import modele.Data;
 import modele.FormulaireProposerLogement;
 import modele.Utilisateur;
 import classes.Menu;
@@ -44,6 +44,9 @@ public class Nouvelle extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
+			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
+		}
 		try{
 		HttpSession utilisateurSession = request.getSession();
 		Utilisateur user= (Utilisateur)utilisateurSession.getAttribute("sessionUtilisateur");
@@ -54,7 +57,7 @@ public class Nouvelle extends HttpServlet {
 		if(form.verificationCp()){
 			String result = form.procedureAjoutLogement();
 			if(result.contentEquals("Logement ajoute")){
-				ConnectionMySQL.getInstance().commit();
+				Data.BDD_Connection.commit();
 			}
 			request.setAttribute("resultat", result);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/nouvelle.jsp").forward(request, response);

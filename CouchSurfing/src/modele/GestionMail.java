@@ -34,7 +34,7 @@ public class GestionMail {
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.auth", "true");
 
-		//Création de l'authentification
+		//Crï¿½ation de l'authentification
 		Authenticator authentication = new Authenticator(){
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
@@ -61,7 +61,7 @@ public class GestionMail {
 			message.setSubject(objet);
 
 			// Now set the actual message
-			message.setText(mailFrom+" vous a envoyé le message suivant : \n"+text);
+			message.setText(mailFrom+" vous envoit le message suivant : \n"+text);
 
 			// Send message
 			transport.connect();

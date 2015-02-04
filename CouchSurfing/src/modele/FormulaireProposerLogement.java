@@ -76,8 +76,7 @@ public class FormulaireProposerLogement {
 		String result="";
 		Logement l=this.getLogement();
 		boolean resultatInsertionLogement=l.insererDansLaBase();
-		String sql= "insert into Offre (idLogement,idHebergeur) values(?,?)";
-		PreparedStatement insert=ConnectionMySQL.getInstance().prepareStatement(sql);
+		PreparedStatement insert=Data.BDD_Connection.prepareStatement("insert into Offre (idLogement,idHebergeur) values(?,?)");
 		insert.setInt(1, l.getIdLogement());
 		insert.setInt(2, this.user.createIdHebergeur());
 		int res= insert.executeUpdate();

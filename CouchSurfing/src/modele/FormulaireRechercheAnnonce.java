@@ -19,7 +19,7 @@ public class FormulaireRechercheAnnonce {
 	 */
 	public List<Offre> getListeOffre() throws Exception {
 		List<Offre> result = new ArrayList<Offre>();
-		PreparedStatement s = ConnectionMySQL.getInstance().prepareStatement(
+		PreparedStatement s = Data.BDD_Connection.prepareStatement(
 					"select Offre.IdOffre,Offre.IdLogement,Offre.IdHebergeur from Offre,Logement "
 					+ "where Logement.IdLogement=Offre.IdLogement and Logement.ville=?");
 		s.setString(1, this.ville);

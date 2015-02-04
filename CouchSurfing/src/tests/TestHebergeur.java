@@ -1,5 +1,3 @@
-
-
 package tests;
 
 import static org.junit.Assert.assertEquals;
@@ -7,7 +5,7 @@ import static org.junit.Assert.fail;
 
 import java.sql.SQLException;
 
-import modele.ConnectionMySQL;
+import modele.Data;
 import modele.Hebergeur;
 import modele.Utilisateur;
 
@@ -25,6 +23,7 @@ public class TestHebergeur {
 
 	@Before
 	public void setUp() throws Exception {
+		Data.switchBDD_or_BDDTest(true);
 		this.utilisateur = Utilisateur.getUtilisateurParMail("duboispaul@mail.com");
 		this.utilisateurHebergeur = Utilisateur.getUtilisateurParMail("lolo.patate@jardin.com");
 		this.hebergeurExistant = Hebergeur.getHebergeurById(0);
@@ -35,7 +34,7 @@ public class TestHebergeur {
 	public void tearDown() throws Exception {
 		this.utilisateur=null;
 		this.hebergeur=null;
-		ConnectionMySQL.getInstance().rollback();
+		Data.BDD_Connection.rollback();
 	}
 	
 	@Test

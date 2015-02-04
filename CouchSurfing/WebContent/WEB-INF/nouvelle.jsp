@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<%@ include file="entete.jsp" %>
@@ -29,4 +30,3 @@
         </div>
     </body>
 	<%@ include file="basdepage.jsp" %>
-</html>

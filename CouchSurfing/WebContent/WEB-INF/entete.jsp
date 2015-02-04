@@ -6,4 +6,5 @@
 	<%@ include file="../CSS/offreLogement.css" %>
 	<%@ include file="../CSS/profil.css" %>
 	<%@ include file="../CSS/styleDeSitan.css" %></style>
+
 </head>

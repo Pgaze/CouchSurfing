@@ -1,10 +1,12 @@
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.sql.SQLException;
 
-import modele.ConnectionMySQL;
+import modele.Data;
 import modele.FormulaireProposerLogement;
 import modele.Utilisateur;
 
@@ -18,11 +20,12 @@ public class TestFormulaireProposerLogement {
 	
 	@Before
 	public void setUp() throws Exception {
+		Data.switchBDD_or_BDDTest(true);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		ConnectionMySQL.getInstance().rollback();
+		Data.BDD_Connection.rollback();
 		this.form=null;
 	}
 

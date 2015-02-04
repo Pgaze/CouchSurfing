@@ -1,8 +1,8 @@
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import modele.Adresse;
-import modele.ConnectionMySQL;
+import modele.Data;
 import modele.Logement;
 
 import org.junit.After;
@@ -14,11 +14,12 @@ public class TestLogement {
 	
 	@Before
 	public void setUp() throws Exception {
+		Data.switchBDD_or_BDDTest(true);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		ConnectionMySQL.getInstance().rollback();
+		Data.BDD_Connection.rollback();
 	}
 
 	@Test
@@ -30,7 +31,7 @@ public class TestLogement {
 	@Test
 	public void testSetIdNonExistant() throws Exception {
 		Logement l2= new Logement(new Adresse("10", "35 Rue Rangueil", "31400","Les oies", "0", "Toulouse"));
-		assertEquals(3,l2.getIdLogement());			
+		assertEquals(5,l2.getIdLogement());
 	}
 
 }

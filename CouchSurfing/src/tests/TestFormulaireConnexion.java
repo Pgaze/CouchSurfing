@@ -1,10 +1,10 @@
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.sql.SQLException;
 
-import modele.ConnectionMySQL;
+import modele.Data;
 import modele.FormulaireConnexion;
 
 import org.junit.After;
@@ -17,13 +17,15 @@ public class TestFormulaireConnexion {
 
 	@Before
 	public void setUp() throws Exception {
+		Data.switchBDD_or_BDDTest(true);
+
 		this.form=new FormulaireConnexion();
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		this.form=null;
-		ConnectionMySQL.getInstance().rollback();
+		Data.BDD_Connection.rollback();
 	}
 
 	@Test

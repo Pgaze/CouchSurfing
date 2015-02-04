@@ -1,7 +1,6 @@
 package vue;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -26,7 +25,6 @@ public class Recherche extends HttpServlet {
      */
     public Recherche() {
         super();
-        
         // TODO Auto-generated constructor stub
     }
 
@@ -34,8 +32,7 @@ public class Recherche extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
-
+		if (request.getSession().getAttribute("sessionUtilisateur") == null) {
 			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
 		}
@@ -46,6 +43,7 @@ public class Recherche extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
 		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
 
 			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
@@ -54,12 +52,14 @@ public class Recherche extends HttpServlet {
 				FormulaireRechercheAnnonce form= new FormulaireRechercheAnnonce(request.getParameter("ville"));
 				List<Offre> lesOffres=form.getListeOffre();
 				request.setAttribute("lesOffres", lesOffres);
-				request.setAttribute("arrivee",request.getParameter("dateArrivee"));
+				request.setAttribute("teste1",request.getParameter("dateDepart"));
+				request.setAttribute("teste",request.getParameter("dateArrivee"));
 				}
 			catch (Exception e){
 				request.setAttribute("erreur", "Aucun Logement disponible dans cette ville");
 			}
 			this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
 		}
+
 	}
 }
