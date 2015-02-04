@@ -11,8 +11,12 @@ public class Logement {
 	private int idLogement;
 	private Adresse adresse;
 
+	/**
+	 * @param adresse
+	 * @throws SQLException
+	 */
 	public Logement(Adresse adresse) throws SQLException {
-		this.adresse = adresse;
+		this.setAdresse(adresse);
 		this.setId();
 	}
 
@@ -54,10 +58,8 @@ public class Logement {
 		insert.setString(7,this.adresse.getVille());
 		int res=insert.executeUpdate();
 		if (res==1){
-			insert.close();
 			return true;
 		}
-		insert.close();
 		return false;
 	}
 
@@ -77,6 +79,11 @@ public class Logement {
 		this.adresse = adresse;
 	}
 
+	/**
+	 * @param idLogement
+	 * @return leLogement
+	 * @throws Exception
+	 */
 	public static Logement getLogementById(int idLogement) throws Exception{
 		Logement result= new Logement();
 		PreparedStatement ps=Data.BDD_Connection.prepareStatement("select BatimentEscalier,ComplementAdresse,CodePostal,NumeroEtVoie,Residence,Ville from Logement where IdLogement=?");

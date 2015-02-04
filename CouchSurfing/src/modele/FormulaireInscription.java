@@ -15,22 +15,35 @@ public class FormulaireInscription {
 	private String confirmMdp;
 	private String pseudo;
 	
-	
-
+	/**
+	 * @param nom
+	 * @param prenom
+	 * @param mail
+	 * @param mdp
+	 * @param confirmMdp
+	 * @param pseudo
+	 */
 	public FormulaireInscription(String nom, String prenom, String mail,
 			String mdp, String confirmMdp, String pseudo) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.mail = mail;
-		this.mdp = mdp;
-		this.confirmMdp = confirmMdp;
-		this.pseudo=pseudo;
+		this.setNom(nom);
+		this.setPrenom(prenom);
+		this.setMail(mail);
+		this.setMdp(mdp);
+		this.setConfirmMdp(confirmMdp);
+		this.setPseudo(pseudo);
 	}
 
-	public FormulaireInscription() {
-	}
+	public FormulaireInscription() {}
 
+	/**
+	 * @param prenom
+	 * @param nom
+	 * @param pseudo
+	 * @param mail
+	 * @param motDePasse
+	 * @return status
+	 * @throws SQLException
+	 */
 	public boolean verificationDonnesInscription(String prenom,String nom,String pseudo,String mail,String motDePasse) throws SQLException{
 		boolean result = true;
 		Utilisateur aTester=new Utilisateur(mail, motDePasse, nom, prenom, pseudo);
@@ -43,6 +56,10 @@ public class FormulaireInscription {
 		return mailATester.matches("^[a-zA-Z0-9]+(@){1}[a-z]+(\\.){1}([a-z]{2,4})");
 	}
 
+	/**
+	 * @param motDePasseATester
+	 * @return status
+	 */
 	public boolean testMotDePasseValide(String motDePasseATester) {
 		boolean contientMaj =motDePasseATester.matches(".*[A-Z].*");
 		boolean contientMin =motDePasseATester.matches(".*[a-z].*");
@@ -51,6 +68,11 @@ public class FormulaireInscription {
 		return  longueurOk && contientMaj && contientMin && contientChiffre;
 	}
 	
+	/**
+	 * @param user
+	 * @return idUser
+	 * @throws SQLException
+	 */
 	public int insererUtilisateurDansLaBase(Utilisateur user) throws SQLException{
 		PreparedStatement ps=Data.BDD_Connection.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp) values(?,?,?,?,?,?)");
 		ps.setInt(1, user.getIdUser());
@@ -79,7 +101,7 @@ public class FormulaireInscription {
 			else{
 				this.getUtilisateur().inserDansLaBase();
 				Data.BDD_Connection.commit();
-				String s= "Bienvenue sur machin";
+				//String s= "Bienvenue sur machin";
 				//GestionMail.send("clicknsleep@gmail.com", this.getUtilisateur().getMail(), "Inscription à ClickAndSleep.co.uk réussie", s);
 				//GestionMail.send(this.getUtilisateur().getMail(),"clicknsleep@gmail.com" , "Nouvelle inscription sur le site", this.getUtilisateur().getFirstName()+" "+this.getUtilisateur().getName() +"s'est inscrit");
 				return "Inscription reussie";
@@ -88,6 +110,11 @@ public class FormulaireInscription {
 
 	
 	
+	/**
+	 * @param mail
+	 * @return status
+	 * @throws SQLException
+	 */
 	private boolean testUtilisateurExistant(String mail) throws SQLException {
 		PreparedStatement s=Data.BDD_Connection.prepareStatement("select nom from Utilisateur where mail=?");
 		s.setString(1, mail);

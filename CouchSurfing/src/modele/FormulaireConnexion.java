@@ -7,44 +7,41 @@ public class FormulaireConnexion {
 	private String login;
 	private String mdp;
 		
+	/**
+	 * @param login
+	 * @param mdp
+	 */
 	public FormulaireConnexion(String login, String mdp) {
 		this.login = login;
 		this.mdp = mdp;
 	}
 
-	
-
 	public String getLogin() {
 		return login;
 	}
-
-
 
 	public void setLogin(String login) {
 		this.login = login;
 	}
 
-
-
 	public String getMdp() {
 		return mdp;
 	}
-
-
 
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
 
+	public FormulaireConnexion() {}
 
-
-	public FormulaireConnexion() {
-	}
-
+	/**
+	 * @return status de validité
+	 * @throws SQLException
+	 */
 	public boolean verificationCoupleMailMotDePasse() throws SQLException{
-		Utilisateur user = Utilisateur.getUtilisateurParMail(this.login);
+		Utilisateur user = Utilisateur.getUtilisateurParMail(this.getLogin());
 		if(user!=null){
-			return user.getPassword().contentEquals(this.mdp);	
+			return user.getPassword().contentEquals(this.getMdp());	
 		}
 		return false;
 	}
