@@ -43,7 +43,7 @@ public class Demandes extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
 			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
-			this.getServletContext().getRequestDispatcher("/WEB-INF/demandes.jsp").forward(request, response);
+			response.sendRedirect("demandes");
 
 		}
 	}
