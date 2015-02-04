@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import modele.ConnectionMySQL;
+import modele.Data;
 import modele.FormulaireProposerLogement;
 import modele.Utilisateur;
 import classes.Menu;
@@ -57,7 +57,7 @@ public class Nouvelle extends HttpServlet {
 		if(form.verificationCp()){
 			String result = form.procedureAjoutLogement();
 			if(result.contentEquals("Logement ajoute")){
-				ConnectionMySQL.getInstance().commit();
+				Data.BDD_Connection.commit();
 			}
 			request.setAttribute("resultat", result);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/nouvelle.jsp").forward(request, response);

@@ -1,13 +1,10 @@
 
 package modele;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Date;
 
 public class Utilisateur {
 
@@ -61,7 +58,7 @@ public class Utilisateur {
 
 	public static Utilisateur getUtilisateurParMail(String mail) throws SQLException{
 		Utilisateur result = new Utilisateur(mail);
-		PreparedStatement select = ConnectionMySQL.getInstance().prepareStatement("" +
+		PreparedStatement select = Data.BDD_Connection.prepareStatement("" +
 				"select Nom,Prenom,Mdp,Pseudo,IdLogement from Utilisateur where Mail=?");
 		select.setString(1, mail);
 		ResultSet rs=select.executeQuery();
@@ -81,7 +78,7 @@ public class Utilisateur {
 	
 	public static Utilisateur getUtilisateurById(int idUtilisateur) throws SQLException{
 		Utilisateur result = new Utilisateur();
-		PreparedStatement select = ConnectionMySQL.getInstance().prepareStatement("" +
+		PreparedStatement select = Data.BDD_Connection.prepareStatement("" +
 				"select Nom,Prenom,Mdp,Pseudo,Hebergeur,Mail from Utilisateur where IdUtilisateur=?");
 		select.setInt(1, idUtilisateur);
 		ResultSet rs=select.executeQuery();
@@ -184,8 +181,7 @@ public class Utilisateur {
 
 
 	private void setId() throws SQLException {
-		Connection c=ConnectionMySQL.getInstance();
-		PreparedStatement select=c.prepareStatement("select IdUtilisateur from Utilisateur where Mail=? and Nom=?");
+		PreparedStatement select=Data.BDD_Connection.prepareStatement("select IdUtilisateur from Utilisateur where Mail=? and Nom=?");
 		select.setString(1, this.mail);
 		select.setString(2,this.name);
 		ResultSet resultSelect=select.executeQuery();
@@ -193,7 +189,7 @@ public class Utilisateur {
 			this.idUser=resultSelect.getInt(1);
 		}
 		else{	
-			Statement count=c.createStatement();
+			Statement count=Data.BDD_Connection.createStatement();
 			ResultSet resultCount=count.executeQuery("select count(IdUtilisateur) from Utilisateur ");
 			resultCount.next();
 			this.idUser=resultCount.getInt(1);
@@ -202,8 +198,7 @@ public class Utilisateur {
 	}
 	
 	public boolean inserDansLaBase() throws SQLException{
-		Connection c=ConnectionMySQL.getInstance();
-		PreparedStatement ps=c.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp) values(?,?,?,?,?,?)");
+		PreparedStatement ps=Data.BDD_Connection.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp) values(?,?,?,?,?,?)");
 		ps.setInt(1, this.idUser);
 		ps.setString(2, this.name);
 		ps.setString(3, this.firstName);
@@ -231,21 +226,20 @@ public class Utilisateur {
 	 */
 	public int createIdHebergeur() throws SQLException {
 		Hebergeur hebergeur=new Hebergeur();
-		Connection c = ConnectionMySQL.getInstance();
-		PreparedStatement select = c.prepareStatement("select Hebergeur from Utilisateur where IdUtilisateur=? ");
+		PreparedStatement select = Data.BDD_Connection.prepareStatement("select Hebergeur from Utilisateur where IdUtilisateur=? ");
 		select.setInt(1, this.idUser);
 		ResultSet resultSelect=select.executeQuery();
 		if(resultSelect.next()){
 			resultSelect.getInt(1); // Necessaire pour que le wasNull fonctionne ! >_<
 			if (resultSelect.wasNull()) {
-				Statement count = c.createStatement();
+				Statement count = Data.BDD_Connection.createStatement();
 				ResultSet resultCount = count.executeQuery("select count(IdHebergeur) from Hebergeur ");
 				resultCount.next();
 				
 				this.idLogement = resultCount.getInt(1);
 				hebergeur.setIdHebergeur(this.idLogement);
 				hebergeur.inserDansLaBase();
-				PreparedStatement update = c.prepareStatement("update Utilisateur set Hebergeur=? where IdUtilisateur=?");
+				PreparedStatement update = Data.BDD_Connection.prepareStatement("update Utilisateur set Hebergeur=? where IdUtilisateur=?");
 				update.setInt(1, this.idLogement);
 				update.setInt(2, this.idUser);
 				update.executeUpdate();

@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-import modele.ConnectionMySQL;
+import modele.Data;
 import modele.FormulaireRechercheAnnonce;
 import modele.Offre;
 import modele.Postule;
@@ -24,6 +24,8 @@ public class TestPostule {
 	
 	@Before
 	public void setUp() throws Exception {
+		Data.switchBDD_or_BDDTest(true);
+
 		this.leblanc=new Utilisateur("herveleblanc@mail.com","motDePasse1","Leblanc","Herve","Rv");
 		this.leblanc=Utilisateur.getUtilisateurParMail("herveleblanc@mail.com");
 		this.lolo=new Utilisateur("lolo.patate@jardin.com","motDePasse1","LoLolo","Patate","LoloPatate");
@@ -34,9 +36,14 @@ public class TestPostule {
 	public void tearDown() throws Exception {
 		this.leblanc=null;
 		this.lolo=null;
-		ConnectionMySQL.getInstance().rollback();
+		Data.BDD_Connection.rollback();
 	}
 
+	@Test
+	public void testPostuler() throws Exception {
+		List<Offre> liste = new FormulaireRechercheAnnonce("Paris").getListeOffre();
+		assertTrue(Postule.postulerAUneOffre(liste.get(0).getIdOffre(),this.lolo.getIdUser()));
+	}
 
 	@Test
 	public void testGetAllPostulationsEnCours() throws Exception {
@@ -51,3 +58,4 @@ public class TestPostule {
 	}
 	
 }
+>>>>>>> branch 'master' of git@192.168.1.7:~/leBonRepo.git

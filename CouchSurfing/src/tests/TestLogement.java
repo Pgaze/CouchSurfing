@@ -1,8 +1,8 @@
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import modele.Adresse;
-import modele.ConnectionMySQL;
+import modele.Data;
 import modele.Logement;
 
 import org.junit.After;
@@ -14,11 +14,12 @@ public class TestLogement {
 	
 	@Before
 	public void setUp() throws Exception {
+		Data.switchBDD_or_BDDTest(true);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		ConnectionMySQL.getInstance().rollback();
+		Data.BDD_Connection.rollback();
 	}
 
 	@Test

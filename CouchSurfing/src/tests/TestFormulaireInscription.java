@@ -1,7 +1,9 @@
 package tests;
 
-import static org.junit.Assert.*;
-import modele.ConnectionMySQL;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import modele.Data;
 import modele.FormulaireInscription;
 import modele.Utilisateur;
 
@@ -15,12 +17,14 @@ public class TestFormulaireInscription {
 	
 	@Before
 	public void setUp() throws Exception {
+		Data.switchBDD_or_BDDTest(true);
+
 		this.form=new FormulaireInscription();
 	}
 	
 	@After
 	public void tearDown() throws Exception {
-		ConnectionMySQL.getInstance().rollback();
+		Data.BDD_Connection.rollback();
 		this.form=null;
 	}
 	
