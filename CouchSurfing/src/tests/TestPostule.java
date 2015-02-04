@@ -58,6 +58,5 @@ public class TestPostule {
 	public void testDeletePostulationsPerimees() throws Exception {
 		ArrayList<Integer> liste = Postule.deletePostulationsPerimees();
 		assertEquals(1,liste.size());
-	}
-	
+	}	
 }
