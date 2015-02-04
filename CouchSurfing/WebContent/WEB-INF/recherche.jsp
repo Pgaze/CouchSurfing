@@ -11,17 +11,17 @@
 				<div id="formRecherche">
 					<form id="leFormRecherche" method="post">
 						<div id="contenuFormRecherche">
-							<input id="inputCherche" type="text" name="ville"> <input
-								class="date" type="text" name=""> <input class="date"
-								type="text" name=""> <input type="submit" value="GO !"
-								id="btCherche">
+							<input id="inputCherche" type="text" name="ville">
+							<input class="date" type="date" name="dateArrivee">
+							<input class="date"	type="date" name="dateDepart">
+							<input type="submit" value="GO !" id="btCherche">
 						</div>
 					</form>
 		
 				</div>
 			</div>
 			<div id="containerResultat">
-				<p>${ errreur }</p>
+				<p>${ erreur }</p>
 				<c:forEach items="${lesOffres}" var="uneOffre">
 				<div id="uneOffre">
 					<div id="enTeteOffre"><h1 id="intituleEnTeteOffre"><c:out value="${ uneOffre.hebergeur}"/></h1></div>
@@ -32,7 +32,9 @@
 						</div>
 					</div>
 				</c:forEach>
-				</div>
+			</div>
+			
+				<p>${ arrivee }</p>
 	</div>
 </body>
 

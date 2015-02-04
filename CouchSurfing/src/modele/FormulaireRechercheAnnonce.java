@@ -14,7 +14,7 @@ public class FormulaireRechercheAnnonce {
 	}
 	
 	/**
-	 * @return liste des offres pour une ville donnÃ©e
+	 * @return liste des offres pour une ville donnée
 	 * @throws Exception
 	 */
 	public List<Offre> getListeOffre() throws Exception {

@@ -11,16 +11,16 @@
 			    <div id="info">
 			        <div class="infoSession">
 			        	<div class = "infoSessionContainer">
-			            <p class="intitule_profil">Nom</p><p class="info_profil"> ${sessionUtilisateur.firstName}</p>
+			            <p class="intitule_profil">Nom</p><p class="info_profil"> ${sessionUtilisateur.name}</p>
 			            </div>
 			            <div class = "infoSessionContainer">
-			            <p class="intitule_profil">Prenom</p><p class="info_profil"> ${ sessionUtilisateur.name }</p>
+			            <p class="intitule_profil">Prenom</p><p class="info_profil"> ${ sessionUtilisateur.firstName }</p>
 			            </div>
 			            <div class = "infoSessionContainer">
-			            <p class="intitule_profil">Email</p><p class="info_profil">${ sessionUtilisateur.firstName }</p>
+			            <p class="intitule_profil">Email</p><p class="info_profil">${ sessionUtilisateur.mail }</p>
 			            </div>
 			            <div class = "infoSessionContainer">
-			            <p class="intitule_profil">Pseudo</p><p class="info_profil">${ user.pseudo }</p>
+			            <p class="intitule_profil">Pseudo</p><p class="info_profil">${ sessionUtilisateur.pseudo }</p>
 			            </div>
 			        </div>
 			        <div class="infoSession">
