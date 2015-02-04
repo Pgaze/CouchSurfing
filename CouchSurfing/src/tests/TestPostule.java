@@ -24,6 +24,8 @@ public class TestPostule {
 	
 	@Before
 	public void setUp() throws Exception {
+		Data.switchBDD_or_BDDTest(true);
+
 		this.leblanc=new Utilisateur("herveleblanc@mail.com","motDePasse1","Leblanc","Herve","Rv");
 		this.leblanc=Utilisateur.getUtilisateurParMail("herveleblanc@mail.com");
 		this.lolo=new Utilisateur("lolo.patate@jardin.com","motDePasse1","LoLolo","Patate","LoloPatate");

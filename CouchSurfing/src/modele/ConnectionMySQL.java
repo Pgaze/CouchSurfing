@@ -12,17 +12,14 @@ public class ConnectionMySQL {
 
 	private ConnectionMySQL() {
 	}
-	
-	public static Connection getInstance(boolean inTest){
-		String test = (inTest ? "Test" : "");
+
+	public static Connection getInstance(){
 		try {
-			if (ConnectionMySQL.laConnection==null){
-				
-					Class.forName("com.mysql.jdbc.Driver");
-					ConnectionMySQL.laConnection = DriverManager.getConnection(
-							"jdbc:mysql://"+ Data.BDD_IP+":"+Data.BDD_PORT+"/CouchSurfing"+test, Data.BDD_USER,
-							Data.BDD_PWD);
-			}
+
+			Class.forName("com.mysql.jdbc.Driver");
+			ConnectionMySQL.laConnection = DriverManager.getConnection(
+					"jdbc:mysql://"+ Data.BDD_IP+":"+Data.BDD_PORT+Data.BDD_NAME, Data.BDD_USER,
+					Data.BDD_PWD);
 			ConnectionMySQL.laConnection.setAutoCommit(false);
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println("Erreur connexion BDD");
@@ -31,5 +28,5 @@ public class ConnectionMySQL {
 		}
 		return ConnectionMySQL.laConnection;
 	}
-	
+
 }

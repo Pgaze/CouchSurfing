@@ -18,7 +18,7 @@ public class TestFormulaireRechercheAnnonce {
 
 	@Before
 	public void setUp() throws Exception {
-		
+		Data.switchBDD_or_BDDTest(true);
 	}
 
 	@After

@@ -9,6 +9,7 @@ import modele.Data;
 public class TestConnnexionBDD {
 
 	public static void main(String[] args) {
+		Data.switchBDD_or_BDDTest(true);
 		try {
 			Statement s = Data.BDD_Connection.createStatement();
 			ResultSet r=s.executeQuery("select Nom from Utilisateur");

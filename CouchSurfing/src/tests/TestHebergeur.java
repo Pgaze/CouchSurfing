@@ -23,6 +23,7 @@ public class TestHebergeur {
 
 	@Before
 	public void setUp() throws Exception {
+		Data.switchBDD_or_BDDTest(true);
 		this.utilisateur = Utilisateur.getUtilisateurParMail("duboispaul@mail.com");
 		this.utilisateurHebergeur = Utilisateur.getUtilisateurParMail("lolo.patate@jardin.com");
 		this.hebergeurExistant = Hebergeur.getHebergeurById(0);
