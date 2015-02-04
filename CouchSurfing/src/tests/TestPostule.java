@@ -18,44 +18,46 @@ import org.junit.Test;
 
 public class TestPostule {
 
-	private Utilisateur leblanc;
+	private Utilisateur paul;
 	private Utilisateur lolo;
+	private Utilisateur george;
 
 	
 	@Before
 	public void setUp() throws Exception {
 		Data.switchBDD_or_BDDTest(true);
 
-		this.leblanc=new Utilisateur("herveleblanc@mail.com","motDePasse1","Leblanc","Herve","Rv");
-		this.leblanc=Utilisateur.getUtilisateurParMail("herveleblanc@mail.com");
-		this.lolo=new Utilisateur("lolo.patate@jardin.com","motDePasse1","LoLolo","Patate","LoloPatate");
-		this.lolo=Utilisateur.getUtilisateurParMail("lolo.patate@jardin.com");
+		this.paul=new Utilisateur("duboispaul@mail.com","motDePasse1","Dubois","Paul","Polo");
+		this.paul=Utilisateur.getUtilisateurParMail(this.paul.getMail());
+		this.lolo=new Utilisateur("lolo.patate@jardin.com","motDePasse1","Lololo","Patate","LoloPatate");
+		this.lolo=Utilisateur.getUtilisateurParMail(this.lolo.getMail());
+		this.george=new Utilisateur("gg.le.clown@mail.com","motDePasse1","George","Clowney","GGClown");
+		this.george=Utilisateur.getUtilisateurParMail(this.george.getMail());
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		this.leblanc=null;
+		this.paul=null;
 		this.lolo=null;
 		Data.BDD_Connection.rollback();
 	}
 
 	@Test
 	public void testPostuler() throws Exception {
-		List<Offre> liste = new FormulaireRechercheAnnonce("Paris").getListeOffre();
-		assertTrue(Postule.postulerAUneOffre(liste.get(0).getIdOffre(),this.lolo.getIdUser()));
+		List<Offre> liste = new FormulaireRechercheAnnonce("Toulouse").getListeOffre();
+		assertTrue(Postule.postulerAUneOffre(liste.get(0).getLogement().getIdLogement(),this.george.getIdUser()));
 	}
 
 	@Test
 	public void testGetAllPostulationsEnCours() throws Exception {
-		ArrayList<Integer> liste = Postule.getPostulationsEnCours(this.lolo.getIdUser());
+		ArrayList<Integer> liste = Postule.getPostulationsEnCours(this.paul.getIdUser());
 		assertEquals(1,liste.size());
 	}
 	
 	@Test
 	public void testDeletePostulationsPerimees() throws Exception {
-		ArrayList<Integer> liste = Postule.deletePostulationsPerimees(this.leblanc.getIdUser());
+		ArrayList<Integer> liste = Postule.deletePostulationsPerimees();
 		assertEquals(1,liste.size());
 	}
 	
 }
->>>>>>> branch 'master' of git@192.168.1.7:~/leBonRepo.git

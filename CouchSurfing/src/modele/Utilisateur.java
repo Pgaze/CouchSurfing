@@ -79,7 +79,7 @@ public class Utilisateur {
 	public static Utilisateur getUtilisateurById(int idUtilisateur) throws SQLException{
 		Utilisateur result = new Utilisateur();
 		PreparedStatement select = Data.BDD_Connection.prepareStatement("" +
-				"select Nom,Prenom,Mdp,Pseudo,Hebergeur,Mail from Utilisateur where IdUtilisateur=?");
+				"select Nom,Prenom,Mdp,Pseudo,IdLogement,Mail from Utilisateur where IdUtilisateur=?");
 		select.setInt(1, idUtilisateur);
 		ResultSet rs=select.executeQuery();
 		if(rs.next()){
@@ -220,12 +220,15 @@ public class Utilisateur {
 		this.idLogement=theId;
 	}
 
-	/** Cree 1 idHebergeur si l'utilisateur n'en possède pas, le retourne sinon
-	 * @throws SQLException 
-	 * @throws Exception 
-	 */
-	public int createIdHebergeur() throws SQLException {
-		Hebergeur hebergeur=new Hebergeur();
+	
+	 /** Cree 1 idHebergeur si l'utilisateur n'en possède pas, le retourne sinon
+	  * 
+	  * @throws SQLException 
+	  * @throws Exception 
+	  */
+	 /*
+	public int createIdLogement() throws SQLException {
+		Logement hebergeur=new Logement();
 		PreparedStatement select = Data.BDD_Connection.prepareStatement("select Hebergeur from Utilisateur where IdUtilisateur=? ");
 		select.setInt(1, this.idUser);
 		ResultSet resultSelect=select.executeQuery();
@@ -248,5 +251,5 @@ public class Utilisateur {
 		
 		return this.idLogement;
 	}
-	
+	*/
 }
