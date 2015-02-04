@@ -31,6 +31,7 @@ public class TestFormulaireInscription {
 	@Test
 	public void testInsertionBase() throws Exception {
 		Utilisateur t = new Utilisateur("utilisateur@mail.com", "Md5", "Dupont", "Pierre", "Pierrot");
+		assertTrue(this.form.verificationDonnesInscription(t.getFirstName(),t.getName(),t.getPseudo(),t.getMail(),t.getPassword()));
 		assertEquals(1, this.form.insererUtilisateurDansLaBase(t));
 	}
 

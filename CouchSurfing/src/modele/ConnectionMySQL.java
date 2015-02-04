@@ -9,10 +9,9 @@ import java.sql.SQLException;
 public class ConnectionMySQL {
 	private static Connection laConnection;
 
-
-	private ConnectionMySQL() {
-	}
-
+	/**
+	 * @return une instance de BDD_NAME (voir Data.switch...)
+	 */
 	public static Connection getInstance(){
 		try {
 
