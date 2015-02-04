@@ -163,6 +163,11 @@ public class Utilisateur {
 	public int getIdUser() {
 		return idUser;
 	}
+	
+	@Override
+	public String toString() {
+		return name + " " + firstName  ;
+	}
 
 	private void setId() throws SQLException {
 		PreparedStatement select=Data.BDD_Connection.prepareStatement("select IdUtilisateur from Utilisateur where Mail=? and Nom=?");
