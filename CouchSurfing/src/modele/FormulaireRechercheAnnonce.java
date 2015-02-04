@@ -14,20 +14,20 @@ public class FormulaireRechercheAnnonce {
 	}
 	
 	/**
-	 * @return liste des offres pour une ville donnÃ©e
+	 * @return liste des offres pour une ville donnée
 	 * @throws Exception
 	 */
 	public List<Offre> getListeOffre() throws Exception {
 		List<Offre> result = new ArrayList<Offre>();
 		PreparedStatement s = Data.BDD_Connection.prepareStatement(
-					"select Offre.IdOffre,Offre.IdLogement,Offre.IdHebergeur from Offre,Logement "
-					+ "where Logement.IdLogement=Offre.IdLogement and Logement.ville=?");
+					"select Logement.IdLogement,Utilisateur.IdUtilisateur from Utilisateur,Logement "
+					+ "where Logement.IdLogement=Utilisateur.IdLogement and Logement.ville=?");
 		s.setString(1, this.ville);
 		ResultSet rs=s.executeQuery();
 		while (rs.next()){
-			Logement l=Logement.getLogementById(rs.getInt(2));
-			Hebergeur h=Hebergeur.getHebergeurById(rs.getInt(3));
-			result.add(new Offre(rs.getInt(1),l, h, "01-01-1901", "01-01-1901"));
+			Logement l=Logement.getLogementById(rs.getInt(1));
+			Utilisateur u=Utilisateur.getUtilisateurById(rs.getInt(2));
+			result.add(new Offre(l, u, "01-01-1901", "01-01-1901"));
 		}
 		if (result.isEmpty()){
 			throw new Exception("Aucun logement a "+this.ville);

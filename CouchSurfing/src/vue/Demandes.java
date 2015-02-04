@@ -32,7 +32,6 @@ public class Demandes extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
 			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
-
 			this.getServletContext().getRequestDispatcher("/WEB-INF/demandes.jsp").forward(request, response);
 		}
 	}
@@ -45,6 +44,7 @@ public class Demandes extends HttpServlet {
 		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
 			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/demandes.jsp").forward(request, response);
+
 		}
 	}
 

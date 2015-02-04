@@ -76,10 +76,11 @@ public class FormulaireProposerLogement {
 		String result="";
 		Logement l=this.getLogement();
 		boolean resultatInsertionLogement=l.insererDansLaBase();
-		PreparedStatement insert=Data.BDD_Connection.prepareStatement("insert into Offre (idLogement,idHebergeur) values(?,?)");
-		insert.setInt(1, l.getIdLogement());
-		insert.setInt(2, this.user.createIdHebergeur());
-		int res= insert.executeUpdate();
+		String update= "update Utilisateur set IdLogement= ? where IdUtilisateur=?";
+		PreparedStatement req=ConnectionMySQL.getInstance().prepareStatement(update);
+		req.setInt(1, this.getLogement().getIdLogement());
+		req.setInt(2, this.getUser().getIdUser());
+		int res=req.executeUpdate();
 		if (res==1 && resultatInsertionLogement){
 			result="Logement ajoute";
 		}

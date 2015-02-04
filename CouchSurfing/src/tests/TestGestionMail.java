@@ -1,10 +1,23 @@
 package tests;
 import static org.junit.Assert.assertTrue;
+import modele.Data;
 import modele.GestionMail;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class TestGestionMail {
+	
+	@Before
+	public void setUp() throws Exception {
+		Data.switchBDD_or_BDDTest(true);
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		Data.BDD_Connection.rollback();
+	}
 	
 	@Test
 	public void testMail (){	

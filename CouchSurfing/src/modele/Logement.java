@@ -1,3 +1,4 @@
+
 package modele;
 
 import java.sql.PreparedStatement;
@@ -21,8 +22,8 @@ public class Logement {
 
 	private void setId() throws SQLException {
 		PreparedStatement select=Data.BDD_Connection.prepareStatement("select IdLogement from Logement where"
-				+ " batimentEscalier=? and numeroEtVoie=? and cp=? and residence=? "
-				+ "and complementAdresse=? and ville=?");
+				+ " BatimentEscalier=? and NumeroEtVoie=? and CodePostal=? and Residence=? "
+				+ "and ComplementAdresse=? and Ville=?");
 		select.setString(1, this.adresse.getBatimentEscalier());
 		select.setString(2,this.adresse.getNumeroEtVoie());
 		select.setString(3, this.adresse.getCp());
@@ -45,7 +46,7 @@ public class Logement {
 
 	public boolean insererDansLaBase() throws SQLException{
 		PreparedStatement insert= Data.BDD_Connection.prepareStatement(""
-				+ "insert into Logement (idLogement,batimentEscalier,numeroEtVoie,cp,residence,complementAdresse,ville)"
+				+ "insert into Logement (IdLogement,BatimentEscalier,NumeroEtVoie,CodePostal,Residence,ComplementAdresse,Ville)"
 				+ "values (?,?,?,?,?,?,?)");
 		insert.setInt(1, this.idLogement);
 		insert.setString(2, this.adresse.getBatimentEscalier());
@@ -79,7 +80,7 @@ public class Logement {
 
 	public static Logement getLogementById(int idLogement) throws Exception{
 		Logement result= new Logement();
-		PreparedStatement ps=Data.BDD_Connection.prepareStatement("select batimentEscalier,complementAdresse,cp,numeroEtVoie,residence,ville from Logement where IdLogement=?");
+		PreparedStatement ps=Data.BDD_Connection.prepareStatement("select BatimentEscalier,ComplementAdresse,CodePostal,NumeroEtVoie,Residence,Ville from Logement where IdLogement=?");
 		ps.setInt(1, idLogement);
 		ResultSet rs= ps.executeQuery();
 		if (rs.next()){

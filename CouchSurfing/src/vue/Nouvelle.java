@@ -33,8 +33,8 @@ public class Nouvelle extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("sessionUtilisateur") != null) {			
-	        request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
+		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
+			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
 			
 			this.getServletContext().getRequestDispatcher("/WEB-INF/nouvelle.jsp").forward(request, response);
 		}
