@@ -80,7 +80,7 @@ public class FormulaireInscription {
 		ps.setString(3, user.getFirstName());
 		ps.setString(4, user.getMail());
 		ps.setString(5, user.getPseudo());
-		ps.setString(6, user.getPassword());
+		ps.setString(6, Password.md5(user.getPassword()));
 		return ps.executeUpdate();
 	
 	}
