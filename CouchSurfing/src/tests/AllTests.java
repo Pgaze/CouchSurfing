@@ -13,7 +13,8 @@ import org.junit.runners.Suite.SuiteClasses;
 				TestLogement.class,
 				TestUtilisateur.class,
 				MenuTest.class,
-				TestPostule.class
+				TestPostule.class,
+				TestImage.class
 				})
 public class AllTests {
 
