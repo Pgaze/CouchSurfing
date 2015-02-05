@@ -21,7 +21,7 @@
 					        <label class="alignMiddle" for="ville">Ville :</label><input required name="ville" id="ville" type="text"></input></br>
 				 		</div>
 				 		<div id="services">
-				 			
+				 			<p class="flaticon-cigarette3"></p>
 				 		</div>
 			    	</div>
 			    	<button id="valNouvelleAnnonce" name="val_nouvelleAnnonce">Suite</button>

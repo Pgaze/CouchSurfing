@@ -38,9 +38,10 @@ public class Profil extends HttpServlet {
 			
 			try {
 				Logement logementUtilisateur = Logement.getLogementById(user.getIdLogement());
+				
 				if(Logement.getLogementById(user.getIdLogement()) != null){
-					request.setAttribute("addresseLogement",logementUtilisateur.getAdresse().toString());
-				}request.setAttribute("adresseLogement","<p>Vous n'avez pas de logement enregistré. <a href='nouvelle'>Créez en un !</a></p>");
+					request.setAttribute("adresseLogement",logementUtilisateur.getAdresse().toString());
+				}else request.setAttribute("adresseLogement","<p>Vous n'avez pas de logement enregistré. <a href='nouvelle'>Créez en un !</a></p>");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -26,7 +26,7 @@
 			        </div>
 			        <div class="infoSession">
 			        	<div class = "infoSessionContainer">
-			            	<p class="intitule_profil">Adresse</p><p class="info_profil">${ adresseLogement }</p>
+			            	<p class="intitule_profil">Adresse</p>${ adresseLogement }
 			            </div>
 			        </div>
 			    </div>
