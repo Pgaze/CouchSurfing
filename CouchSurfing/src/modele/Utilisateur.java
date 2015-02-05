@@ -14,6 +14,10 @@ public class Utilisateur {
 	private String name;
 	private String firstName;
 	private String pseudo;
+	private float indiceConfort;
+	private int nbVoteConfort;
+	private float indiceConfiance;
+	private int nbVoteConfiance;
 	private int idLogement;
 
 	/**
@@ -30,6 +34,8 @@ public class Utilisateur {
 		this.setFirstName(firstName);
 		this.setPseudo(pseudo);
 		this.setIdLogement(0);
+		this.setIndiceConfiance(0);
+		this.setIndiceConfort(0);
 		this.setId();
 	}
 
@@ -43,7 +49,7 @@ public class Utilisateur {
 	public static Utilisateur getUtilisateurParMail(String mail) throws SQLException{
 		Utilisateur result = new Utilisateur(mail);
 		PreparedStatement select = Data.BDD_Connection.prepareStatement("" +
-				"select Nom,Prenom,Mdp,Pseudo,IdLogement from Utilisateur where Mail=?");
+				"select Nom,Prenom,Mdp,Pseudo,IdLogement,IndiceConfort,IndiceConfiance from Utilisateur where Mail=?");
 		select.setString(1, mail);
 		ResultSet rs=select.executeQuery();
 		if(rs.next()){
@@ -52,6 +58,8 @@ public class Utilisateur {
 			result.setPassword(rs.getString(3));
 			result.setPseudo(rs.getString(4));
 			result.setIdLogement(rs.getInt(5));
+			result.setIndiceConfiance(rs.getInt(6));
+			result.setIndiceConfort(rs.getInt(7));
 			result.setId();
 		}
 		else{
@@ -68,7 +76,7 @@ public class Utilisateur {
 	public static Utilisateur getUtilisateurById(int idUtilisateur) throws SQLException{
 		Utilisateur result = new Utilisateur();
 		PreparedStatement select = Data.BDD_Connection.prepareStatement("" +
-				"select Nom,Prenom,Mdp,Pseudo,IdLogement,Mail from Utilisateur where IdUtilisateur=?");
+				"select Nom,Prenom,Mdp,Pseudo,IdLogement,Mail,IndiceConfort,IndiceConfiance from Utilisateur where IdUtilisateur=?");
 		select.setInt(1, idUtilisateur);
 		ResultSet rs=select.executeQuery();
 		if(rs.next()){
@@ -78,6 +86,8 @@ public class Utilisateur {
 			result.setPseudo(rs.getString(4));
 			result.setIdLogement(rs.getInt(5));
 			result.setMail(rs.getString(6));
+			result.setIndiceConfiance(rs.getInt(7));
+			result.setIndiceConfort(rs.getInt(8));
 			result.setId();
 		}
 		else{
@@ -85,6 +95,125 @@ public class Utilisateur {
 		}
 		return result;
 		
+	}
+	
+	/**
+	 * @return arrondi de la valeur confort
+	 */
+	public int getAvgConfort(){
+		return Math.round(this.getIndiceConfort());
+	}
+	
+	/**
+	 * @return arrondi de la valeur confiance
+	 */
+	public int getAvgConfiance(){
+		return Math.round(this.getIndiceConfiance());
+	}
+	
+	/**
+	 * @return indice confort
+	 */
+	private float getIndiceConfort() {
+		return indiceConfort;
+	}
+
+	/**
+	 * @param indiceConfort
+	 */
+	private void setIndiceConfort(float indiceConfort) {
+		this.indiceConfort = indiceConfort;
+	}
+	
+	/**
+	 * @return indice confiance
+	 */
+	private float getIndiceConfiance() {
+		return indiceConfiance;
+	}
+	
+	/**
+	 * @param indiceConfiance
+	 */
+	private void setIndiceConfiance(float indiceConfiance) {
+		this.indiceConfiance = indiceConfiance;
+	}
+	
+	/**
+	 * @return nombre de vote effectué pour le confort
+	 */
+	private int getNbVoteConfort() {
+		return nbVoteConfort;
+	}
+
+	/**
+	 * @param nbVoteConfort
+	 */
+	private void setNbVoteConfort(int nbVoteConfort) {
+		this.nbVoteConfort = nbVoteConfort;
+	}
+
+	/**
+	 * @return nombre de vote effectués pour la confiance
+	 */
+	private int getNbVoteConfiance() {
+		return nbVoteConfiance;
+	}
+
+	/**
+	 * @param nbVoteConfiance
+	 */
+	private void setNbVoteConfiance(int nbVoteConfiance) {
+		this.nbVoteConfiance = nbVoteConfiance;
+	}
+	
+	/** Effectue un vote confiance
+	 * @param valeurVote
+	 */
+	public void voteConfiance(int valeurVote){
+		int nbVote=this.getNbVoteConfiance();
+		this.setIndiceConfiance((nbVote*this.getIndiceConfiance() + valeurVote)/(nbVote+1));
+		this.setNbVoteConfiance(nbVote+1);
+		
+	}
+	
+	/** Effectue un vote confort
+	 * @param valeurVote 
+	 */
+	public void voteConfort(int valeurVote){
+		int nbVote=this.getNbVoteConfort();
+		this.setIndiceConfort((nbVote*this.getIndiceConfort() + valeurVote)/(nbVote+1));
+		this.setNbVoteConfort(nbVote+1);
+	}
+	
+	/**
+	 * @return met a jour la base avec l'indice de confort stocké dans l'objet
+	 * @throws SQLException 
+	 */
+	public boolean updateConfort() throws SQLException{
+		PreparedStatement updtConfort=Data.BDD_Connection.prepareStatement("UPDATE Utilisateur SET IndiceConfort=? AND NVoteConfort=? WHERE IdUtilisateur=?");
+		updtConfort.setFloat(1, this.getIndiceConfort());
+		updtConfort.setInt(2, this.getNbVoteConfort());
+		updtConfort.setInt(3, this.getIdUser());
+		if(updtConfort.executeUpdate() ==1){
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * @return met a jour la base avec l'indice de confiance stocké dans l'objet
+	 * @throws SQLException 
+	 */
+	public boolean updateConfiance() throws SQLException{
+		PreparedStatement updtConfiance=Data.BDD_Connection.prepareStatement("UPDATE Utilisateur SET IndiceConfiance=? AND NVoteConfiance=? WHERE IdUtilisateur=?");
+		updtConfiance.setFloat(1, this.getIndiceConfiance());
+		updtConfiance.setInt(2, this.getNbVoteConfiance());
+		updtConfiance.setInt(3, this.getIdUser());
+		if(updtConfiance.executeUpdate() ==1){
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -178,10 +307,10 @@ public class Utilisateur {
 			this.idUser=resultSelect.getInt(1);
 		}
 		else{	
-			Statement count=Data.BDD_Connection.createStatement();
-			ResultSet resultCount=count.executeQuery("select count(IdUtilisateur) from Utilisateur ");
-			resultCount.next();
-			this.idUser=resultCount.getInt(1);
+			Statement max=Data.BDD_Connection.createStatement();
+			ResultSet resultMax=max.executeQuery("select MAX(IdUtilisateur) from Utilisateur ");
+			resultMax.next();
+			this.idUser=resultMax.getInt(1)+1;
 
 		}
 	}
