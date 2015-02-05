@@ -58,10 +58,8 @@ public class Logement {
 		insert.setString(7,this.adresse.getVille());
 		int res=insert.executeUpdate();
 		if (res==1){
-			insert.close();
 			return true;
 		}
-		insert.close();
 		return false;
 	}
 

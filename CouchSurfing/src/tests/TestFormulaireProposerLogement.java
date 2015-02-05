@@ -47,17 +47,14 @@ public class TestFormulaireProposerLogement {
 	
 	@Test
 	public void testProcedureAjoutLogement() throws Exception {
-		this.form = new FormulaireProposerLogement("1", "35 Avenue Rangueil",
-				"31400", "TaMere", "", "Toulouse", 
-				Utilisateur.getUtilisateurParMail("duboispaul@mail.com"));
+		this.form = new FormulaireProposerLogement("5", "38 Avenue Rangueil","42300", "Maaaaah", "", "Paris",
+				Utilisateur.getUtilisateurParMail("gg.le.clown@mail.com"));
 		assertEquals("Logement ajoute",this.form.procedureAjoutLogement());
-		
 	}
 
 	@Test
 	public void testAdresseToString() throws SQLException{
-		this.form = new FormulaireProposerLogement("1", "35 Avenue Rangueil",
-				"3140", "TaMere", "", "Toulouse", 
+		this.form = new FormulaireProposerLogement("1", "35 Avenue Rangueil","3140", "TaMere", "", "Toulouse", 
 				Utilisateur.getUtilisateurParMail("pauldubois@mail.com"));
 		String expectedStr="35 Avenue Rangueil 3140 Toulouse\n"
 				+ "Residence: TaMere 1\n";

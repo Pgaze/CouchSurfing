@@ -74,16 +74,14 @@ public class FormulaireProposerLogement {
 	public String procedureAjoutLogement() throws SQLException{
 		String result="";
 		Logement l = this.getLogement();
-		boolean resultatInsertionLogement=l.insererDansLaBase();
-		String update= "UPDATE Utilisateur SET IdLogement= ? WHERE IdUtilisateur=?";
-		PreparedStatement req=ConnectionMySQL.getInstance().prepareStatement(update);
-		req.setInt(1, this.getLogement().getIdLogement());
-		req.setInt(2, this.getUser().getIdUser());
-		int res=req.executeUpdate();
+		boolean resultatInsertionLogement = l.insererDansLaBase();
+		PreparedStatement update = ConnectionMySQL.getInstance().prepareStatement("UPDATE Utilisateur SET IdLogement=? WHERE IdUtilisateur=?");
+		update.setInt(1, l.getIdLogement());
+		update.setInt(2, this.getUser().getIdUser());
+		int res = update.executeUpdate();
 		if (res==1 && resultatInsertionLogement){
 			result="Logement ajoute";
-		}
-		else{
+		}else{
 			result="Echec création logement";
 		}
 		return result;

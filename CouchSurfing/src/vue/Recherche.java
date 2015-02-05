@@ -68,7 +68,7 @@ public class Recherche extends HttpServlet {
 				System.out.println(offrePostulee+" "+  user);
 				Postule.postulerAUneOffre(offrePostulee.getLogement().getIdLogement(), user.getIdUser());
 				Data.BDD_Connection.commit();
-				this.getServletContext().getRequestDispatcher("/WEB-INF/demandes.jsp").forward(request, response);
+				response.sendRedirect("demandes");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
