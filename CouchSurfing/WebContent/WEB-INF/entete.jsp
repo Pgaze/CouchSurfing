@@ -11,7 +11,6 @@
 	<%@ include file="../CSS/fontello-embedded.css" %>
 	<%@ include file="../CSS/fontello-ie7-codes.css" %>
 	<%@ include file="../CSS/fontello-ie7.css" %>
-	<%@ include file="../CSS/fontello.css" %>
-	<%@ include file="../CSS/flaticon.css" %></style>
+	<%@ include file="../CSS/fontello.css" %></style>
 
 </head>

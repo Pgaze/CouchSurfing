@@ -6,9 +6,9 @@
     <body>
         <div id="container">	        	
 			<div class="contentAccueil" id="testImg">
+				 <img class="img1_slide" src="${pageContext.request.contextPath}/ImageServlet" /> 
 			</div>      	
 			<div class="contentAccueil" id="presentation">
-				 <img class="img1_slide" src="${pageContext.request.contextPath}/ImageServlet" /> 
 			
 			</div>      	
 			<div class="contentAccueil" id="connexion">
