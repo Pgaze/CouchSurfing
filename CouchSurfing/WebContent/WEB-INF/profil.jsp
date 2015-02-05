@@ -12,6 +12,7 @@
 			        <div class="infoSession">
 			        	 <div id="infoSession_rigthContainer">
 				            <div id = "container_img_profil">
+				            	<img src="${pageContext.request.contextPath}/ServletImageProfil" />
 					            <div id="img_profil"> 
 					        	</div>
 					        </div>
