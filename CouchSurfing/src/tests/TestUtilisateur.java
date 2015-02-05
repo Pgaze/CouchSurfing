@@ -49,5 +49,23 @@ public class TestUtilisateur {
 		assertEquals("Dubois",dubois.getName());
 	}
 	
-
+	@Test
+	public void testUpdConfiance() throws Exception {
+		this.dubois=Utilisateur.getUtilisateurById(0);
+		assertEquals(0,this.dubois.getAvgConfiance());
+		this.dubois.voteConfiance(5);
+		this.dubois.updateConfiance();
+		assertEquals(5,this.dubois.getAvgConfiance());
+	}
+	
+	@Test
+	public void testUpdtConfort() throws Exception {
+		this.dubois=Utilisateur.getUtilisateurById(0);
+		assertEquals(0,this.dubois.getAvgConfort());
+		this.dubois.voteConfort(3);
+		this.dubois.updateConfort();
+		assertEquals(3,this.dubois.getAvgConfort());
+	}
+	
+	
 }
