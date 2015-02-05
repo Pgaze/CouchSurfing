@@ -75,7 +75,7 @@ public class FormulaireProposerLogement {
 		String result="";
 		Logement l = this.getLogement();
 		boolean resultatInsertionLogement = l.insererDansLaBase();
-		PreparedStatement update = ConnectionMySQL.getInstance().prepareStatement("UPDATE Utilisateur SET IdLogement=? WHERE IdUtilisateur=?");
+		PreparedStatement update = Data.BDD_Connection.prepareStatement("UPDATE Utilisateur SET IdLogement=? WHERE IdUtilisateur=?");
 		update.setInt(1, l.getIdLogement());
 		update.setInt(2, this.getUser().getIdUser());
 		int res = update.executeUpdate();
