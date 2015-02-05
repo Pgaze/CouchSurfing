@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.awt.Desktop;
 import java.io.File;
 
+import modele.ConnectionMySQL;
 import modele.Data;
 import modele.Image;
 
@@ -19,7 +20,7 @@ public class TestImage {
 	@Before
 	public void setUp() throws Exception {
 		this.i = new Image();
-		Data.switchBDD_or_BDDTest(true);
+		ConnectionMySQL.switchBDD_or_BDDTest(true);
 	}
 
 	@After
