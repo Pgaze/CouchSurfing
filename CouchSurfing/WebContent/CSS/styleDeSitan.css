@@ -249,6 +249,22 @@ table#maBoite tr
 
 /* demandes */
 
+.icon-cancel {
+	
+float: left;
+background-color: red;
+height: 60%;
+width: 50%;
+}
+
+.icon-check {
+	
+float: left;
+background-color: rgb(148, 219, 90);
+height: 60%;
+width: 50%;
+}
+
 ol li {
 	padding-bottom:10px;
 }
@@ -261,19 +277,18 @@ width: 77%;
 }
 
 .confirmation {
-	
 
-border: 1px solid blue;
+/* border: 1px solid blue; */
 float: left;
 width: 21%;
-height: 92%;
+height: 28%;
 }
 
 .uneDemande h3
 {
-  background-color: mediumturquoise;
-  padding: 8px;
-  width:125%;
+background-color: mediumturquoise;
+padding: 8px;
+width: 124%;
 margin-top: 0;
 }
 
@@ -318,11 +333,11 @@ width: 79%;
 
 /* accueil */
 
-div#testImg
+/* div#testImg
 {
-  background-image: url("http://localhost:8080/CouchSurfing/imageServlet");
+  background-image: url("http://localhost:8080/CouchSurfing/ImageServlet");
 }
-
+ */
 .contentAccueil
 {
   height: 350px;

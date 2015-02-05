@@ -44,8 +44,7 @@
 			        	
 			        <div class="infoSession">
 			        	<div class = "infoSessionContainer">
-			        		
-			            	<p class="intitule_profil">Adresse</p><p class="info_profil">bat c1 apt 106 5 rue du jardin Toulouse 31400</p>
+			            	<p class="intitule_profil">Adresse</p>${ adresseLogement }
 			            	<p class=""> Fumeur </p>
 			            </div>
 			        </div>
