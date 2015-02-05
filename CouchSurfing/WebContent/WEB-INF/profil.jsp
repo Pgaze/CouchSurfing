@@ -9,16 +9,16 @@
 	        <h1 id="titre_Profil">Profil de ${sessionUtilisateur.firstName} ${ sessionUtilisateur.name }</h1>
 			<div id="profile" >
 			    <div id="info">
-			    	${ adresse }
 			        <div class="infoSession">
 			        	 <div id="infoSession_rigthContainer">
 				            <div id = "container_img_profil">
 					            <div id="img_profil"> 
 					        	</div>
 					        </div>
-					        <p id="note_hebergeur_container" class="icon-star">
-				        		<p id="note_hebergeur">13/20</p>
-				        	</p>
+					        <div id="containerNoteHerbergeur">
+					        <p id="etoile_note_hebergeur" class="icon-star noteHebergeur"></p>
+				        	<p id="note_hebergeur" class="noteHebergeur">13/20</p>
+				        	</div>
 				        	<p id="nbr_avis_hebergeur">
 				        		( 200 avis )
 				        	</p>
@@ -43,7 +43,9 @@
 			        	
 			        <div class="infoSession">
 			        	<div class = "infoSessionContainer">
-			            	<p class="intitule_profil">Adresse</p><p class="info_profil">${ adresseLogement }</p>
+			        		
+			            	<p class="intitule_profil">Adresse</p><p class="info_profil">bat c1 apt 106 5 rue du jardin Toulouse 31400</p>
+			            	<p class=""> Fumeur </p>
 			            </div>
 			        </div>
 			    </div>

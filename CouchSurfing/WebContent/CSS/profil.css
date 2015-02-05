@@ -79,14 +79,29 @@ background-position: center center;
 background-size: 100% 100%;
 }
 
-#note_hebergeur_container{
-font-size: 14px;
+#containerNoteHerbergeur{
+margin-top: 15px;
 text-align: center;
-color: rgb(87, 87, 87);
+}
+
+#etoile_note_hebergeur{
+font-size: 25px;
+text-align: center;
+color: yellow;
+}
+
+#note_hebergeur{
+	font-size:16px;
+}
+
+.noteHebergeur{
+display: inline;
 }
 
 #nbr_avis_hebergeur{
 text-align: center;
+margin-top: 5px;
+margin-left: 10px;
 }
 .infoSession:last-child {
 margin-bottom:10px;
