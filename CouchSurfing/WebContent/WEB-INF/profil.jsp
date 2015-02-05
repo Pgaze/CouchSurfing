@@ -43,7 +43,7 @@
 			        	
 			        <div class="infoSession">
 			        	<div class = "infoSessionContainer">
-			            	<p class="intitule_profil">Adresse</p><p class="info_profil">35 Avenue Rangueil 31400 Toulouse Residence: Les Pigeons 1 0</p>
+			            	<p class="intitule_profil">Adresse</p><p class="info_profil">${ adresseLogement }</p>
 			            </div>
 			        </div>
 			    </div>

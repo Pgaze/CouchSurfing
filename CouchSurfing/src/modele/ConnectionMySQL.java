@@ -14,7 +14,6 @@ public class ConnectionMySQL {
 	 */
 	public static Connection getInstance(){
 		try {
-
 			Class.forName("com.mysql.jdbc.Driver");
 			ConnectionMySQL.laConnection = DriverManager.getConnection(
 					"jdbc:mysql://"+ Data.BDD_IP+":"+Data.BDD_PORT+Data.BDD_NAME, Data.BDD_USER,

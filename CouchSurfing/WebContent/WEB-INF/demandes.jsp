@@ -13,30 +13,31 @@
 					<ol>
 						<li>
 							<div class="uneDemande" id="">
-							<div class="detailsAnnonce">
-								
-								<h3>title</h3>
-								<div class="uneImg">Img ?</div>
-								<div class="txt">Some paragraphs here ....</div>
-							</div>
+								<div class="detailsAnnonce">
+									
+									<h3>title</h3>
+									<div class="uneImg">Img ?</div>
+									<div class="txt">Some paragraphs here ....</div>
+								</div>
 							</div></li>
 						<li>
 							<div class="uneDemande" id="">
-							<div class="detailsAnnonce">
-								
-								<h3>title</h3>
-								<div class="uneImg">Img ?</div>
-								<div class="txt">Some paragraphs here ....</div>
-							</div>
+								<div class="detailsAnnonce" class="reçue">
+									
+									<h3>title</h3>
+									<div class="uneImg">Img ?</div>
+									<div class="txt">Some paragraphs here ....</div>
+								</div>
+								<div class="confirmation"><div class="fontello-cancel"></div></div>
 							</div></li>
 						<li>
 							<div class="uneDemande" id="">
-							<div class="detailsAnnonce">
-								
-								<h3>title</h3>
-								<div class="uneImg">Img ?</div>
-								<div class="txt">Some paragraphs here ....</div>
-							</div>
+								<div class="detailsAnnonce">
+									
+									<h3>title</h3>
+									<div class="uneImg">Img ?</div>
+									<div class="txt">Some paragraphs here ....</div>
+								</div>
 							</div></li>
 						</ol>
 			    </div>

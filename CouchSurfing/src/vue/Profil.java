@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modele.Logement;
 import modele.Utilisateur;
 import classes.Menu;
 
@@ -34,10 +35,15 @@ public class Profil extends HttpServlet {
 			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
 			
 			Utilisateur user = (Utilisateur) request.getSession().getAttribute("sessionUtilisateur");
-			request.setAttribute("nom", user.getName());
-			request.setAttribute("prenom", user.getFirstName());
-			request.setAttribute("mail", user.getMail());
-			request.setAttribute("pseudo", user.getPseudo());
+			
+			try {
+				Logement logementUtilisateur = Logement.getLogementById(user.getIdLogement());
+				if(Logement.getLogementById(user.getIdLogement()) != null){
+					request.setAttribute("addresseLogement",logementUtilisateur.getAdresse().toString());
+				}request.setAttribute("adresseLogement","<p>Vous n'avez pas de logement enregistré. <a href='nouvelle'>Créez en un !</a></p>");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 			this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);
 		}
