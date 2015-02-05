@@ -40,7 +40,7 @@ public class TestHebergeur {
 	@Test
 	public void testCreateIDHebergeur() {
 		try {
-			this.hebergeur.setIdHebergeur(this.utilisateur.createIdHebergeur());
+			this.hebergeur.setIdHebergeur(this.utilisateur.createIdLogement());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail();
@@ -51,7 +51,7 @@ public class TestHebergeur {
 	@Test
 	public void testCreateIDHebergeurExistant() {
 		try {
-			this.hebergeur.setIdHebergeur(this.utilisateurHebergeur.createIdHebergeur());
+			this.hebergeur.setIdHebergeur(this.utilisateurHebergeur.createIdLogement());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			fail();

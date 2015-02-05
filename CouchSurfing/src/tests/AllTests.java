@@ -9,7 +9,7 @@ import org.junit.runners.Suite.SuiteClasses;
 				TestFormulaireInscription.class,
 				TestFormulaireProposerLogement.class,
 				TestFormulaireRechercheAnnonce.class,
-				TestHebergeur.class, 
+				//TestHebergeur.class, 
 				TestLogement.class,
 				TestUtilisateur.class,
 				MenuTest.class,
