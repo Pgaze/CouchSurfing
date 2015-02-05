@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class imageServlet
  */
 @WebServlet("/imageServlet")
-public class imageServlet extends HttpServlet {
+public class ImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public imageServlet() {
+    public ImageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +31,18 @@ public class imageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("text/html;charset=UTF-8");
-	    String url = "couchsurfing";
+	    String name = "couchsurfing";
+	    
 	    File image = new File(getServletContext().getRealPath("/images")
-	            + File.separator + url + ".png");
-	    response.setContentType("image/png");
-        Files.copy(image.toPath(), response.getOutputStream());
+	            + File.separator + name + ".png");
+	    System.out.println(image);
+//        Files.copy(image.toPath(), response.getOutputStream());
+        
+		byte[] img = Files.readAllBytes(image.toPath());
+		response.setContentType("image/png");
+		response.setContentLength(img.length);
+		response.getOutputStream().write(img);
+
 
     }
 

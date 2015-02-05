@@ -45,5 +45,4 @@ public class FormulaireConnexion {
 		}
 		return false;
 	}
-
 }
