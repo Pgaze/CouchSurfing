@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class imageServlet
  */
 @WebServlet("/imageServlet")
-public class imageServlet extends HttpServlet {
+public class ImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public imageServlet() {
+    public ImageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

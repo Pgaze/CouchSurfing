@@ -337,4 +337,17 @@ public class Utilisateur {
 	public void setIdLogement(int theId){
 		this.idLogement=theId;
 	}
+	
+	public int getIdPhotoProfil() throws SQLException{
+		String sql = "SELECT IdImageProfil FROM Utilisateur where IdUtilisateur=?";
+		PreparedStatement select = Data.BDD_Connection.prepareStatement(sql);
+		select.setInt(1,this.getIdUser());
+		ResultSet res = select.executeQuery();
+		if(res.next()){
+			return res.getInt(1);
+		}
+		else{
+			return -1;
+		}
+	}
 }
