@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class imageServlet
  */
-@WebServlet("/imageServlet")
+@WebServlet("/ImageServlet")
 public class ImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,8 +35,8 @@ public class ImageServlet extends HttpServlet {
 	    
 	    File image = new File(getServletContext().getRealPath("/images")
 	            + File.separator + name + ".png");
-	    System.out.println(image);
-//        Files.copy(image.toPath(), response.getOutputStream());
+	    // System.out.println(image);
+       //Files.copy(image.toPath(), response.getOutputStream());
         
 		byte[] img = Files.readAllBytes(image.toPath());
 		response.setContentType("image/png");

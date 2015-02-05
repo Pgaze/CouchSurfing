@@ -58,15 +58,13 @@ public class Accueil extends HttpServlet {
 					Utilisateur user= Utilisateur.getUtilisateurParMail(logA);
 					sessionUtilisateur.setAttribute("sessionUtilisateur", user);
 					response.sendRedirect( "recherche" );
-
-					System.out.println(sessionUtilisateur.getAttribute("sessionUtilisateur"));
 				    return;				
 			        
 				} else {
 					sessionUtilisateur.setAttribute("sessionUtilisateur", null);
 					request.setAttribute("resultat","Echec authentification" );
-					this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 				}
+				this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 			}
 			catch(Exception e){
 				e.printStackTrace();
