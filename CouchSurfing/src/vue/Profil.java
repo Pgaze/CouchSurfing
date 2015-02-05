@@ -39,10 +39,14 @@ public class Profil extends HttpServlet {
 				
 				//Affichage de l'adresse du logmet si existant
 				Logement logementUtilisateur = Logement.getLogementById(user.getIdLogement());
+				
 				if(Logement.getLogementById(user.getIdLogement()) != null){
-					request.setAttribute("addresseLogement",logementUtilisateur.getAdresse().toString());
-				}request.setAttribute("adresseLogement","<p>Vous n'avez pas de logement enregistrÃ©. <a href='nouvelle'>CrÃ©ez en un !</a></p>");
-			} catch (Exception e) {
+
+					request.setAttribute("adresseLogement",logementUtilisateur.getAdresse().toString());
+				}else request.setAttribute("adresseLogement","<p>Vous n'avez pas de logement enregistré. <a href='nouvelle'>Créez en un !</a></p>");
+				
+			}
+			catch (Exception e) {
 				e.printStackTrace();
 			}
 

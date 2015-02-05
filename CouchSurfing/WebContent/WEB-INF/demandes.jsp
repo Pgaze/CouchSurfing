@@ -28,7 +28,10 @@
 									<div class="uneImg">Img ?</div>
 									<div class="txt">Some paragraphs here ....</div>
 								</div>
-								<div class="confirmation"><div class="fontello-cancel"></div></div>
+								<div class="confirmation">
+									<button id="" class="icon-cancel"></button>
+									<button id="" class="icon-check"></button>
+								</div>
 							</div></li>
 						<li>
 							<div class="uneDemande" id="">
