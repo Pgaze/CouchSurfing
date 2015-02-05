@@ -35,15 +35,59 @@ color: rgb(61, 61, 61);
 }
 
 .infoSession {
-width: 45%;
+width: 80%;
 border-radius: 5px 20px 20px 5px;
 padding: 15px;
 margin-top: 30px;
 background-color: rgb(240, 240, 240);
-margin-left: 35px;
+margin-left: 5%;
 border-left: solid 5px #A9A9A9;
 }
 
+#infoSession_leftContainer{
+	width: 60%;
+height: 90%;
+background-color: rgb(250, 250, 250);
+display: inline-block;
+border-radius: 10px;
+padding: 5px;
+}
+
+#infoSession_rigthContainer{
+width: 14%;
+background-color: white;
+height: 100%;
+padding: 5px;
+vertical-align: top;
+border-radius: 10px;
+margin-left: 2.5%;
+display: inline-block;
+}
+
+#container_img_profil{
+vertical-align: top;	
+}
+
+#img_profil{
+background-image: url("http://localhost:8080/CouchSurfing/imageServlet");
+width: 100%;
+margin-left: 0;
+margin-right: 0px;
+height: 100px;
+background-repeat: no-repeat;
+background-position: center center;
+background-size: 100% 100%;
+}
+
+#note_hebergeur_container{
+font-size: 14px;
+text-align: center;
+color: rgb(87, 87, 87);
+}
+
+#nbr_avis_hebergeur{
+text-align: center;
+}
 .infoSession:last-child {
 margin-bottom:10px;
 }
@@ -51,7 +95,7 @@ margin-bottom:10px;
 .intitule_profil {
 padding-left: 5px;
 font-size: 20px;
-width: 25%;
+width: 20%;
 height: 29px;
 vertical-align: top;
 line-height: 29px;

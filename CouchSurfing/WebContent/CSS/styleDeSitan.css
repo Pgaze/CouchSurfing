@@ -299,6 +299,7 @@ li div.uneDemande
 div#testImg
 {
   background-image: url("http://localhost:8080/CouchSurfing/imageServlet");
+ 
 }
 
 .contentAccueil
