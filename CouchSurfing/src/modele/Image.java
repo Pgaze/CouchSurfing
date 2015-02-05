@@ -2,9 +2,9 @@ package modele;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,7 +68,7 @@ public class Image {
 		if(res.next()){
 			result.setNom(res.getString(1));
 			result.setIdImage(idImage);
-			FileInputStream is = (FileInputStream) res.getBinaryStream(2);
+			InputStream is =  res.getBinaryStream(2);
 			File f = new File(result.getNom());
 			FileOutputStream os = new FileOutputStream(f);
 			byte[] bytes = new byte[1024];
