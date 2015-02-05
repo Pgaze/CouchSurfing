@@ -6,10 +6,9 @@
     <body>
         <div id="container">	        	
 			<div class="contentAccueil" id="testImg">
-				<div class="flaticon-cigarette3"></div>
 			</div>      	
 			<div class="contentAccueil" id="presentation">
-				<img class="img1_slide" src="http://localhost:8080/CouchSurfing/imageServlet" />
+				 <img class="img1_slide" src="${pageContext.request.contextPath}/ImageServlet" /> 
 			
 			</div>      	
 			<div class="contentAccueil" id="connexion">
