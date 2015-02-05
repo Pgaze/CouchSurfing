@@ -9,6 +9,12 @@ body {
 	color: #666;
 }
 
+div#testImg{
+	 background-repeat: no-repeat;
+background-position: center center;
+background-size: 100% 700px;
+}
+
 #container {
 	width: 800px;
 	margin: 0 auto;
