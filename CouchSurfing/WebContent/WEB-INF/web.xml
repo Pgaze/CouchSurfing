@@ -72,6 +72,14 @@
     <servlet-name>Recherche</servlet-name>
     <url-pattern>/recherche</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>Evaluation</servlet-name>
+    <servlet-class>vue.Evaluation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Evaluation</servlet-name>
+    <url-pattern>/evaluation</url-pattern>
+  </servlet-mapping>
   <jsp-config>
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>

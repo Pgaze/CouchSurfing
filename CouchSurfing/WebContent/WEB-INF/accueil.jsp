@@ -9,7 +9,7 @@
 				 <img class="img1_slide" src="${pageContext.request.contextPath}/ImageServlet" /> 
 			</div>      	
 			<div class="contentAccueil" id="presentation">
-			
+				<a href="evaluation"> Evaluation </a>
 			</div>      	
 			<div class="contentAccueil" id="connexion">
 				<div id="formConnexion">
