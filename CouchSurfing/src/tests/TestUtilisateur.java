@@ -3,6 +3,7 @@ package tests;
 import static org.junit.Assert.assertEquals;
 import modele.ConnectionMySQL;
 import modele.Data;
+import modele.Password;
 import modele.Utilisateur;
 
 import org.junit.After;
@@ -18,8 +19,8 @@ public class TestUtilisateur {
 	public void setUp() throws Exception {
 		ConnectionMySQL.switchBDD_or_BDDTest(true);
 
-		this.dubois=new Utilisateur("duboispaul@mail.com","motDePasse","Dubois","Paul","Paulo");
-		this.dupont=new Utilisateur("dupont.pierre@mail.com","motDePasse","Dupont","Pierre","Pierrot");
+		this.dubois=new Utilisateur("duboispaul@mail.com","motDePasse1","Dubois","Paul","Paulo");
+		this.dupont=new Utilisateur("dupont.pierre@mail.com","motDePasse1","Dupont","Pierre","Pierrot");
 	}
 
 	@After
@@ -40,7 +41,7 @@ public class TestUtilisateur {
 		this.dubois=Utilisateur.getUtilisateurParMail("duboispaul@mail.com");
 		assertEquals("Dubois",dubois.getName());
 		assertEquals("Paul",dubois.getFirstName());
-		assertEquals("motDePasse1",dubois.getPassword());
+		assertEquals(Password.md5("motDePasse1"),dubois.getPassword());
 		assertEquals("Paulo",dubois.getPseudo());
 	}
 	
