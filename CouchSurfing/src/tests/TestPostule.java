@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import modele.ConnectionMySQL;
 import modele.Data;
 import modele.FormulaireRechercheAnnonce;
 import modele.Offre;
@@ -25,7 +26,7 @@ public class TestPostule {
 	
 	@Before
 	public void setUp() throws Exception {
-		Data.switchBDD_or_BDDTest(true);
+		ConnectionMySQL.switchBDD_or_BDDTest(true);
 
 		this.paul=new Utilisateur("duboispaul@mail.com","motDePasse1","Dubois","Paul","Polo");
 		this.paul=Utilisateur.getUtilisateurParMail(this.paul.getMail());

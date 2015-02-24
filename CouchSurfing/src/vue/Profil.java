@@ -1,6 +1,7 @@
 package vue;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,13 +19,13 @@ import classes.Menu;
 @WebServlet("/Profil")
 public class Profil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Profil() {
-        super();
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Profil() {
+		super();
+	}
 
 	/**
 	 * @throws IOException 
@@ -32,26 +33,36 @@ public class Profil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
-			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
-			Utilisateur user = (Utilisateur) request.getSession().getAttribute("sessionUtilisateur");
-			try {
-				
-				//Affichage de l'adresse du logmet si existant
-				Logement logementUtilisateur = Logement.getLogementById(user.getIdLogement());
-				
-				if(Logement.getLogementById(user.getIdLogement()) != null){
-
-					request.setAttribute("adresseLogement",logementUtilisateur.getAdresse().toString());
-				}else request.setAttribute("adresseLogement","<p>Vous n'avez pas de logement enregistré. <a href='nouvelle'>Créez en un !</a></p>");
-				
+		request=Menu.afficherMenu(request, response);
+		Utilisateur user=null;
+		if(request.getParameter("id")==null){
+			if(request.getSession().getAttribute("sessionUtilisateur")!=null){
+				user = (Utilisateur) request.getSession().getAttribute("sessionUtilisateur");
 			}
-			catch (Exception e) {
+		}
+		else{
+			try{
+				int idUrl = Integer.valueOf(request.getParameter("id"));
+				user=Utilisateur.getUtilisateurById(idUrl);
+			}
+			catch(SQLException e){
 				e.printStackTrace();
 			}
-
-			this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);
 		}
+		request.setAttribute("utilisateurProfil", user);
+		try {
+			//Affichage de l'adresse du logmet si existant
+			Logement logementUtilisateur = Logement.getLogementById(user.getIdLogement());
+			if(Logement.getLogementById(user.getIdLogement()) != null){
+				request.setAttribute("adresseLogement",logementUtilisateur.getAdresse().toString());
+			}else request.setAttribute("adresseLogement","<p>Vous n'avez pas de logement enregistrï¿½. <a href='nouvelle'>Crï¿½ez en un !</a></p>");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);
+
 	}
 
 	/**

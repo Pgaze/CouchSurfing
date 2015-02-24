@@ -53,7 +53,7 @@ public class FormulaireInscription {
 	}
 
 	public boolean testMailValide(String mailATester) {
-		return mailATester.matches("^[a-zA-Z0-9]+(@){1}[a-z]+(\\.){1}([a-z]{2,4})");
+		return mailATester.matches("^[a-zA-Z0-9]+[\\.]*[a-zA-Z0-9]*+(@){1}[a-z]+(\\.){1}([a-z]{2,4})");
 	}
 
 	/**

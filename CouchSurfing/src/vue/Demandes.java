@@ -17,24 +17,21 @@ import classes.Menu;
 @WebServlet("/Demandes")
 public class Demandes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Demandes() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Demandes() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
-		//if (request.getSession().getAttribute("sessionUtilisateur") == null) {
-			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
-			this.getServletContext().getRequestDispatcher("/WEB-INF/demandes.jsp").forward(request, response);
-		}
+		request=Menu.afficherMenu(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/demandes.jsp").forward(request, response);
 	}
 
 
@@ -42,11 +39,10 @@ public class Demandes extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
-			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
-			response.sendRedirect("demandes");
+		request=Menu.afficherMenu(request, response);
+		response.sendRedirect("demandes");
 
-		}
 	}
-
 }
+
+

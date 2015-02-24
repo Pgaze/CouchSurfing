@@ -3,6 +3,7 @@ package tests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import modele.ConnectionMySQL;
 import modele.Data;
 import modele.FormulaireInscription;
 import modele.Utilisateur;
@@ -17,7 +18,7 @@ public class TestFormulaireInscription {
 	
 	@Before
 	public void setUp() throws Exception {
-		Data.switchBDD_or_BDDTest(true);
+		ConnectionMySQL.switchBDD_or_BDDTest(true);
 
 		this.form=new FormulaireInscription();
 	}
@@ -39,6 +40,7 @@ public class TestFormulaireInscription {
 	public void testValidationMail() {
 		assertTrue(this.form.testMailValide("duboispaul@mail.com"));
 		assertFalse(this.form.testMailValide("mailinvalide.com"));
+		assertTrue(this.form.testMailValide("dubois.paul@mail.com"));
 	}
 	
 	@Test

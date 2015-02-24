@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class Menu {
 	private String nom;
@@ -38,7 +39,9 @@ public class Menu {
 		return "trouve";
 	}
 	
-	public static Menu getMenuMembre(HttpServletRequest request){
+	
+	
+	public static Menu getMenuMembre(){
 		Menu membre = new Menu("membre");
 		membre.addLien("Deconnexion", false);
 		membre.addLien("Annonces", false);
@@ -55,6 +58,16 @@ public class Menu {
 		invite.addLien("Connexion", true);
 		invite.addLien("Presentation", true);
 		return invite;
+	}
+	
+	public static HttpServletRequest afficherMenu(HttpServletRequest request,HttpServletResponse response){
+		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
+			request.setAttribute("menu", Menu.getMenuMembre().getLiensMenu());
+		}
+		else{
+			request.setAttribute("menu", Menu.getMenuAcceuil().getLiensMenu());
+		}
+		return request;
 	}
 }
 

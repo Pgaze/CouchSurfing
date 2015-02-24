@@ -38,7 +38,7 @@ public class Recherche extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//if (request.getSession().getAttribute("sessionUtilisateur") == null) {
 		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
-			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
+			request.setAttribute("menu", Menu.getMenuMembre().getLiensMenu());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/recherche.jsp").forward(request, response);
 		}
 	}
@@ -49,7 +49,7 @@ public class Recherche extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Cas du bouton recherche
 		if (request.getParameter("btCherche")!=null){
-			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
+			request.setAttribute("menu", Menu.getMenuMembre().getLiensMenu());
 			try{
 				FormulaireRechercheAnnonce form= new FormulaireRechercheAnnonce(request.getParameter("ville"));
 				List<Offre> lesOffres=form.getListeOffre();

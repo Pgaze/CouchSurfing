@@ -15,5 +15,4 @@
 	</style>
 	
 	<script type="text/javascript"><%@ include file="../CSS/scripts.js" %></script>
-	
-   </head>
+</head>

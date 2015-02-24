@@ -1,6 +1,7 @@
 package tests;
 
 import static org.junit.Assert.*;
+import modele.ConnectionMySQL;
 import modele.Data;
 import modele.Offre;
 
@@ -12,7 +13,7 @@ public class TestOffre {
 
 	@Before
 	public void setUp() throws Exception {
-		Data.switchBDD_or_BDDTest(true);
+		ConnectionMySQL.switchBDD_or_BDDTest(true);
 	}
 
 	@After
