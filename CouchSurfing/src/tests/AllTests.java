@@ -16,6 +16,7 @@ import org.junit.runners.Suite.SuiteClasses;
 				TestLogement.class,
 				TestUtilisateur.class,
 				TestPostule.class,
+				TestOffre.class,
 				})
 public class AllTests {
 
