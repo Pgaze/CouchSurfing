@@ -5,16 +5,17 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ TestConnnexionBDD.class,
+@SuiteClasses({ 
+				MenuTest.class,
+				TestConnnexionBDD.class,
 				TestFormulaireConnexion.class, 
 				TestFormulaireInscription.class,
 				TestFormulaireProposerLogement.class,
 				TestFormulaireRechercheAnnonce.class,
+				TestImage.class,
 				TestLogement.class,
 				TestUtilisateur.class,
-				MenuTest.class,
 				TestPostule.class,
-				TestImage.class
 				})
 public class AllTests {
 
