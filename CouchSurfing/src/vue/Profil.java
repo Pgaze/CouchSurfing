@@ -33,7 +33,7 @@ public class Profil extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
-			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
+			request.setAttribute("menu", Menu.getMenuMembre().getLiensMenu());
 			Utilisateur user = (Utilisateur) request.getSession().getAttribute("sessionUtilisateur");
 			try {
 				
@@ -43,7 +43,7 @@ public class Profil extends HttpServlet {
 				if(Logement.getLogementById(user.getIdLogement()) != null){
 
 					request.setAttribute("adresseLogement",logementUtilisateur.getAdresse().toString());
-				}else request.setAttribute("adresseLogement","<p>Vous n'avez pas de logement enregistré. <a href='nouvelle'>Créez en un !</a></p>");
+				}else request.setAttribute("adresseLogement","<p>Vous n'avez pas de logement enregistrï¿½. <a href='nouvelle'>Crï¿½ez en un !</a></p>");
 				
 			}
 			catch (Exception e) {

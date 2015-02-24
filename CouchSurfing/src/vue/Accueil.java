@@ -19,49 +19,48 @@ import classes.Menu;
 @WebServlet("/Accueil")
 public class Accueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-      
-    
-    public Accueil() {
-        super();
-    }
 
-	
+
+	public Accueil() {
+		super();
+	}
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("sessionUtilisateur") == null) {
 			request.setAttribute("menu", Menu.getMenuAcceuil().getLiensMenu());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 		}else {
 			response.sendRedirect( "recherche" );
-		    return;	
+			return;	
 		}
 	}
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("sessionUtilisateur") == null) {
-			request.setAttribute("menu", Menu.getMenuAcceuil().getLiensMenu());
-			HttpSession sessionUtilisateur = request.getSession();
-			try{
-				String logA = request.getParameter("login");
-				String mdpA = request.getParameter("mdp");
-				FormulaireConnexion form =new FormulaireConnexion(logA,mdpA);
-				
-				if (form.verificationCoupleMailMotDePasse()){
-					Utilisateur user= Utilisateur.getUtilisateurParMail(logA);
-					sessionUtilisateur.setAttribute("sessionUtilisateur", user);
-					response.sendRedirect( "recherche" );
-				    return;				
-			        
-				} else {
-					sessionUtilisateur.setAttribute("sessionUtilisateur", null);
-					request.setAttribute("resultat","Echec authentification" );
-				}
-				this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
+		request=Menu.afficherMenu(request, response);
+		HttpSession sessionUtilisateur = request.getSession();
+		try{
+			String logA = request.getParameter("login");
+			String mdpA = request.getParameter("mdp");
+			FormulaireConnexion form =new FormulaireConnexion(logA,mdpA);
+
+			if (form.verificationCoupleMailMotDePasse()){
+				Utilisateur user= Utilisateur.getUtilisateurParMail(logA);
+				sessionUtilisateur.setAttribute("sessionUtilisateur", user);
+				response.sendRedirect( "recherche" );
+				return;				
+
+			} else {
+				sessionUtilisateur.setAttribute("sessionUtilisateur", null);
+				request.setAttribute("resultat","Echec authentification" );
 			}
-			catch(Exception e){
-				e.printStackTrace();
-			}
+			this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
+		}
+		catch(Exception e){
+			e.printStackTrace();
 		}
 	}
-
 }
+
+

@@ -29,7 +29,7 @@ public class Annonces extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
-			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
+			request.setAttribute("menu", Menu.getMenuMembre().getLiensMenu());
 			this.getServletContext().getRequestDispatcher("/WEB-INF/annonces.jsp").forward(request, response);
 		}
 	}

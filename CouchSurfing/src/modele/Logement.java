@@ -5,11 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Logement {
 
 	private int idLogement;
 	private Adresse adresse;
+	private Map<String,Boolean> lesCriteres;
 
 	/**
 	 * @param adresse
@@ -17,10 +20,12 @@ public class Logement {
 	 */
 	public Logement(Adresse adresse) throws SQLException {
 		this.setAdresse(adresse);
+		this.lesCriteres = new HashMap<String,Boolean>();
 		this.setId();
 	}
 
 	public Logement() {
+		this.lesCriteres = new HashMap<String,Boolean>();
 	}
 
 	private void setId() throws SQLException {
@@ -105,5 +110,27 @@ public class Logement {
 		return result;
 	}
 
+	public void addCritere(String critName,boolean value){
+		if(!this.lesCriteres.containsKey(critName)){
+			this.lesCriteres.put(critName, new Boolean(value));
+		}
+	}
+	
+	public void removeCritere(String critName){
+		this.lesCriteres.remove(critName);
+	}
+	
+	public void setCritereValue(String critName,boolean value){
+		if(this.lesCriteres.containsKey(critName)){
+			if(this.lesCriteres.get(critName)!=value){
+				this.lesCriteres.remove(critName);
+				this.lesCriteres.put(critName, value);
+			}
+		}
+	}
+
+	public Boolean getCritere(String critName) {
+		return this.lesCriteres.get(critName);
+	}
 
 }

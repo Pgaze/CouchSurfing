@@ -24,16 +24,13 @@ public class Inscription extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("sessionUtilisateur") == null) {				
-			Menu invite = new Menu("invite");
-			invite.addLien("Accueil", false);
-			request.setAttribute("menu", invite.getLiensMenu());
-			this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
-		}
+		request=Menu.afficherMenu(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request=Menu.afficherMenu(request, response);
 		try{
 			String nom=request.getParameter("nom");
 			String prenom=request.getParameter("prenom");
