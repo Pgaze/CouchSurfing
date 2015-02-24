@@ -19,8 +19,8 @@ public class TestUtilisateur {
 	public void setUp() throws Exception {
 		ConnectionMySQL.switchBDD_or_BDDTest(true);
 
-		this.dubois=new Utilisateur("duboispaul@mail.com","motDePasse","Dubois","Paul","Paulo");
-		this.dupont=new Utilisateur("dupont.pierre@mail.com","motDePasse","Dupont","Pierre","Pierrot");
+		this.dubois=new Utilisateur("duboispaul@mail.com","motDePasse1","Dubois","Paul","Paulo");
+		this.dupont=new Utilisateur("dupont.pierre@mail.com","motDePasse1","Dupont","Pierre","Pierrot");
 	}
 
 	@After
