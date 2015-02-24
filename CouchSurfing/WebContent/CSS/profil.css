@@ -70,8 +70,8 @@ vertical-align: top;
 
 #img_profil{
 background-image: url("http://localhost:8080/CouchSurfing/imageServlet");
-width: 100%;
-margin-left: 0;
+width: 80%;
+margin-left: 10%;
 margin-right: 0px;
 height: 100px;
 background-repeat: no-repeat;
@@ -79,6 +79,10 @@ background-position: center center;
 background-size: 100% 100%;
 }
 
+#img{
+width: 100%;
+height: 100%;
+}
 #containerNoteHerbergeur{
 margin-top: 15px;
 text-align: center;
@@ -121,6 +125,37 @@ display: inline-block;
 border-radius: 5px;
 }
 
+.intitule_profil_service{
+padding-left: 5px;
+font-size: 20px;
+width: 20%;
+margin-top: 10px !important;
+height: 29px;
+vertical-align: top;
+line-height: 29px;
+margin: 0;
+background-color: rgb(215, 215, 215);
+font-family: monospace;
+display: inline-block;
+border-radius: 5px;	
+}
+
+#intituleService{
+padding-left: 5px;
+font-size: 20px;
+width: 40%;
+border-bottom: solid 1px rgb(131, 131, 131);
+margin-top: 10px!important;
+height: 29px;
+vertical-align: top;
+line-height: 29px;
+margin: 0;
+background-color: rgb(215, 215, 215);
+font-family: monospace;
+display: inline-block;
+border-radius: 5px;	
+}
+
 .info_profil {
 font-size: 18px;
 width: 70%;
@@ -136,6 +171,22 @@ border-radius: 5px;
 display: inline-block;
 }
 
+.info_profil_service{
+	font-size: 18px;
+margin-top: 10px !important;
+width: 70%;
+padding-top: 5px;
+vertical-align: top;
+height: auto;
+margin-left: 15px !important;
+margin: 0;
+line-height: 30px;
+padding-left: 5px;
+background-color: rgb(215, 215, 215);
+font-family: monospace;
+border-radius: 5px;
+display: inline-block;
+}
 .infoSessionContainer {
 display: block;
 width: 100%;

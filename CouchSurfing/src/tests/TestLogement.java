@@ -2,6 +2,7 @@ package tests;
 
 import static org.junit.Assert.assertEquals;
 import modele.Adresse;
+import modele.ConnectionMySQL;
 import modele.Data;
 import modele.Logement;
 
@@ -14,7 +15,7 @@ public class TestLogement {
 	
 	@Before
 	public void setUp() throws Exception {
-		Data.switchBDD_or_BDDTest(true);
+		ConnectionMySQL.switchBDD_or_BDDTest(true);
 	}
 
 	@After

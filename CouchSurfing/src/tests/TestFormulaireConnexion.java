@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.sql.SQLException;
 
+import modele.ConnectionMySQL;
 import modele.Data;
 import modele.FormulaireConnexion;
 
@@ -17,7 +18,7 @@ public class TestFormulaireConnexion {
 
 	@Before
 	public void setUp() throws Exception {
-		Data.switchBDD_or_BDDTest(true);
+		ConnectionMySQL.switchBDD_or_BDDTest(true);
 
 		this.form=new FormulaireConnexion();
 	}
