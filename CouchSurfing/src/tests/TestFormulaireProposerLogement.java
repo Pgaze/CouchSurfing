@@ -57,8 +57,7 @@ public class TestFormulaireProposerLogement {
 	public void testAdresseToString() throws SQLException{
 		this.form = new FormulaireProposerLogement("1", "35 Avenue Rangueil","3140", "TaMere", "", "Toulouse", 
 				Utilisateur.getUtilisateurParMail("pauldubois@mail.com"));
-		String expectedStr="35 Avenue Rangueil 3140 Toulouse\n"
-				+ "Residence: TaMere 1\n";
+		String expectedStr="35 Avenue Rangueil 3140 Toulouse Residence: TaMere Batiment/Escalier 1 ";
 		String myStr=this.form.getLogement().getAdresse().toString();
 		assertEquals(expectedStr,myStr);
 	}
