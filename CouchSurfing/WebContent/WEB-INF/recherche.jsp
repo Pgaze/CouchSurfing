@@ -32,7 +32,7 @@
 
 						<div id="enTeteOffre">
 							<h1 id="intituleEnTeteOffre">
-								<c:out value="${ uneOffre.hebergeur}" />
+								<a href="profil?hebergeur=${ idHebergeur }"><c:out value="${ uneOffre.hebergeur}" /></a>
 							</h1>
 						</div>
 						

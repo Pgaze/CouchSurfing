@@ -250,9 +250,9 @@ table#maBoite tr
 /* demandes */
 
 .icon-cancel {
-	
+color:red;
 float: left;
-background-color: red;
+background-color: rgb(247, 241, 241);
 height: 60%;
 width: 50%;
 }
@@ -260,7 +260,8 @@ width: 50%;
 .icon-check {
 	
 float: left;
-background-color: rgb(148, 219, 90);
+color:green;
+background-color: rgb(247, 241, 241);
 height: 60%;
 width: 50%;
 }
@@ -307,10 +308,10 @@ width: 79%;
 
 .uneImg
 {
-  height: 130px;
+ /* height: 130px;*/
   width: 16%;
   position: inherit;
-  margin-left: 10px;
+  /*margin-left: 10px;*/
   float: left;
   border-radius: 25px;
   border-style: dashed;
