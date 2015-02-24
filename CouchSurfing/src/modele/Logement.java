@@ -5,14 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+
+import modele.Critere.TypeCritere;
 
 public class Logement {
 
 	private int idLogement;
 	private Adresse adresse;
-	private Map<String,Boolean> lesCriteres;
+	private List<Critere> lesCriteres;
 
 	/**
 	 * @param adresse
@@ -20,12 +23,12 @@ public class Logement {
 	 */
 	public Logement(Adresse adresse) throws SQLException {
 		this.setAdresse(adresse);
-		this.lesCriteres = new HashMap<String,Boolean>();
+		this.lesCriteres = new ArrayList<Critere>();
 		this.setId();
 	}
 
 	public Logement() {
-		this.lesCriteres = new HashMap<String,Boolean>();
+		this.lesCriteres = new ArrayList<Critere>();
 	}
 
 	private void setId() throws SQLException {
@@ -110,27 +113,36 @@ public class Logement {
 		return result;
 	}
 
-	public void addCritere(String critName,boolean value){
-		if(!this.lesCriteres.containsKey(critName)){
-			this.lesCriteres.put(critName, new Boolean(value));
+	public void addCritere(Critere crit){
+		this.lesCriteres.add(crit);
+	}
+	
+	public void removeCritere(TypeCritere critType){
+		for (int i=0;i<this.lesCriteres.size();i++){
+			if(this.lesCriteres.get(i).getType()==critType){
+				this.lesCriteres.remove(i);
+				break;
+			}
 		}
 	}
 	
-	public void removeCritere(String critName){
-		this.lesCriteres.remove(critName);
-	}
-	
-	public void setCritereValue(String critName,boolean value){
-		if(this.lesCriteres.containsKey(critName)){
-			if(this.lesCriteres.get(critName)!=value){
-				this.lesCriteres.remove(critName);
-				this.lesCriteres.put(critName, value);
+	public void setCritereValue(Critere crit){
+		for (int i=0;i<this.lesCriteres.size();i++){
+			if(this.lesCriteres.get(i).getType()==crit.getType()){
+				this.lesCriteres.set(i, crit);
+				break;
 			}
 		}
 	}
 
-	public Boolean getCritere(String critName) {
-		return this.lesCriteres.get(critName);
+	public Critere getCritere(TypeCritere critType) {
+		Critere result=null;
+		for(Critere c : this.lesCriteres){
+			if(c.getType()==critType){
+				result=c;
+			}
+		}
+		return result;
 	}
 
 }

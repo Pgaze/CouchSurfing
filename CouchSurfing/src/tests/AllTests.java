@@ -14,7 +14,8 @@ import org.junit.runners.Suite.SuiteClasses;
 				TestUtilisateur.class,
 				MenuTest.class,
 				TestPostule.class,
-				TestImage.class
+				TestImage.class,
+				TestCritereLogement.class
 				})
 public class AllTests {
 
