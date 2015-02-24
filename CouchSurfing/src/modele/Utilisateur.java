@@ -356,4 +356,18 @@ public class Utilisateur {
 			return -1;
 		}
 	}
+
+	public static Utilisateur getUtilisateurByIdLogement(int idLogement) throws Exception{
+		Utilisateur result = null;
+		PreparedStatement ps=Data.BDD_Connection.prepareStatement("SELECT IdUtilisateur FROM Utilisateur WHERE IdLogement=?");
+		ps.setInt(1, idLogement);
+		ResultSet rs= ps.executeQuery();
+		if (rs.next()){
+			result = getUtilisateurById(rs.getInt(1));
+		}
+		else{
+			throw new Exception("Id inexistant");
+		}
+		return result;
+	}
 }

@@ -111,7 +111,7 @@ public class Logement {
 		}
 		return result;
 	}
-
+	
 	public void addCritere(Critere crit){
 		this.lesCriteres.add(crit);
 	}

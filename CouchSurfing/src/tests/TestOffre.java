@@ -69,4 +69,6 @@ public class TestOffre {
 		assertEquals(null,o.getDateDebut());
 		assertEquals(null,o.getDateFin());
 	}
+	
+	//TODO: tester les fonctions : creerStringDate, cleanLogementByPostulePerimees, setDateToNull
 }

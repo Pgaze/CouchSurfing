@@ -24,23 +24,45 @@ public class Postule {
 	}
 	
 	/**
-	 * @return Liste des element supprimés
+	 * @return Liste des logements affectés
 	 * @throws SQLException
 	 */
 	public static ArrayList<Integer> deletePostulationsPerimees() throws SQLException{
-		ArrayList<Integer> tablePostulation = new ArrayList<Integer>();
-		//Selection des entrées a supprimer	
-		PreparedStatement select = Data.BDD_Connection.prepareStatement("SELECT * FROM Postule WHERE DateInvalidite < CURDATE() ORDER BY DateInvalidite"); //SORT BY DateInvalidationAuto
-	
-		ResultSet resultSelect=select.executeQuery();
-		while(resultSelect.next()){
-			tablePostulation.add(resultSelect.getInt(1));
-		}
+		ArrayList<Integer> table = getPostulationsPerimees();
 		//suppresion
 		PreparedStatement delete = Data.BDD_Connection.prepareStatement("DELETE FROM Postule WHERE DateInvalidite < CURDATE()");
 		delete.executeUpdate();
-		
+		return table;
+	}
+	
+	/**
+	 * @return Liste des logements donc les postulations sont perimees
+	 */
+	public static ArrayList<Integer> getPostulationsPerimees() {
+		ArrayList<Integer> tablePostulation = new ArrayList<Integer>();
+		//Selection des entrées a supprimer	
+		PreparedStatement select;
+		try {
+			select = Data.BDD_Connection.prepareStatement("SELECT IdLogement FROM Postule WHERE DateInvalidite < CURDATE() ORDER BY DateInvalidite");
+			ResultSet resultSelect=select.executeQuery();
+			while(resultSelect.next()){
+				tablePostulation.add(resultSelect.getInt(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return tablePostulation;
+	}
+	
+	/**
+	 * @return element supprimé
+	 * @throws SQLException
+	 */
+	public static void deletePostulationByIdLogement(int idLogement) throws SQLException{
+		//suppresion
+		PreparedStatement delete = Data.BDD_Connection.prepareStatement("DELETE FROM Postule WHERE IdLogement=?");
+		delete.setInt(1, idLogement);
+		delete.executeUpdate();
 	}
 	
 	/**

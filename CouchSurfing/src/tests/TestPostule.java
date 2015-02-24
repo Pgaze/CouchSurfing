@@ -55,6 +55,8 @@ public class TestPostule {
 		assertEquals(1,liste.size());
 	}
 	
+	//TODO: tester deletePostulationByIdLogement
+	
 	@Test
 	public void testDeletePostulationsPerimees() throws Exception {
 		ArrayList<Integer> liste = Postule.deletePostulationsPerimees();
