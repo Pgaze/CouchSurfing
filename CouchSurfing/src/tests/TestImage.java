@@ -34,7 +34,6 @@ public class TestImage {
 		this.i.setImage(f);
 		this.i.setNom(f.getName());
 		assertTrue(this.i.insererDansLaBase());
-		
 	}
 	
 	

@@ -32,7 +32,7 @@ public class TestFormulaireRechercheAnnonce {
 	public void testLogementToulouse() throws Exception {
 		this.form=new FormulaireRechercheAnnonce("Toulouse");
 		List<Offre> l = this.form.getListeOffre();
-		assertEquals(0,l.get(0).getLogement().getIdLogement());
+		assertEquals(0, l.get(0).getLogement().getIdLogement());
 	}
 	
 	@Test(expected = Exception.class)

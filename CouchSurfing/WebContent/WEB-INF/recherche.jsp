@@ -32,7 +32,8 @@
 
 						<div id="enTeteOffre">
 							<h1 id="intituleEnTeteOffre">
-								<c:out value="${ uneOffre.hebergeur}" /> 
+							
+							<c:out value="${ uneOffre.hebergeur}" /> 
 								<a href="${pageContext.request.contextPath}/profil?id=${uneOffre.hebergeur.idUser}"> Voir le profil</a>
 							</h1>
 						</div>
