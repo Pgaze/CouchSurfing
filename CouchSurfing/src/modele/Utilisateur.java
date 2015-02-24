@@ -36,6 +36,8 @@ public class Utilisateur {
 		this.setIdLogement(0);
 		this.setIndiceConfiance(0);
 		this.setIndiceConfort(0);
+		this.setNbVoteConfiance(0);
+		this.setNbVoteConfort(0);
 		this.setId();
 	}
 
@@ -49,7 +51,7 @@ public class Utilisateur {
 	public static Utilisateur getUtilisateurParMail(String mail) throws SQLException{
 		Utilisateur result = new Utilisateur(mail);
 		PreparedStatement select = Data.BDD_Connection.prepareStatement("" +
-				"select Nom,Prenom,Mdp,Pseudo,IdLogement,IndiceConfort,IndiceConfiance from Utilisateur where Mail=?");
+				"select Nom,Prenom,Mdp,Pseudo,IdLogement,IndiceConfort,NVoteConfort,IndiceConfiance,NVoteConfiance from Utilisateur where Mail=?");
 		select.setString(1, mail);
 		ResultSet rs=select.executeQuery();
 		if(rs.next()){
@@ -58,8 +60,10 @@ public class Utilisateur {
 			result.setPassword(rs.getString(3));
 			result.setPseudo(rs.getString(4));
 			result.setIdLogement(rs.getInt(5));
-			result.setIndiceConfiance(rs.getInt(6));
-			result.setIndiceConfort(rs.getInt(7));
+			result.setIndiceConfort(rs.getInt(6));
+			result.setNbVoteConfort(rs.getInt(7));
+			result.setIndiceConfiance(rs.getInt(8));
+			result.setNbVoteConfiance(rs.getInt(9));
 			result.setId();
 		}
 		else{
@@ -76,7 +80,7 @@ public class Utilisateur {
 	public static Utilisateur getUtilisateurById(int idUtilisateur) throws SQLException{
 		Utilisateur result = new Utilisateur();
 		PreparedStatement select = Data.BDD_Connection.prepareStatement("" +
-				"select Nom,Prenom,Mdp,Pseudo,IdLogement,Mail,IndiceConfort,IndiceConfiance from Utilisateur where IdUtilisateur=?");
+				"select Nom,Prenom,Mdp,Pseudo,IdLogement,Mail,IndiceConfort,NVoteConfort,IndiceConfiance,NVoteConfiance from Utilisateur where IdUtilisateur=?");
 		select.setInt(1, idUtilisateur);
 		ResultSet rs=select.executeQuery();
 		if(rs.next()){
@@ -86,8 +90,10 @@ public class Utilisateur {
 			result.setPseudo(rs.getString(4));
 			result.setIdLogement(rs.getInt(5));
 			result.setMail(rs.getString(6));
-			result.setIndiceConfiance(rs.getInt(7));
-			result.setIndiceConfort(rs.getInt(8));
+			result.setIndiceConfort(rs.getInt(7));
+			result.setNbVoteConfort(rs.getInt(8));
+			result.setIndiceConfiance(rs.getInt(9));
+			result.setNbVoteConfiance(rs.getInt(10));
 			result.setId();
 		}
 		else{
