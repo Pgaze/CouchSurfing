@@ -6,7 +6,7 @@
     <body>
         
         <div id="profil_container" class="content-accueil">
-	        <h1 id="titre_Profil">Profil de ${sessionUtilisateur.firstName} ${ sessionUtilisateur.name }</h1>
+	        <h1 id="titre_Profil">Profil de ${utilisateurProfil.firstName} ${ utilisateurProfil.name }</h1>
 			<div id="profile" >
 			    <div id="info">
 			        <div class="infoSession">
@@ -26,16 +26,16 @@
 			            </div>
 			        	<div id="infoSession_leftContainer">
 				        	<div class = "infoSessionContainer">
-				            <p class="intitule_profil">Nom</p><p class="info_profil"> ${sessionUtilisateur.name}</p>
+				            <p class="intitule_profil">Nom</p><p class="info_profil"> ${utilisateurProfil.name}</p>
 				            </div>
 				            <div class = "infoSessionContainer">
-				            <p class="intitule_profil">Prenom</p><p class="info_profil"> ${ sessionUtilisateur.firstName }</p>
+				            <p class="intitule_profil">Prenom</p><p class="info_profil"> ${ utilisateurProfil.firstName }</p>
 				            </div>
 				            <div class = "infoSessionContainer">
-				            <p class="intitule_profil">Email</p><p class="info_profil">${ sessionUtilisateur.mail }</p>
+				            <p class="intitule_profil">Email</p><p class="info_profil">${ utilisateurProfil.mail }</p>
 				            </div>
 				            <div class = "infoSessionContainer">
-				            <p class="intitule_profil">Pseudo</p><p class="info_profil">${ sessionUtilisateur.pseudo }</p>
+				            <p class="intitule_profil">Pseudo</p><p class="info_profil">${ utilisateurProfil.pseudo }</p>
 				            </div>
 			            </div>
 			           

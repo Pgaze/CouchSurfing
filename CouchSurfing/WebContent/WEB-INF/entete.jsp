@@ -13,5 +13,5 @@
 	<%@ include file="../CSS/fontello-ie7.css" %>
 	<%@ include file="../CSS/fontello.css" %>
 	<%@ include file="../CSS/evaluation.css" %></style>
-	
+	<script type="text/javascript"><%@ include file="../CSS/scripts.js" %></script>
 </head>

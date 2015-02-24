@@ -40,6 +40,7 @@ public class TestFormulaireInscription {
 	public void testValidationMail() {
 		assertTrue(this.form.testMailValide("duboispaul@mail.com"));
 		assertFalse(this.form.testMailValide("mailinvalide.com"));
+		assertTrue(this.form.testMailValide("dubois.paul@mail.com"));
 	}
 	
 	@Test

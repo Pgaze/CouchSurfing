@@ -78,8 +78,10 @@ public class Adresse {
 		
 	@Override
 	public String toString() {
-		return numeroEtVoie +" "+cp+" "+ville+"\n"+
-				"Residence: "+ residence +" "+batimentEscalier+"\n"+
-				complementAdresse ;
+		String res= numeroEtVoie +" "+cp+" "+ville;
+		res += (residence.equals("null") ? "" : " Residence: "+ residence);
+		res += (batimentEscalier.equals("null") ? "" : " Batiment/Escalier "+batimentEscalier);
+		res += (complementAdresse.equals("null") ? "" : " "+complementAdresse);
+		return res;
 	}
 }

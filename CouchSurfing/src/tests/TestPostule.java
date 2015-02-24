@@ -46,7 +46,7 @@ public class TestPostule {
 	@Test
 	public void testPostuler() throws Exception {
 		List<Offre> liste = new FormulaireRechercheAnnonce("Toulouse").getListeOffre();
-		assertTrue(Postule.postulerAUneOffre(liste.get(0).getLogement().getIdLogement(),this.george.getIdUser()));
+		assertTrue(Postule.postulerAUneOffre(liste.get(0).getLogement().getIdLogement(), this.george.getIdUser()));
 	}
 
 	@Test

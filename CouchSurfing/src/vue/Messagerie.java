@@ -28,17 +28,15 @@ public class Messagerie extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
-			request.setAttribute("menu", Menu.getMenuMembre(request).getLiensMenu());
-			this.getServletContext().getRequestDispatcher("/WEB-INF/messagerie.jsp").forward(request, response);
-		}
+		request=Menu.afficherMenu(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/messagerie.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request=Menu.afficherMenu(request, response);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/messagerie.jsp").forward(request, response);
 	}
 
