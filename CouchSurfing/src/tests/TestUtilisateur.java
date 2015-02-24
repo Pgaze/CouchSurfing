@@ -3,6 +3,7 @@ package tests;
 import static org.junit.Assert.assertEquals;
 import modele.ConnectionMySQL;
 import modele.Data;
+import modele.Password;
 import modele.Utilisateur;
 
 import org.junit.After;
@@ -40,7 +41,7 @@ public class TestUtilisateur {
 		this.dubois=Utilisateur.getUtilisateurParMail("duboispaul@mail.com");
 		assertEquals("Dubois",dubois.getName());
 		assertEquals("Paul",dubois.getFirstName());
-		assertEquals("motDePasse1",dubois.getPassword());
+		assertEquals(Password.md5("motDePasse1"),dubois.getPassword());
 		assertEquals("Paulo",dubois.getPseudo());
 	}
 	
