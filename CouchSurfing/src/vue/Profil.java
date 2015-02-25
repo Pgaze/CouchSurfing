@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modele.ConnectionMySQL;
+import modele.Data;
 import modele.Image;
 import modele.Logement;
 import modele.Utilisateur;
@@ -86,7 +88,14 @@ public class Profil extends HttpServlet {
 			e.printStackTrace();
 		}
 		Image imageUploaded= new Image(getFileFromRequest(request), request.getParameter("imgProfil"));
-		Desktop.getDesktop().open(imageUploaded.getImage());
+		try {
+			imageUploaded.insererDansLaBase();
+			Data.BDD_Connection.commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(imageUploaded.getImage());
 		this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);
 	}
 
