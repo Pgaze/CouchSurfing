@@ -82,6 +82,7 @@ public class Image {
 				os.write(bytes);
 			}
 			result.setImage(f);
+			os.close();
 		}
 		
 		return result;

@@ -29,7 +29,6 @@ public class Recherche extends HttpServlet {
 	 */
 	public Recherche() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -51,7 +50,9 @@ public class Recherche extends HttpServlet {
 		if (request.getParameter("btCherche")!=null){
 			request.setAttribute("menu", Menu.getMenuMembre().getLiensMenu());
 			try{
-				FormulaireRechercheAnnonce form= new FormulaireRechercheAnnonce(request.getParameter("ville"));
+				FormulaireRechercheAnnonce form= new FormulaireRechercheAnnonce(request.getParameter("ville"),
+																				request.getParameter("dateDebut"),
+																				request.getParameter("dateFin"));
 				List<Offre> lesOffres=form.getListeOffre();
 				request.setAttribute("lesOffres", lesOffres);
 			}

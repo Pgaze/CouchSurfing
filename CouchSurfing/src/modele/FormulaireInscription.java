@@ -67,7 +67,6 @@ public class FormulaireInscription {
 		boolean longueurOk = motDePasseATester.length()>7 && motDePasseATester.length()<30;
 		return  longueurOk && contientMaj && contientMin && contientChiffre;
 	}
-	
 
 	public String procedureInscription() throws SQLException {
 			if(!this.confirmMdp.contentEquals(this.mdp)){

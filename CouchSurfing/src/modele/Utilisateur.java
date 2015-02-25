@@ -71,7 +71,7 @@ public class Utilisateur {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * @param idUtilisateur
 	 * @return l'utilisateur
@@ -100,23 +100,23 @@ public class Utilisateur {
 			result =null;
 		}
 		return result;
-		
+
 	}
-	
+
 	/**
 	 * @return arrondi de la valeur confort
 	 */
 	public int getAvgConfort(){
 		return Math.round(this.getIndiceConfort());
 	}
-	
+
 	/**
 	 * @return arrondi de la valeur confiance
 	 */
 	public int getAvgConfiance(){
 		return Math.round(this.getIndiceConfiance());
 	}
-	
+
 	/**
 	 * @return indice confort
 	 */
@@ -130,21 +130,21 @@ public class Utilisateur {
 	private void setIndiceConfort(float indiceConfort) {
 		this.indiceConfort = indiceConfort;
 	}
-	
+
 	/**
 	 * @return indice confiance
 	 */
 	private float getIndiceConfiance() {
 		return indiceConfiance;
 	}
-	
+
 	/**
 	 * @param indiceConfiance
 	 */
 	private void setIndiceConfiance(float indiceConfiance) {
 		this.indiceConfiance = indiceConfiance;
 	}
-	
+
 	/**
 	 * @return nombre de vote effectué pour le confort
 	 */
@@ -172,7 +172,7 @@ public class Utilisateur {
 	private void setNbVoteConfiance(int nbVoteConfiance) {
 		this.nbVoteConfiance = nbVoteConfiance;
 	}
-	
+
 	/** Effectue un vote confiance
 	 * @param valeurVote
 	 */
@@ -180,9 +180,9 @@ public class Utilisateur {
 		int nbVote=this.getNbVoteConfiance();
 		this.setIndiceConfiance((nbVote*this.getIndiceConfiance() + valeurVote)/(nbVote+1));
 		this.setNbVoteConfiance(nbVote+1);
-		
+
 	}
-	
+
 	/** Effectue un vote confort
 	 * @param valeurVote 
 	 */
@@ -191,7 +191,7 @@ public class Utilisateur {
 		this.setIndiceConfort((nbVote*this.getIndiceConfort() + valeurVote)/(nbVote+1));
 		this.setNbVoteConfort(nbVote+1);
 	}
-	
+
 	/**
 	 * @return met a jour la base avec l'indice de confort stocké dans l'objet
 	 * @throws SQLException 
@@ -206,7 +206,7 @@ public class Utilisateur {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * @return met a jour la base avec l'indice de confiance stocké dans l'objet
 	 * @throws SQLException 
@@ -235,7 +235,7 @@ public class Utilisateur {
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
-	
+
 	/**
 	 * @return the mail
 	 */
@@ -298,7 +298,7 @@ public class Utilisateur {
 	public int getIdUser() {
 		return idUser;
 	}
-	
+
 	@Override
 	public String toString() {
 		return name + " " + firstName  ;
@@ -320,7 +320,7 @@ public class Utilisateur {
 
 		}
 	}
-	
+
 	public boolean insererDansLaBase() throws SQLException{
 		PreparedStatement ps=Data.BDD_Connection.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp) values(?,?,?,?,?,?)");
 		ps.setInt(1, this.idUser);
@@ -335,15 +335,15 @@ public class Utilisateur {
 		return false;
 
 	}
-	
+
 	public int getIdLogement() {
 		return idLogement;
 	}
-	
+
 	public void setIdLogement(int theId){
 		this.idLogement=theId;
 	}
-	
+
 	public int getIdPhotoProfil() throws SQLException{
 		String sql = "SELECT IdImageProfil FROM Utilisateur where IdUtilisateur=?";
 		PreparedStatement select = Data.BDD_Connection.prepareStatement(sql);
@@ -367,6 +367,19 @@ public class Utilisateur {
 			result=true;
 		}
 		return result;
-		
+	}
+
+	public static Utilisateur getUtilisateurByIdLogement(int idLogement) throws Exception{
+		Utilisateur result = null;
+		PreparedStatement ps=Data.BDD_Connection.prepareStatement("SELECT IdUtilisateur FROM Utilisateur WHERE IdLogement=?");
+		ps.setInt(1, idLogement);
+		ResultSet rs= ps.executeQuery();
+		if (rs.next()){
+			result = getUtilisateurById(rs.getInt(1));
+		}
+		else{
+			throw new Exception("Id inexistant");
+		}
+		return result;
 	}
 }

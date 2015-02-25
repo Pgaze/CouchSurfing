@@ -9,8 +9,10 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="EchangeFichier/javax.mail.jar"/>
-	<classpathentry kind="lib" path="EchangeFichier/mysql-connector-java-5.1.34-bin.jar"/>
-	<classpathentry kind="lib" path="EchangeFichier/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/home/maxime/git/leBonRepo/CouchSurfing/EchangeFichier/commons-fileupload-1.3.1.jar"/>
+	<classpathentry kind="lib" path="/home/maxime/git/leBonRepo/CouchSurfing/EchangeFichier/javax.mail.jar"/>
+	<classpathentry kind="lib" path="/home/maxime/git/leBonRepo/CouchSurfing/EchangeFichier/mysql-connector-java-5.1.34-bin.jar"/>
+	<classpathentry kind="lib" path="/home/maxime/git/leBonRepo/CouchSurfing/EchangeFichier/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/home/maxime/git/leBonRepo/CouchSurfing/EchangeFichier/commons-io-2.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
