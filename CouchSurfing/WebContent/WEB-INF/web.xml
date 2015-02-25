@@ -72,7 +72,7 @@
     <servlet-name>Recherche</servlet-name>
     <url-pattern>/recherche</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>Evaluation</servlet-name>
     <servlet-class>vue.Evaluation</servlet-class>
   </servlet>

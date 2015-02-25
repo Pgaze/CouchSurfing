@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Evaluation</title>
 </head>
-<body>
+<body style="background-image:url(${pageContext.request.contextPath}/ImageServlet)">
 	<%@ include file="entete.jsp" %>
 	<%@ include file="menu.jsp" %>
 	

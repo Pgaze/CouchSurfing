@@ -5,22 +5,27 @@
 /* */
 body
 {
-  background: /*rgb(213, 73, 12) #A85D63 #BE4D3F */rgb(237, 109, 53);
-  margin: 0;
-  padding: 0;
-  font-family: Verdana, Geneva, sans-serif;
-  font-size: 13px;
-  color: #666;
+background-size: 135%;
+background-repeat: no-repeat;
+background-position: -193px;
+background-attachment: fixed;
+margin: 0;
+padding: 0;
+font-family: Verdana, Geneva, sans-serif;
+font-size: 13px;
+color: #666;
 }
 
 #container
 {
-  width: 800px;
-  margin: 0 auto;
-  padding: 10px 10px 30px;
-  background-color: #fff;
-  width: 86.5%;
-  border: 30px solid rgb(237, 109, 53)/* rgb(190, 77, 63) rgb(213, 73, 12) #A85D63*/;
+margin-top: 80px !important;
+margin-bottom: 80px !important;
+margin: 0 auto;
+padding: 10px 10px 30px;
+background-color: #fff;
+border-radius: 30px;
+width: 60%;
+border: 30px solid rgb(188, 188, 188);
 }
 
 div#le_menu
