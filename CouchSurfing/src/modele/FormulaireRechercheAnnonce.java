@@ -47,9 +47,9 @@ public class FormulaireRechercheAnnonce {
 			splited = date.split("-");
 		}
 		if(splited[0].length() < 4){
-			res = splited[2] + splited[0] + splited[1];
+			res = splited[2] + "-" + splited[0] + "-" + splited[1];
 		}else{
-			res = splited[0] + splited[1] + splited[2];
+			res = splited[0] + "-" + splited[1] + "-" + splited[2];
 		}
 			
 		return res;
