@@ -18,6 +18,7 @@
 						<input required type="password" name="mdp" placeholder="Votre mot de passe"/>
 						<input required type="Submit" name="valLogin"/>
 					</form>
+					<a href="inscription"> Vous n'avez pas de compte ? Inscrivez vous !</a>
 				</div>
 				${ resultat }
 			</div>
