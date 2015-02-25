@@ -95,7 +95,7 @@ public class Logement {
 		Logement result= new Logement();
 		PreparedStatement ps=Data.BDD_Connection.prepareStatement("select BatimentEscalier,ComplementAdresse,CodePostal,NumeroEtVoie,Residence,Ville from Logement where IdLogement=?");
 		ps.setInt(1, idLogement);
-		ResultSet rs= ps.executeQuery();
+		ResultSet rs = ps.executeQuery();
 		if (rs.next()){
 			String batimentEscalier = rs.getString(1);
 			String complementAdresse = rs.getString(2);

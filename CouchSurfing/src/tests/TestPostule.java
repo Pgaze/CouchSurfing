@@ -45,13 +45,15 @@ public class TestPostule {
 
 	@Test
 	public void testPostuler() throws Exception {
-		List<Offre> liste = new FormulaireRechercheAnnonce("Toulouse").getListeOffre();
+		String dateDebut = Offre.creerStringDate(1901, 01, 01);
+		String dateFin = Offre.creerStringDate(2020, 01, 01);
+		List<Offre> liste = new FormulaireRechercheAnnonce("Toulouse",dateDebut,dateFin).getListeOffre();
 		assertTrue(Postule.postulerAUneOffre(liste.get(0).getLogement().getIdLogement(), this.george.getIdUser()));
 	}
 
 	@Test
 	public void testGetAllPostulationsEnCours() throws Exception {
-		ArrayList<Integer> liste = Postule.getPostulationsEnCours(this.paul.getIdUser());
+		ArrayList<Integer> liste = Postule.getPostulationsEnCoursByUser(this.paul.getIdUser());
 		assertEquals(1,liste.size());
 	}
 	

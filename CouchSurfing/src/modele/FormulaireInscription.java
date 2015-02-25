@@ -67,23 +67,6 @@ public class FormulaireInscription {
 		boolean longueurOk = motDePasseATester.length()>7 && motDePasseATester.length()<30;
 		return  longueurOk && contientMaj && contientMin && contientChiffre;
 	}
-	
-	/**
-	 * @param user
-	 * @return idUser
-	 * @throws SQLException
-	 */
-	/*public int insererUtilisateurDansLaBase(Utilisateur user) throws SQLException{
-		PreparedStatement ps=Data.BDD_Connection.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp) values(?,?,?,?,?,?)");
-		ps.setInt(1, user.getIdUser());
-		ps.setString(2, user.getName());
-		ps.setString(3, user.getFirstName());
-		ps.setString(4, user.getMail());
-		ps.setString(5, user.getPseudo());
-		ps.setString(6, Password.md5(user.getPassword()));
-		return ps.executeUpdate();
-	
-	}*/
 
 	public String procedureInscription() throws SQLException {
 			if(!this.confirmMdp.contentEquals(this.mdp)){

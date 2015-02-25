@@ -7,14 +7,15 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Postule {
-
+	
 	/**
 	 * @return Liste des Postulation de l'utilisateur qui sont encore valides
 	 * @throws SQLException
 	 */
-	public static ArrayList<Integer> getPostulationsEnCours(int theIdUser) throws SQLException{
+	public static ArrayList<Integer> getPostulationsEnCoursByUser(int theIdUser) throws SQLException{
 		ArrayList<Integer> tablePostulation = new ArrayList<Integer>();
-		PreparedStatement select = Data.BDD_Connection.prepareStatement("SELECT IdLogement FROM Postule WHERE IdUtilisateur=? AND DateInvalidite > CURDATE() ORDER BY DateInvalidite"); //SORT BY DateInvalidationAuto
+		PreparedStatement select = Data.BDD_Connection.prepareStatement("SELECT IdLogement FROM Postule "
+				+ "WHERE IdUtilisateur=? AND DateInvalidite > CURDATE() ORDER BY DateInvalidite");
 		select.setInt(1, theIdUser);
 		ResultSet resultSelect=select.executeQuery();
 		while(resultSelect.next()){
@@ -71,15 +72,15 @@ public class Postule {
 	 * @throws SQLException
 	 */
 	@SuppressWarnings("deprecation")
-	public static boolean postulerAUneOffre(int IdLogement, int theIdUser) throws SQLException {
+	public static boolean postulerAUneOffre(int idLogement, int theIdUser) throws SQLException {
 		Date today = new Date();
 		Date date = new Date(today.getYear(),today.getMonth()+2,today.getDay());
-		java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
 		String myDate = sdf.format(date);
 		
 		PreparedStatement ps=Data.BDD_Connection.prepareStatement("INSERT INTO Postule (IdUtilisateur,IdLogement,DateInvalidite,Status) values(?,?,?,?)");
 		ps.setInt(1, theIdUser);
-		ps.setInt(2, IdLogement);
+		ps.setInt(2, idLogement);
 		ps.setString(3, myDate);
 		ps.setInt(4, 3);
 		
