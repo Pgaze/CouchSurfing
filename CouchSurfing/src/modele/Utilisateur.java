@@ -321,14 +321,14 @@ public class Utilisateur {
 		}
 	}
 	
-	public boolean inserDansLaBase() throws SQLException{
+	public boolean insererDansLaBase() throws SQLException{
 		PreparedStatement ps=Data.BDD_Connection.prepareStatement("insert into Utilisateur (IdUtilisateur,Nom,Prenom,Mail,Pseudo,Mdp) values(?,?,?,?,?,?)");
 		ps.setInt(1, this.idUser);
 		ps.setString(2, this.name);
 		ps.setString(3, this.firstName);
 		ps.setString(4, this.mail);
 		ps.setString(5, this.pseudo);
-		ps.setString(6, this.password);
+		ps.setString(6, Password.md5(this.password));
 		if(ps.executeUpdate() ==1){
 			return true;
 		}
@@ -355,5 +355,18 @@ public class Utilisateur {
 		else{
 			return -1;
 		}
+	}
+
+	public boolean setIdAvatar(int idImage) throws SQLException {
+		String sql="UPDATE Utilisateur set IdImageProfil=? where IdUtilisateur=?";
+		PreparedStatement update = Data.BDD_Connection.prepareStatement(sql);
+		update.setInt(1, idImage);
+		update.setInt(2, this.getIdUser());
+		boolean result=false;
+		if(update.executeUpdate()==1){
+			result=true;
+		}
+		return result;
+		
 	}
 }
