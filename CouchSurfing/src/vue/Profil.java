@@ -1,6 +1,5 @@
 package vue;
 
-import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modele.ConnectionMySQL;
 import modele.Data;
 import modele.Image;
 import modele.Logement;
