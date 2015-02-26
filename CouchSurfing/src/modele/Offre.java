@@ -3,6 +3,8 @@ package modele;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.directory.InvalidAttributeValueException;
 
@@ -47,10 +49,12 @@ public class Offre {
 		if(!newDateFin.after(newDateDebut))
 			throw new InvalidAttributeValueException("La date de fin n'est pas postérieure a la date de début");
 		Date dateCourante = new Date(System.currentTimeMillis());
-		if(newDateDebut.equals(dateCourante) || newDateDebut.before(dateCourante))
+		if(newDateDebut.before(dateCourante)) {
+			//clean plein de truc dégueux
+			Offre.cleanAllLogementByPostulePerimees();
 			throw new InvalidAttributeValueException("La date de debut est antérieure ou égale a la date actuelle");
+		}
 	}
-
 
 	/**
 	 * @param year
@@ -70,6 +74,22 @@ public class Offre {
 		return res;
 	}
 
+	/** Supprime les postulation perimees et met les date des logements concernes a null
+	 * 
+	 */
+	private static void cleanAllLogementByPostulePerimees() {
+		ArrayList<Integer> listLogements= new ArrayList<>();
+		try {
+			listLogements = Postule.getPostulationsPerimees();
+			for(int idLogement : listLogements){				
+				setDateToNull(Offre.getOffreByIdLogement(idLogement));
+				Postule.deletePostulationByIdLogement(idLogement);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public Logement getLogement() {
 		return logement;
 	}
@@ -102,6 +122,23 @@ public class Offre {
 		this.dateFin = dateFin;
 	}
 
+	/** Met les dates du logement de l'utilisateur a null
+	 * @param utilisateur
+	 */
+	public static void setDateToNull(Offre offre) {
+		try {
+			PreparedStatement update = Data.BDD_Connection.prepareStatement("UPDATE DateDebut,DateFin "
+					+ "FROM Utilisateur WHERE IdUtilisateur=? ");
+			update.setNull(1, java.sql.Types.DATE);
+			update.setNull(2, java.sql.Types.DATE);
+			update.setInt(3, offre.getHebergeur().getIdUser());
+			update.executeUpdate();
+			offre.setDateDebut(null);
+			offre.setDateFin(null);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static Offre getOffreByIdLogement(int idLogement) throws Exception {
 		String sql = "SELECT Utilisateur.idUtilisateur,DateDebut,DateFin "
@@ -118,6 +155,19 @@ public class Offre {
 		}
 	}
 	
-	
+	/**
+	 * @return Liste des Postulation de l'utilisateur qui sont encore valides
+	 * @throws SQLException
+	 */
+	public static ArrayList<Integer> getAllOffresValide() throws SQLException{
+		ArrayList<Integer> tablePostulation = new ArrayList<Integer>();
+		PreparedStatement select = Data.BDD_Connection.prepareStatement("SELECT Logement.IdLogement FROM Logement,Postule "
+			 + "WHERE Logement.IdLogement=Postule.IdLogement AND Logement.DateDebut <= CURDATE() AND Postule.DateInvalidite < CURDATE() ORDER BY DateDebut");
+		ResultSet resultSelect=select.executeQuery();
+		while(resultSelect.next()){
+			tablePostulation.add(resultSelect.getInt(1));
+		}
+		return tablePostulation;
+	}
 
 }

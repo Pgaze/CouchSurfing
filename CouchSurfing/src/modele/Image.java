@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.mysql.jdbc.Statement;
+
 
 public class Image {
 	
@@ -52,10 +54,14 @@ public class Image {
 
 	public boolean insererDansLaBase() throws Exception{
 		String sql= "INSERT INTO Image (Nom,Image) VALUES (?,?)";
-		PreparedStatement insert = Data.BDD_Connection.prepareStatement(sql);
+		PreparedStatement insert = Data.BDD_Connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 		insert.setString(1, this.nom);
 		FileInputStream inputStream= new FileInputStream(this.image);
 		insert.setBinaryStream(2, inputStream);
+		ResultSet rs= insert.getGeneratedKeys();
+		if(rs.next()){
+			this.idImage=rs.getInt(1);
+		}
 		return insert.executeUpdate()==1;
 	}
 	
@@ -76,6 +82,7 @@ public class Image {
 				os.write(bytes);
 			}
 			result.setImage(f);
+			os.close();
 		}
 		
 		return result;

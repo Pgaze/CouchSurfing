@@ -12,8 +12,8 @@
 				<form id="leFormRecherche" method="post">
 					<div id="contenuFormRecherche">
 						<input id="inputCherche" type="text" name="ville"> <input
-							class="date" type="date" name="dateArrivee"> <input
-							class="date" type="date" name="dateDepart"> <input
+							class="date" type="date" name="dateDebut"> <input
+							class="date" type="date" name="dateFin"> <input
 							type="submit" value="GO !" id="btCherche" name="btCherche">
 					</div>
 				</form>

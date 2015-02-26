@@ -1,6 +1,5 @@
 package vue;
 
-import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modele.ConnectionMySQL;
 import modele.Data;
 import modele.Image;
 import modele.Logement;
@@ -40,101 +38,106 @@ public class Profil extends HttpServlet {
 	}
 
 	/**
-	 * @throws IOException 
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @throws IOException
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 
-		request=Menu.afficherMenu(request, response);
-		Utilisateur user=null;
-		if(request.getParameter("id")==null){
-			if(request.getSession().getAttribute("sessionUtilisateur")!=null){
-				user = (Utilisateur) request.getSession().getAttribute("sessionUtilisateur");
+		request = Menu.afficherMenu(request, response);
+		Utilisateur user = null;
+		if (request.getParameter("id") == null) {
+			if (request.getSession().getAttribute("sessionUtilisateur") != null) {
+				user = (Utilisateur) request.getSession().getAttribute(
+						"sessionUtilisateur");
 			}
-		}
-		else{
-			try{
+		} else {
+			try {
 				int idUrl = Integer.valueOf(request.getParameter("id"));
-				user=Utilisateur.getUtilisateurById(idUrl);
-			}
-			catch(SQLException e){
+				user = Utilisateur.getUtilisateurById(idUrl);
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		request.setAttribute("utilisateurProfil", user);
 		try {
 			request = afficherLogementUser(request, user);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp")
+				.forward(request, response);
 
 	}
 
-
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request = Menu.afficherMenu(request, response);
-		Utilisateur user=(Utilisateur) request.getSession().getAttribute("sessionUtilisateur");
+		Utilisateur user = (Utilisateur) request.getSession().getAttribute("sessionUtilisateur");
 		request.setAttribute("utilisateurProfil", user);
-		try{
-			request = afficherLogementUser(request,user);
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		Image imageUploaded= new Image(getFileFromRequest(request), request.getParameter("imgProfil"));
 		try {
-			imageUploaded.insererDansLaBase();
-			Data.BDD_Connection.commit();
+			request = afficherLogementUser(request, user);
+			Image imageUploaded = getFileFromRequest(request);
+			if(imageUploaded!=null){
+				imageUploaded.insererDansLaBase();
+				user.setIdAvatar(imageUploaded.getIdImage());
+				Data.BDD_Connection.commit();
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(imageUploaded.getImage());
-		this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);
+
+		this.getServletContext().getRequestDispatcher("/WEB-INF/profil.jsp")
+				.forward(request, response);
 	}
 
-	private HttpServletRequest afficherLogementUser(HttpServletRequest request,
-			Utilisateur user) throws Exception {
-		Logement logementUtilisateur = Logement.getLogementById(user.getIdLogement());
-		if(Logement.getLogementById(user.getIdLogement()) != null){
-			request.setAttribute("adresseLogement",logementUtilisateur.getAdresse().toString());
-		}
-		else{ 
-			request.setAttribute("adresseLogement","<p>Vous n'avez pas de logement enregistr�. <a href='nouvelle'>Cr�ez en un !</a></p>");
-		}
-		return request;
-	}
-	
-	private File getFileFromRequest(HttpServletRequest request){
-		File result=null;
+
+
+	private Image getFileFromRequest(HttpServletRequest request) {
+		Image result = null;
 		DiskFileItemFactory factory = new DiskFileItemFactory();
-		ServletContext servletContext = this.getServletConfig().getServletContext();
-		File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+		ServletContext servletContext = this.getServletConfig()
+				.getServletContext();
+		File repository = (File) servletContext
+				.getAttribute("javax.servlet.context.tempdir");
 		factory.setRepository(repository);
 		ServletFileUpload upload = new ServletFileUpload(factory);
-		try{
-		List<FileItem> items = upload.parseRequest(request);
-		if (items != null && items.size() > 0) {
-             // iterates over form's fields
-             for (FileItem item : items) {
-                 // processes only fields that are not form fields
-                 if (!item.isFormField()) {
-                     String fileName = new File(item.getName()).getName();
-                     result= new File(fileName);
-                 }
-             }
-        }
-		}
-		catch(Exception e){
+		try {
+			List<FileItem> items = upload.parseRequest(request);
+			if (items != null && items.size() > 0) {
+				// iterates over form's fields
+				for (FileItem item : items) {
+					// processes only fields that are not form fields
+					if (!item.isFormField()) {
+						String filename = item.getName();
+						File file= new File(filename);
+						item.write(file);
+						result = new Image(file, filename);
+					}
+				}
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
+
 	
+	private HttpServletRequest afficherLogementUser(HttpServletRequest request, Utilisateur user) throws Exception {
+		Logement logementUtilisateur = Logement.getLogementById(user.getIdLogement());
+		if (Logement.getLogementById(user.getIdLogement()) != null) {
+			request.setAttribute("adresseLogement", logementUtilisateur.getAdresse().toString());
+		} else {
+			request.setAttribute(
+					"adresseLogement",
+					"<p>Vous n'avez pas de logement enregistr�. <a href='nouvelle'>Cr�ez en un !</a></p>");
+		}
+		return request;
+	}
 }

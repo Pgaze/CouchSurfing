@@ -25,7 +25,7 @@ public class TestLogement {
 
 	@Test
 	public void testSetIDExistant() throws Exception {
-		Logement l= new Logement(new Adresse("1", "35 Avenue Rangueil", "31400","Les Pigeons", "0", "Toulouse"));
+		Logement l= new Logement(new Adresse("1", "35 Avenue Rangueil", "31400","Les Pigeons", "", "Toulouse"));
 		assertEquals(1,l.getIdLogement());
 	}
 	
