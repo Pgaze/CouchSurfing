@@ -13,7 +13,7 @@ public class FormulaireRechercheAnnonce {
 	private String dateFin;
 
 
-		public FormulaireRechercheAnnonce(String ville,String dateDebut,String dateFin) {
+	public FormulaireRechercheAnnonce(String ville,String dateDebut,String dateFin) {
 		this.ville = ville;
 		this.setDateDebut(dateDebut);
 		this.setDateFin(dateFin);
@@ -24,7 +24,7 @@ public class FormulaireRechercheAnnonce {
 	}
 
 	public void setDateDebut(String dateDebut) {
-		this.dateDebut = checkFormatDate(dateDebut);
+		this.dateDebut = CustomDate.checkFormatDate(dateDebut);
 	}
 
 	public String getDateFin() {
@@ -32,33 +32,10 @@ public class FormulaireRechercheAnnonce {
 	}
 
 	public void setDateFin(String dateFin) {
-		this.dateFin = checkFormatDate(dateFin);
+		this.dateFin = CustomDate.checkFormatDate(dateFin);
 	}
 	
-		/** Reformate si necessaire
-	 * @param date
-	 * @return yyyy-mm-dd
-	 */
-	private static String checkFormatDate(String date) {
-		if(date.length()==0){
-			return null;
-		}
-		String res;
-		String[] splited = null;
-		if(date.contains("/")){
-			splited = date.split("/");
-		}else if (date.contains("-")){
-			splited = date.split("-");
-		}
-		if(splited[0].length() < 4){
-			res = splited[2] + "-" + splited[0] + "-" + splited[1];
-		}else{
-			res = splited[0] + "-" + splited[1] + "-" + splited[2];
-		}
-			
-		return res;
-	}
-	/**
+		/**
 	 * @return liste des offres pour une ville donn�e
 	 * @throws Exception
 	 */
@@ -70,8 +47,8 @@ public class FormulaireRechercheAnnonce {
 					+ (this.dateDebut!=null && this.dateFin!=null ? "AND (Logement.DateDebut <= ? AND Logement.DateFin >= ?)" : ""));
 		s.setString(1, this.ville);
 		if(this.dateDebut!=null && this.dateFin!=null){
-			s.setDate(3, Date.valueOf(this.dateDebut));
 			s.setDate(2, Date.valueOf(this.dateFin));
+			s.setDate(3, Date.valueOf(this.dateDebut));
 		}
 		ResultSet rs=s.executeQuery();
 		while (rs.next()){

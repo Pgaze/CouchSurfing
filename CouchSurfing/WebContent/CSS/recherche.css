@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @CHARSET "ISO-8859-1";
 
 /* recherche */
@@ -7,9 +8,14 @@
   width: 33%;
 }
 
+#lienProfil{
+	font-size: 13px;
+color: rgb(79, 173, 231);
+}
+
 .date
 {
-  width: 13%;
+  width: 17%;
 }
 
 #leFormRecherche #contenuFormRecherche
@@ -25,7 +31,9 @@
 
 #contenuFormRecherche input
 {
-  height: 20px;
-  border-radius: 6px;
+ height: 20px;
+border-radius: 6px;
+margin-left: 15px;
 }
+
 

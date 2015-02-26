@@ -1,3 +1,4 @@
+
 @CHARSET "ISO-8859-1";
 
 /* formulaire nouvelle annonce */
@@ -22,7 +23,7 @@ border: 1px solid blue;
 
 #propoLogMidddle
 {
-  width: 400px;
+width: 424px;
   display: inline-block;
 }
 

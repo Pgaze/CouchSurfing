@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.sql.Date;
 
 import modele.ConnectionMySQL;
+import modele.CustomDate;
 import modele.Data;
 import modele.Offre;
 
@@ -65,7 +66,7 @@ public class TestOffre {
 	public void constructeurDateInvalideDebutAvantAjd() throws Exception {
 		Date d = new Date(System.currentTimeMillis());
 		@SuppressWarnings("deprecation")
-		Offre o = new Offre(offre.getLogement(), offre.getHebergeur(), Offre.creerStringDate(d.getYear(), d.getMonth(), d.getDay()), "2015-07-01");
+		Offre o = new Offre(offre.getLogement(), offre.getHebergeur(), CustomDate.creerStringDate(d.getYear(), d.getMonth(), d.getDay()), "2015-07-01");
 		assertEquals(null,o.getDateDebut());
 		assertEquals(null,o.getDateFin());
 	}

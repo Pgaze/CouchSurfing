@@ -12,6 +12,7 @@ public class FormulaireProposerLogement {
 	private String complementAdresse;
 	private String ville;
 	private Utilisateur user;
+	private String dateDebut,dateFin;
 	
 	public FormulaireProposerLogement(String batimentEscalier,
 			String numeroEtVoie, String cp, String residence,
@@ -24,6 +25,7 @@ public class FormulaireProposerLogement {
 		this.setVille(ville);
 		this.setUser(user);
 	}
+	
 	public String getBatimentEscalier() {
 		return batimentEscalier;
 	}

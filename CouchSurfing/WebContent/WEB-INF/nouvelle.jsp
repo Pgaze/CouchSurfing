@@ -20,9 +20,6 @@
 					        <label class="alignMiddle" for="complementAdresse">Complément d'adresse :</label><input name="complementAdresse" id="complementAdresse" type="text"></input></br>
 					        <label class="alignMiddle" for="ville">Ville :</label><input required name="ville" id="ville" type="text"></input></br>
 				 		</div>
-				 		<div id="services">
-				 			<p class="flaticon-cigarette3"></p>
-				 		</div>
 			    	</div>
 			    	<button id="valNouvelleAnnonce" name="val_nouvelleAnnonce">Suite</button>
 			    </div>

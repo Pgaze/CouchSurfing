@@ -158,6 +158,7 @@ public class Logement {
 		}
 		return result;
 	}
+
 	
 	public int getIdPhotoLogement() throws SQLException{
 		String sql = "SELECT IdImageLogement FROM Logement where IdLogement=?";

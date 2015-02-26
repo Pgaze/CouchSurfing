@@ -1,6 +1,5 @@
 package modele;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +24,7 @@ public class Offre {
 		this.setHebergeur(hebergeur);
 		if(dateDebut != null && dateFin != null){
 			try {
-				checkIntegriteDates(dateDebut,dateFin);
+				CustomDate.checkIntegriteDates(dateDebut,dateFin);
 				this.setDateDebut(dateDebut);
 				this.setDateFin(dateFin);
 			} catch (InvalidAttributeValueException | IllegalArgumentException e) {
@@ -35,54 +34,15 @@ public class Offre {
 		}		
 	}
 
-	/** Verifie l'integrite des dates debut et fin renseignées
-	 * @param strDateDebut
-	 * @param strDateFin
-	 * @throws InvalidAttributeValueException
-	 */
-	private void checkIntegriteDates(String strDateDebut, String strDateFin) throws InvalidAttributeValueException {
-		//reformatage de la date
-		Date newDateDebut,newDateFin;
-		newDateDebut = Date.valueOf(strDateDebut);
-		newDateFin = Date.valueOf(strDateFin);
-		//vérifications
-		if(!newDateFin.after(newDateDebut))
-			throw new InvalidAttributeValueException("La date de fin n'est pas postérieure a la date de début");
-		Date dateCourante = new Date(System.currentTimeMillis());
-		if(newDateDebut.before(dateCourante)) {
-			//clean plein de truc dégueux
-			Offre.cleanAllLogementByPostulePerimees();
-			throw new InvalidAttributeValueException("La date de debut est antérieure ou égale a la date actuelle");
-		}
-	}
-
-	/**
-	 * @param year
-	 * @param month
-	 * @param day
-	 * @return "yyyy-mm-dd"
-	 * @throws InvalidAttributeValueException
-	 */
-	public static String creerStringDate(int year, int month, int day) throws InvalidAttributeValueException {
-		String res = null;
-		//vérification sommaire
-		if(month <= 0 || day <= 0 || year <= 0 || day > 31 || month > 12){
-			throw new InvalidAttributeValueException("La date avant changement de format est invalide");
-		}else{
-			res = "" + year + "-" + month + "-" + day;
-		}
-		return res;
-	}
-
 	/** Supprime les postulation perimees et met les date des logements concernes a null
 	 * 
 	 */
-	private static void cleanAllLogementByPostulePerimees() {
+	public static void cleanAllLogementByPostulePerimees() {
 		ArrayList<Integer> listLogements= new ArrayList<>();
 		try {
 			listLogements = Postule.getPostulationsPerimees();
 			for(int idLogement : listLogements){				
-				setDateToNull(Offre.getOffreByIdLogement(idLogement));
+				Logement.getLogementById(idLogement).setDateToNull();
 				Postule.deletePostulationByIdLogement(idLogement);
 			}
 		} catch (Exception e) {
@@ -120,24 +80,6 @@ public class Offre {
 
 	public void setDateFin(String dateFin) {
 		this.dateFin = dateFin;
-	}
-
-	/** Met les dates du logement de l'utilisateur a null
-	 * @param utilisateur
-	 */
-	public static void setDateToNull(Offre offre) {
-		try {
-			PreparedStatement update = Data.BDD_Connection.prepareStatement("UPDATE DateDebut,DateFin "
-					+ "FROM Utilisateur WHERE IdUtilisateur=? ");
-			update.setNull(1, java.sql.Types.DATE);
-			update.setNull(2, java.sql.Types.DATE);
-			update.setInt(3, offre.getHebergeur().getIdUser());
-			update.executeUpdate();
-			offre.setDateDebut(null);
-			offre.setDateFin(null);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public static Offre getOffreByIdLogement(int idLogement) throws Exception {
