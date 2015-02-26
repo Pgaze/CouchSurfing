@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -143,5 +144,20 @@ public class Logement {
 		}
 		return result;
 	}
+	
+	public boolean setDateToNull() throws SQLException{
+		String sql= "UPDATE Logement set DateDebut=?,DateFin=? where IdLogement=?";
+		boolean result=false;
+		PreparedStatement update=Data.BDD_Connection.prepareStatement(sql);
+		update.setNull(1,Types.DATE);
+		update.setNull(2, Types.DATE);
+		update.setInt(3, this.idLogement);
+		if(update.executeUpdate()==1){
+			result=true;
+		}
+		return result;
+	}
+	
+	
 
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import modele.FormulaireConnexion;
+import modele.Logement;
 import modele.Utilisateur;
 import classes.Menu;
 
@@ -61,6 +62,9 @@ public class Accueil extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+
+
+	
 }
 
 

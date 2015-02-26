@@ -31,30 +31,29 @@ public class ServletImageProfil extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getSession().getAttribute("sessionUtilisateur") != null) {
-			request.setAttribute("menu", Menu.getMenuMembre().getLiensMenu());
-			Utilisateur user = (Utilisateur) request.getSession().getAttribute("sessionUtilisateur");
-			try {
-				//Recuperation et affichage de l'image de profil
-				int idImageProfil = user.getIdPhotoProfil();
-				Image image;
-				if(idImageProfil!=-1){
-					image = Image.getImageById(1);
-				}
-				else{
-					image = Image.getImageById(idImageProfil);
-				}
-				byte[] img = Files.readAllBytes(image.getImage().toPath());
-				response.setContentType("image/png");
-				response.setContentLength(img.length);
-				response.getOutputStream().write(img);
+		Utilisateur user = (Utilisateur) request.getSession().getAttribute("sessionUtilisateur");
+		try {
+			//Recuperation et affichage de l'image de profil
+			int idImageProfil = user.getIdPhotoProfil();
+			Image image;
+			System.out.println("idImage:"+idImageProfil);
+			if(idImageProfil==-1){
+				image = Image.getImageById(1);
 			}
-			catch(Exception e){
-				e.printStackTrace();
+			else{
+				image = Image.getImageById(idImageProfil);
 			}
+			byte[] img = Files.readAllBytes(image.getImage().toPath());
+			response.setContentType("image/png");
+			response.setContentLength(img.length);
+			response.getOutputStream().write(img);
 		}
-
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
+
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
