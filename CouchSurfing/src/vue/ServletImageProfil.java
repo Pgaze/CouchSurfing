@@ -31,6 +31,8 @@ public class ServletImageProfil extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//TODO: L'image actuelle est celle de l'utilisateur en session ! 
+		//A changer pour avoir l'utilisateur du profil affiché
 		Utilisateur user = (Utilisateur) request.getSession().getAttribute("sessionUtilisateur");
 		try {
 			//Recuperation et affichage de l'image de profil
