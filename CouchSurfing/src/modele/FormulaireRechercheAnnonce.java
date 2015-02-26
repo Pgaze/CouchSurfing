@@ -40,6 +40,9 @@ public class FormulaireRechercheAnnonce {
 	 * @return yyyy-mm-dd
 	 */
 	private static String checkFormatDate(String date) {
+		if(date.length()==0){
+			return null;
+		}
 		String res;
 		String[] splited = null;
 		if(date.contains("/")){

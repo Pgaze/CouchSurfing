@@ -79,9 +79,9 @@ public class Adresse {
 	@Override
 	public String toString() {
 		String res= numeroEtVoie +" "+cp+" "+ville;
-		res += (residence.equals("null") ? "" : " Residence: "+ residence);
-		res += (batimentEscalier.equals("null") ? "" : " Batiment/Escalier "+batimentEscalier);
-		res += (complementAdresse.equals("null") ? "" : " "+complementAdresse);
+		res += (residence.equals("") ? "" : " Residence: "+ residence);
+		res += (batimentEscalier.equals("") ? "" : " Batiment/Escalier "+batimentEscalier);
+		res += (complementAdresse.equals("") ? "" : " "+complementAdresse);
 		return res;
 	}
 }
