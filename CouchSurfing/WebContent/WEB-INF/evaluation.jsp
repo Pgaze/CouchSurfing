@@ -6,11 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Evaluation</title>
 </head>
-<body style="background-image:url(${pageContext.request.contextPath}/ImageServlet)">
+<body style="background-image:url(${pageContext.request.contextPath}/ServletBackground)">
 	<%@ include file="entete.jsp" %>
 	<%@ include file="menu.jsp" %>
 	
-	<div id="containerEvaluation">
+	<div id="container">
 		<div id="contentEvaluation">
 			
 			<div id="containerIntitulePage">

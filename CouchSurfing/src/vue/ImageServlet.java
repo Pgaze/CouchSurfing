@@ -31,15 +31,15 @@ public class ImageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("text/html;charset=UTF-8");
-	    String name = "couch";
+	    String name = "couchsurfing";
 	    
 	    File image = new File(getServletContext().getRealPath("/images")
-	            + File.separator + name + ".jpg");
+	            + File.separator + name + ".png");
 	    // System.out.println(image);
        //Files.copy(image.toPath(), response.getOutputStream());
         
 		byte[] img = Files.readAllBytes(image.toPath());
-		response.setContentType("images/jpg");
+		response.setContentType("images/png");
 		response.setContentLength(img.length);
 		response.getOutputStream().write(img);
 

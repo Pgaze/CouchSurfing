@@ -1,2 +1,2 @@
 
-alert('Hello world !');
+console.log('js actif');
