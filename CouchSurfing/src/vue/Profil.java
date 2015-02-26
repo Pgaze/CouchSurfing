@@ -84,8 +84,10 @@ public class Profil extends HttpServlet {
 			request = afficherLogementUser(request, user);
 			Image imageUploaded = getFileFromRequest(request);
 			if(imageUploaded!=null){
-				imageUploaded.insererDansLaBase();
-				user.setIdAvatar(imageUploaded.getIdImage());
+				boolean test = imageUploaded.insererDansLaBase();
+				System.out.println("imageInseré:"+test);
+				boolean test2 = user.setIdAvatar(imageUploaded.getIdImage());
+				System.out.println("userUpdated:"+test2);
 				Data.BDD_Connection.commit();
 			}
 		} catch (Exception e) {

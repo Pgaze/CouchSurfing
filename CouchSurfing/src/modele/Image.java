@@ -54,15 +54,18 @@ public class Image {
 
 	public boolean insererDansLaBase() throws Exception{
 		String sql= "INSERT INTO Image (Nom,Image) VALUES (?,?)";
+		boolean result=false;
 		PreparedStatement insert = Data.BDD_Connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 		insert.setString(1, this.nom);
 		FileInputStream inputStream= new FileInputStream(this.image);
 		insert.setBinaryStream(2, inputStream);
+		result = insert.executeUpdate()==1;
 		ResultSet rs= insert.getGeneratedKeys();
 		if(rs.next()){
+			System.out.println(rs.getInt(1));
 			this.idImage=rs.getInt(1);
 		}
-		return insert.executeUpdate()==1;
+		return result;
 	}
 	
 	public static Image getImageById(int idImage) throws SQLException, IOException{

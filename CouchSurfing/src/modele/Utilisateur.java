@@ -349,7 +349,7 @@ public class Utilisateur {
 		PreparedStatement select = Data.BDD_Connection.prepareStatement(sql);
 		select.setInt(1,this.getIdUser());
 		ResultSet res = select.executeQuery();
-		if(res.next()){
+		if(res.next() && res.getInt(1)!=0){
 			return res.getInt(1);
 		}
 		else{
@@ -382,4 +382,6 @@ public class Utilisateur {
 		}
 		return result;
 	}
+	
+		
 }
