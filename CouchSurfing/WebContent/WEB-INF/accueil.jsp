@@ -3,10 +3,9 @@
 <html>
 	<%@ include file="entete.jsp" %>
 	<%@ include file="menu.jsp" %>
-    <body>
+    <body style="background-image:url(${pageContext.request.contextPath}/ServletBackground)">
         <div id="container">	        	
-			<div class="contentAccueil" id="testImg">
-				 <img class="img1_slide" src="${pageContext.request.contextPath}/ImageServlet" /> 
+			<div class="contentAccueil" id="accueilBlock1" style="background-image:url(${pageContext.request.contextPath}/ImageServlet)">
 			</div>      	
 			<div class="contentAccueil" id="presentation">
 				<a href="evaluation"> Evaluation </a>

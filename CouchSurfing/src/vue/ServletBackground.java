@@ -11,46 +11,42 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class imageServlet
+ * Servlet implementation class ServletBackground
  */
-@WebServlet("/ImageServlet")
-public class ImageServlet extends HttpServlet {
+@WebServlet("/ServletBackground")
+public class ServletBackground extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ImageServlet() {
+    public ServletBackground() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/*
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		response.setContentType("text/html;charset=UTF-8");
-	    String name = "couchsurfing";
+	    String name = "couch";
 	    
 	    File image = new File(getServletContext().getRealPath("/images")
-	            + File.separator + name + ".png");
+	            + File.separator + name + ".jpg");
 	    // System.out.println(image);
        //Files.copy(image.toPath(), response.getOutputStream());
         
 		byte[] img = Files.readAllBytes(image.toPath());
-		response.setContentType("images/png");
+		response.setContentType("images/jpg");
 		response.setContentLength(img.length);
 		response.getOutputStream().write(img);
-
-
-    }
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		// TODO Auto-generated method stub
 	}
 

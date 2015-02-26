@@ -13,12 +13,48 @@ public class FormulaireRechercheAnnonce {
 	private String dateFin;
 
 
-	public FormulaireRechercheAnnonce(String ville,String dateDebut,String dateFin) {
+		public FormulaireRechercheAnnonce(String ville,String dateDebut,String dateFin) {
 		this.ville = ville;
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
+		this.setDateDebut(dateDebut);
+		this.setDateFin(dateFin);
 	}
 	
+		public String getDateDebut() {
+		return dateDebut;
+	}
+
+	public void setDateDebut(String dateDebut) {
+		this.dateDebut = checkFormatDate(dateDebut);
+	}
+
+	public String getDateFin() {
+		return dateFin;
+	}
+
+	public void setDateFin(String dateFin) {
+		this.dateFin = checkFormatDate(dateFin);
+	}
+	
+		/** Reformate si necessaire
+	 * @param date
+	 * @return yyyy-mm-dd
+	 */
+	private static String checkFormatDate(String date) {
+		String res;
+		String[] splited = null;
+		if(date.contains("/")){
+			splited = date.split("/");
+		}else if (date.contains("-")){
+			splited = date.split("-");
+		}
+		if(splited[0].length() < 4){
+			res = splited[2] + "-" + splited[0] + "-" + splited[1];
+		}else{
+			res = splited[0] + "-" + splited[1] + "-" + splited[2];
+		}
+			
+		return res;
+	}
 	/**
 	 * @return liste des offres pour une ville donn�e
 	 * @throws Exception

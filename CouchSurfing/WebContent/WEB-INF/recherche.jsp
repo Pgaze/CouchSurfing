@@ -4,9 +4,8 @@
 <html>
 <%@ include file="entete.jsp"%>
 <%@ include file="menu.jsp"%>
-<body>
+<body style="background-image:url(${pageContext.request.contextPath}/ServletBackground)">
 	<div id="container">
-
 		<div id="containerRecherche">
 			<h1>Recherche ton canapé</h1>
 			<div id="formRecherche">

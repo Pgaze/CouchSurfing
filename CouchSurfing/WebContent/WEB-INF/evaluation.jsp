@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -6,11 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Evaluation</title>
 </head>
-<body>
+<body style="background-image:url(${pageContext.request.contextPath}/ServletBackground)">
 	<%@ include file="entete.jsp" %>
 	<%@ include file="menu.jsp" %>
 	
-	<div id="containerEvaluation">
+	<div id="container">
 		<div id="contentEvaluation">
 			
 			<div id="containerIntitulePage">
@@ -44,4 +45,5 @@
 	
 	<%@ include file="basdepage.jsp" %>
 </body>
+
 </html>

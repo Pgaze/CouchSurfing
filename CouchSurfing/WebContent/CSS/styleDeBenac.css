@@ -1,14 +1,14 @@
 @CHARSET "UTF-8";
 
-body {
-	background-image: radial-gradient(rgb(118, 187, 211), white);
-	margin: 0;
-	padding: 0;
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 13px;
-	color: #666;
+#imgBackground{
+position: absolute;
+top: 77px;
+left: 0px;
+width: 100%;
+bottom: 0px;
+height: 100%;
+right: 0px;
 }
-
 
 div#testImg{
 	 background-repeat: no-repeat;
@@ -16,14 +16,6 @@ background-position: center center;
 background-size: 100% 700px;
 }
 
-#container {
-	width: 800px;
-	margin: 0 auto;
-	padding: 10px 10px 30px;
-	background-color: #fff;
-	width: 85%;
-	border: 10px solid rgb(169, 171, 171);
-}
 /* blabla */
 #presentation {
 	background-image: url('images/couchSurfing.jpg');

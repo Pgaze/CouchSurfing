@@ -3,9 +3,9 @@
 <html>
 <%@ include file="entete.jsp"%>
 <%@ include file="menu.jsp"%>
-<body>
+<body style="background-image:url(${pageContext.request.contextPath}/ServletBackground)">
 
-	<div id="profil_container" class="content-accueil">
+	<div id="container" class="content-accueil">
 		<h1 id="titre_Profil">Profil de ${utilisateurProfil.firstName} ${ utilisateurProfil.name }</h1>
 		<div id="profile">
 			<div id="info">

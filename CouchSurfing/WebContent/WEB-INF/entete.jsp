@@ -7,6 +7,11 @@
 	<%@ include file="../CSS/profil.css" %>
 	<%@ include file="../CSS/styleDeSitan.css" %>
 	<%@ include file="../CSS/animation.css" %>
+	<%@ include file="../CSS/accueil.css" %>
+	<%@ include file="../CSS/container.css" %>
+	<%@ include file="../CSS/demandes.css" %>
+	<%@ include file="../CSS/nouvelleAnnonce.css" %>
+	<%@ include file="../CSS/recherche.css" %>
 	<%@ include file="../CSS/fontello-codes.css" %>
 	<%@ include file="../CSS/fontello-embedded.css" %>
 	<%@ include file="../CSS/fontello-ie7-codes.css" %>

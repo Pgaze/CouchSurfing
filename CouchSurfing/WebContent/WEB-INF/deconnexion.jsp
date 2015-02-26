@@ -2,7 +2,7 @@
 <html>
 	<%@ include file="entete.jsp" %>
 	<%@ include file="menu.jsp" %>
-    <body>
+    <body style="background-image:url(${pageContext.request.contextPath}/ServletBackground)">
         <div id="container">
         	Déconnexion en cours
         </div>
