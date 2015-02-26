@@ -157,7 +157,4 @@ public class Logement {
 		}
 		return result;
 	}
-	
-	
-
 }

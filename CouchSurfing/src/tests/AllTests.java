@@ -8,6 +8,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ 
 				MenuTest.class,
 				TestConnnexionBDD.class,
+				TestCritereLogement.class,
+				TestCustomDate.class,
 				TestFormulaireConnexion.class, 
 				TestFormulaireInscription.class,
 				TestFormulaireProposerLogement.class,

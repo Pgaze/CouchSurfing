@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modele.ConnectionMySQL;
+import modele.CustomDate;
 import modele.Data;
 import modele.FormulaireRechercheAnnonce;
 import modele.Offre;
@@ -45,8 +46,8 @@ public class TestPostule {
 
 	@Test
 	public void testPostuler() throws Exception {
-		String dateDebut = Offre.creerStringDate(1901, 01, 01);
-		String dateFin = Offre.creerStringDate(2020, 01, 01);
+		String dateDebut = CustomDate.creerStringDate(1901, 01, 01);
+		String dateFin = CustomDate.creerStringDate(2020, 01, 01);
 		List<Offre> liste = new FormulaireRechercheAnnonce("Toulouse",dateDebut,dateFin).getListeOffre();
 		assertTrue(Postule.postulerAUneOffre(liste.get(0).getLogement().getIdLogement(), this.george.getIdUser()));
 	}
@@ -56,9 +57,7 @@ public class TestPostule {
 		ArrayList<Integer> liste = Postule.getPostulationsEnCoursByUser(this.paul.getIdUser());
 		assertEquals(1,liste.size());
 	}
-	
-	//TODO: tester deletePostulationByIdLogement
-	
+		
 	@Test
 	public void testDeletePostulationsPerimees() throws Exception {
 		ArrayList<Integer> liste = Postule.deletePostulationsPerimees();

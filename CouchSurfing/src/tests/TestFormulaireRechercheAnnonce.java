@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 
 import modele.ConnectionMySQL;
+import modele.CustomDate;
 import modele.Data;
 import modele.FormulaireRechercheAnnonce;
 import modele.Offre;
@@ -30,8 +31,8 @@ public class TestFormulaireRechercheAnnonce {
 
 	@Test
 	public void testLogementToulouse() throws Exception {
-		String dateDebut = Offre.creerStringDate(1901, 02, 01);
-		String dateFin = Offre.creerStringDate(2020, 01, 01);
+		String dateDebut = CustomDate.creerStringDate(1901, 02, 01);
+		String dateFin = CustomDate.creerStringDate(2020, 01, 01);
 		this.form=new FormulaireRechercheAnnonce("Toulouse",dateDebut,dateFin);
 		List<Offre> l = this.form.getListeOffre();
 		assertEquals(0, l.get(0).getLogement().getIdLogement());
@@ -39,8 +40,8 @@ public class TestFormulaireRechercheAnnonce {
 	
 	@Test(expected = Exception.class)
 	public void testLogementInconnu() throws Exception {
-		String dateDebut = Offre.creerStringDate(1901, 01, 01);
-		String dateFin = Offre.creerStringDate(2020, 01, 01);
+		String dateDebut = CustomDate.creerStringDate(1901, 01, 01);
+		String dateFin = CustomDate.creerStringDate(2020, 01, 01);
 		this.form=new FormulaireRechercheAnnonce("Albi",dateDebut,dateFin);
 		this.form.getListeOffre();
 	}
