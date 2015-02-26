@@ -4,6 +4,8 @@
 #uneOffre {
 	background-color: rgb(224, 225, 221);
 	border: 1px solid #A9ABAB;
+	border-radius: 15px;
+	margin-bottom: 15px;
 }
 
 #enTeteOffre {

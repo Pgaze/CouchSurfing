@@ -16,6 +16,7 @@ public class Logement {
 	private int idLogement;
 	private Adresse adresse;
 	private List<Critere> lesCriteres;
+	private int idImageLogement;
 
 	/**
 	 * @param adresse
@@ -157,4 +158,31 @@ public class Logement {
 		}
 		return result;
 	}
+
+	
+	public int getIdPhotoLogement() throws SQLException{
+		String sql = "SELECT IdImageLogement FROM Logement where IdLogement=?";
+		PreparedStatement select = Data.BDD_Connection.prepareStatement(sql);
+		select.setInt(1,this.getIdLogement());
+		ResultSet res = select.executeQuery();
+		if(res.next() && res.getInt(1)!=0){
+			return res.getInt(1);
+		}
+		else{
+			return -1;
+		}
+	}
+
+	public boolean setIdImageLogement(int idImage) throws SQLException {
+		String sql="UPDATE Logement set IdImageLogement=? where IdLogement=?";
+		PreparedStatement update = Data.BDD_Connection.prepareStatement(sql);
+		update.setInt(1, idImage);
+		update.setInt(2, this.getIdLogement());
+		boolean result=false;
+		if(update.executeUpdate()==1){
+			result=true;
+		}
+		return result;
+	}
+
 }
