@@ -53,12 +53,12 @@ public class Nouvelle extends HttpServlet {
 				String result = form.procedureAjoutLogement();
 				if(result.contentEquals("Logement ajoute")){
 					Data.BDD_Connection.commit();
+					response.sendRedirect("profil");
+				}else {
+					request.setAttribute("resultat", result);
+					this.getServletContext().getRequestDispatcher("/WEB-INF/nouvelle.jsp").forward(request, response);
 				}
-				request.setAttribute("resultat", result);
-				response.sendRedirect("profil");
-
 			}
-			this.getServletContext().getRequestDispatcher("/WEB-INF/nouvelle.jsp").forward(request, response);
 		}
 		catch(SQLException e){
 			e.printStackTrace();
