@@ -12,7 +12,6 @@ public class FormulaireProposerLogement {
 	private String complementAdresse;
 	private String ville;
 	private Utilisateur user;
-	private String dateDebut,dateFin;
 	
 	public FormulaireProposerLogement(String batimentEscalier,
 			String numeroEtVoie, String cp, String residence,
@@ -73,7 +72,7 @@ public class FormulaireProposerLogement {
 		return this.cp.matches("[0-9]{5}");
 	}
 	
-	public String procedureAjoutLogement() throws SQLException{
+	public String procedureAjoutLogement() throws SQLException {
 		String result="";
 		Logement l = this.getLogement();
 		boolean resultatInsertionLogement = l.insererDansLaBase();
