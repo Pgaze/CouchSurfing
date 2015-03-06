@@ -1,7 +1,6 @@
 package tests;
 
 import static org.junit.Assert.*;
-import modele.ConnectionMySQL;
 import modele.Critere;
 import modele.Data;
 import modele.Logement;
@@ -10,6 +9,8 @@ import modele.Critere.TypeCritere;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import utilitaire.ConnectionMySQL;
 
 public class TestCritereLogement {
 	

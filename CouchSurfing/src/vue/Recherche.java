@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modele.Data;
-import modele.FormulaireRechercheAnnonce;
 import modele.Offre;
 import modele.Postule;
 import modele.Utilisateur;
 import classes.Menu;
+import formulaire.FormulaireRechercheAnnonce;
 
 /**
  * Servlet implementation class Recherche

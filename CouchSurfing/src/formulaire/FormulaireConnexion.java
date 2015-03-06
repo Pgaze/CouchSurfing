@@ -1,6 +1,9 @@
-package modele;
+package formulaire;
 
 import java.sql.SQLException;
+
+import utilitaire.Password;
+import modele.Utilisateur;
 
 public class FormulaireConnexion {
 	

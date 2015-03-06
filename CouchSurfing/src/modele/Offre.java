@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import javax.naming.directory.InvalidAttributeValueException;
 
+import utilitaire.CustomDate;
+
 public class Offre {
 
 	private Logement logement;

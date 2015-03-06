@@ -2,13 +2,14 @@ package tests;
 
 import static org.junit.Assert.assertEquals;
 import modele.Adresse;
-import modele.ConnectionMySQL;
 import modele.Data;
 import modele.Logement;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import utilitaire.ConnectionMySQL;
 
 public class TestLogement {
 

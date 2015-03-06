@@ -4,13 +4,14 @@ import static org.junit.Assert.assertTrue;
 
 import java.sql.SQLException;
 
-import modele.ConnectionMySQL;
 import modele.Data;
-import modele.FormulaireConnexion;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import utilitaire.ConnectionMySQL;
+import formulaire.FormulaireConnexion;
 
 public class TestFormulaireConnexion {
 	

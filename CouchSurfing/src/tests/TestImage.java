@@ -5,13 +5,14 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 
-import modele.ConnectionMySQL;
 import modele.Data;
 import modele.Image;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import utilitaire.ConnectionMySQL;
 
 public class TestImage {
 	

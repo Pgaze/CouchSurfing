@@ -1,10 +1,16 @@
-package modele;
+package formulaire;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import utilitaire.CustomDate;
+import modele.Data;
+import modele.Logement;
+import modele.Offre;
+import modele.Utilisateur;
 
 public class FormulaireRechercheAnnonce {
 	

@@ -1,8 +1,10 @@
-package modele;
+package utilitaire;
 
 import java.sql.Date;
 
 import javax.naming.directory.InvalidAttributeValueException;
+
+import modele.Offre;
 
 public class CustomDate {
 

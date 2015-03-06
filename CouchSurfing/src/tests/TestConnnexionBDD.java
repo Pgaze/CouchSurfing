@@ -4,10 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import java.sql.SQLException;
 
-import modele.ConnectionMySQL;
 import modele.Data;
 
 import org.junit.Test;
+
+import utilitaire.ConnectionMySQL;
 
 public class TestConnnexionBDD {
 

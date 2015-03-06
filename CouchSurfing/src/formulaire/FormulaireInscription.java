@@ -1,8 +1,11 @@
-package modele;
+package formulaire;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import modele.Data;
+import modele.Utilisateur;
 
 
 public class FormulaireInscription {

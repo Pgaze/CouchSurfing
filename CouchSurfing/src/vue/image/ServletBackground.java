@@ -1,4 +1,4 @@
-package vue;
+package vue.image;
 
 import java.io.File;
 import java.io.IOException;

@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import modele.Data;
-import modele.FormulaireProposerLogement;
 import modele.Utilisateur;
 import classes.Menu;
+import formulaire.FormulaireProposerLogement;
 
 /**
  * Servlet implementation class Evaluation

@@ -1,7 +1,12 @@
-package modele;
+package formulaire;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import modele.Adresse;
+import modele.Data;
+import modele.Logement;
+import modele.Utilisateur;
 
 public class FormulaireProposerLogement {
 	

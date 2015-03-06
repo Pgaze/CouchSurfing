@@ -1,14 +1,15 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
-import modele.ConnectionMySQL;
 import modele.Data;
-import modele.Password;
 import modele.Utilisateur;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import utilitaire.ConnectionMySQL;
+import utilitaire.Password;
 
 public class TestUtilisateur {
 

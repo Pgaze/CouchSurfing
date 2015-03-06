@@ -4,14 +4,15 @@ import static org.junit.Assert.assertEquals;
 
 import java.sql.Date;
 
-import modele.ConnectionMySQL;
-import modele.CustomDate;
 import modele.Data;
 import modele.Offre;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import utilitaire.ConnectionMySQL;
+import utilitaire.CustomDate;
 
 public class TestOffre {
 

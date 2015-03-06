@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modele.FormulaireInscription;
 import classes.Menu;
+import formulaire.FormulaireInscription;
 
 /**
  * Servlet implementation class incription

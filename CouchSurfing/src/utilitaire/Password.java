@@ -1,4 +1,4 @@
-package modele;
+package utilitaire;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

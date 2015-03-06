@@ -6,11 +6,11 @@ import static org.junit.Assert.fail;
 
 import javax.naming.directory.InvalidAttributeValueException;
 
-import modele.CustomDate;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import utilitaire.CustomDate;
 
 public class TestCustomDate {
 
@@ -81,7 +81,7 @@ public class TestCustomDate {
 		String date1 = CustomDate.creerStringDate(2010,02,02);
 		String date2 = CustomDate.creerStringDate(2010,02,03);
 		CustomDate.checkIntegriteDates(date1,date2);
-		fail("Une excption était attendue");
+		fail("Une excption ï¿½tait attendue");
 	}
 	
 	@Test (expected = InvalidAttributeValueException.class)
@@ -89,7 +89,7 @@ public class TestCustomDate {
 		String date1 = CustomDate.creerStringDate(2010,01,01);
 		String date2 = CustomDate.creerStringDate(2010,01,01);
 		CustomDate.checkIntegriteDates(date1,date2);
-		fail("Une excption était attendue");
+		fail("Une excption ï¿½tait attendue");
 	}
 
 	@Test (expected = InvalidAttributeValueException.class)

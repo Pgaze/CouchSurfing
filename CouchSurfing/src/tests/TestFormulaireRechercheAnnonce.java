@@ -4,15 +4,16 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import modele.ConnectionMySQL;
-import modele.CustomDate;
 import modele.Data;
-import modele.FormulaireRechercheAnnonce;
 import modele.Offre;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import utilitaire.ConnectionMySQL;
+import utilitaire.CustomDate;
+import formulaire.FormulaireRechercheAnnonce;
 
 public class TestFormulaireRechercheAnnonce {
 	
