@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 @CHARSET "ISO-8859-1";
 
 /* recherche */
@@ -8,9 +8,10 @@
   width: 33%;
 }
 
-#lienProfil{
-	font-size: 13px;
-color: rgb(79, 173, 231);
+.critereOffreContainer{
+	 background-color: rgb(215, 215, 215);
+  margin-top: 10px;
+  border-radius: 10px;
 }
 
 .date

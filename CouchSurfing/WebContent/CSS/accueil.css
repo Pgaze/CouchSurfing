@@ -68,6 +68,14 @@ div#formConnexion
   font-size: 13px;
 }
 
+#presentation{
+	padding:10px;
+}
+
+.text_intro{
+	font-size: 18px;
+}
+
 /*.uneDemande:after {
 	
 	content: "";

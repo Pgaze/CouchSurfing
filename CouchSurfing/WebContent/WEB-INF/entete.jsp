@@ -19,6 +19,5 @@
 	<%@ include file="../CSS/fontello.css" %>
 	<%@ include file="../CSS/evaluation.css" %></style>
 	<script type="text/javascript"><%@ include file="../JS/scripts.js" %></script>
-	<script type="text/javascript"><%@ include file="../JS/jquery-ui.min.js" %></script>
-	<script type="text/javascript"><%@ include file="../JS/jquery-1.11.2.min.js" %></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
