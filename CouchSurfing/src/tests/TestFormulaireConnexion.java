@@ -1,17 +1,19 @@
 package tests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.sql.SQLException;
 
 import modele.Data;
+import modele.FormulaireConnexion;
+import modele.Password;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import utilitaire.ConnectionMySQL;
-import formulaire.FormulaireConnexion;
 
 public class TestFormulaireConnexion {
 	
@@ -31,10 +33,18 @@ public class TestFormulaireConnexion {
 	}
 
 	@Test
+	public void testSHA256(){
+		assertEquals("27291b9c93082e19c9072de4d4aba26116cc6707e0c189ae6dddad5afd820207"
+					,Password.encrypt("motDePasse1"));
+	}
+	
+	@Test
 	public void testTrue() throws SQLException {
 		this.form.setLogin("duboispaul@mail.com");
 		this.form.setMdp("motDePasse1");
 		assertTrue(this.form.verificationCoupleMailMotDePasse());
 	}
+	
+	
 
 }
