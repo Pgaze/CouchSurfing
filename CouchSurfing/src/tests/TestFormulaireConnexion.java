@@ -7,13 +7,13 @@ import java.sql.SQLException;
 
 import modele.Data;
 import modele.FormulaireConnexion;
-import modele.Password;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import utilitaire.ConnectionMySQL;
+import utilitaire.Password;
 
 public class TestFormulaireConnexion {
 	

@@ -3,6 +3,8 @@ package modele;
 
 import java.sql.SQLException;
 
+import utilitaire.Password;
+
 public class FormulaireConnexion {
 	
 	private String login;
