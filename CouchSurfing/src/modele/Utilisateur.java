@@ -328,7 +328,7 @@ public class Utilisateur {
 		ps.setString(3, this.firstName);
 		ps.setString(4, this.mail);
 		ps.setString(5, this.pseudo);
-		ps.setString(6, Password.md5(this.password));
+		ps.setString(6, Password.encrypt(this.password));
 		if(ps.executeUpdate() ==1){
 			return true;
 		}

@@ -10,7 +10,7 @@ public class Password {
 	 * @param input
 	 * @return
 	 */
-	public static String md5(String input) {
+	public static String encrypt(String input) {
 
 		String md5 = null;
 
@@ -18,7 +18,7 @@ public class Password {
 
 		try {
 			//Create MessageDigest object for MD5
-			MessageDigest digest = MessageDigest.getInstance("MD5");
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
 
 			//Update input string in message digest
 			digest.update(input.getBytes(), 0, input.length());

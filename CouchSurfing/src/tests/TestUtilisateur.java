@@ -41,7 +41,7 @@ public class TestUtilisateur {
 		this.dubois=Utilisateur.getUtilisateurParMail("duboispaul@mail.com");
 		assertEquals("Dubois",dubois.getName());
 		assertEquals("Paul",dubois.getFirstName());
-		assertEquals(Password.md5("motDePasse1"),dubois.getPassword());
+		assertEquals(Password.encrypt("motDePasse1"),dubois.getPassword());
 		assertEquals("Paulo",dubois.getPseudo());
 	}
 	
