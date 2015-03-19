@@ -16,7 +16,7 @@ import classes.Menu;
 /**
  * Servlet implementation class ServletImageProfil
  */
-@WebServlet("/ServletImageProfil")
+//@WebServlet("/ServletImageProfil")
 public class ServletImageProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
