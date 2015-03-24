@@ -4,8 +4,6 @@ import java.sql.Date;
 
 import javax.naming.directory.InvalidAttributeValueException;
 
-import modele.Offre;
-
 public class CustomDate {
 
 	/** Verifie l'integrite des dates debut et fin renseignées
@@ -24,7 +22,7 @@ public class CustomDate {
 		Date dateCourante = new Date(System.currentTimeMillis());
 		if(newDateDebut.before(dateCourante)) {
 			//clean plein de truc dégueux
-			Offre.cleanAllLogementByPostulePerimees();
+			//Offre.cleanAllLogementByPostulePerimees();
 			throw new InvalidAttributeValueException("La date de debut est anterieure ou egale a la date actuelle");
 		}
 	}

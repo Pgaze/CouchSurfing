@@ -42,6 +42,7 @@ public class Inscription extends HttpServlet {
 			String resultatInscription=form.procedureInscription();
 			request.setAttribute("resultat", resultatInscription);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
+			
 		} catch(Exception e){
 			e.printStackTrace();
 		}

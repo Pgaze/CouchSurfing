@@ -3,65 +3,48 @@ package tests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 import modele.Data;
-import modele.Offre;
-import modele.Postule;
-import modele.Utilisateur;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import utilitaire.ConnectionMySQL;
-import utilitaire.CustomDate;
-import formulaire.FormulaireRechercheAnnonce;
+import utilitaire.Password;
+import formulaire.FormulaireConnexion;
 
-public class TestPostule {
-
-	private Utilisateur paul;
-	private Utilisateur lolo;
-	private Utilisateur george;
-
+public class TestFormulaireConnexion {
 	
+	FormulaireConnexion form;
+
 	@Before
 	public void setUp() throws Exception {
 		ConnectionMySQL.switchBDD_or_BDDTest(true);
 
-		this.paul=new Utilisateur("duboispaul@mail.com","motDePasse1","Dubois","Paul","Polo");
-		this.paul=Utilisateur.getUtilisateurParMail(this.paul.getMail());
-		this.lolo=new Utilisateur("lolo.patate@jardin.com","motDePasse1","Lololo","Patate","LoloPatate");
-		this.lolo=Utilisateur.getUtilisateurParMail(this.lolo.getMail());
-		this.george=new Utilisateur("gg.le.clown@mail.com","motDePasse1","George","Clowney","GGClown");
-		this.george=Utilisateur.getUtilisateurParMail(this.george.getMail());
+		this.form=new FormulaireConnexion();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		this.paul=null;
-		this.lolo=null;
+		this.form=null;
 		Data.BDD_Connection.rollback();
 	}
 
 	@Test
-	public void testPostuler() throws Exception {
-		String dateDebut = CustomDate.creerStringDate(1901, 01, 01);
-		String dateFin = CustomDate.creerStringDate(2020, 01, 01);
-		List<Offre> liste = new FormulaireRechercheAnnonce("Toulouse",dateDebut,dateFin).getListeOffre();
-		assertTrue(Postule.postulerAUneOffre(liste.get(0).getLogement().getIdLogement(), this.george.getIdUser()));
+	public void testSHA256(){
+		assertEquals("27291b9c93082e19c9072de4d4aba26116cc6707e0c189ae6dddad5afd820207"
+					,Password.encrypt("motDePasse1"));
 	}
+	
+	@Test
+	public void testTrue() throws SQLException {
+		this.form.setLogin("duboispaul@mail.com");
+		this.form.setMdp("motDePasse1");
+		assertTrue(this.form.verificationCoupleMailMotDePasse());
+	}
+	
+	
 
-	@Test
-	public void testGetAllPostulationsEnCours() throws Exception {
-		ArrayList<Integer> liste = Postule.getPostulationsEnCoursByUser(this.paul.getIdUser());
-		assertEquals(1,liste.size());
-	}
-		
-	@Test
-	public void testDeletePostulationsPerimees() throws Exception {
-		ArrayList<Integer> liste = Postule.deletePostulationsPerimees();
-		assertEquals(1,liste.size());
-	}	
 }

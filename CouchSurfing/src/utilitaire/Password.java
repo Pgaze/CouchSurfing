@@ -12,7 +12,7 @@ public class Password {
 	 */
 	public static String encrypt(String input) {
 
-		String md5 = null;
+		String hash = null;
 
 		if(null == input) return null;
 
@@ -24,10 +24,10 @@ public class Password {
 			digest.update(input.getBytes(), 0, input.length());
 
 			//Converts message digest value in base 16 (hex) 
-			md5 = new BigInteger(1, digest.digest()).toString(16);
+			hash = new BigInteger(1, digest.digest()).toString(16);
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
-		return md5;
+		return hash;
 	}
 }

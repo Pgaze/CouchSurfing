@@ -11,10 +11,10 @@
 			<div id="formRecherche">
 				<form id="leFormRecherche" method="post">
 					<div id="contenuFormRecherche">
-						<input id="inputCherche" type="text" name="ville">
-						<input class="date" type="date" name="dateDebut"> 
-						<input class="date" type="date" name="dateFin">
-						<input type="submit" value="GO !" id="btCherche" name="btCherche">
+						<input id="inputCherche" type="text" name="ville"> <input
+							class="date" type="date" name="dateDebut"> <input
+							class="date" type="date" name="dateFin"> <input
+							type="submit" value="GO !" id="btCherche" name="btCherche">
 					</div>
 				</form>
 
@@ -38,12 +38,13 @@
 						</div>
 						
 						<div id="corpsOffre">
-							<div class="critereOffre">
-								<div id="serviceAdresse" class="critereOffreContainer">
-									<h1 id="intituleCritere">Adresse:</h1>
-									<p id="valeurCritere"><c:out value="${ uneOffre.logement.adresse }" /></p>
-								</div>
-								<input id="btnPostuler" type="submit" name="${ uneOffre.logement.idLogement}" value="Postuler">
+							<div id="critereAdresse" class="critereOffre">
+								<h1 id="intituleCritere">Adresse:</h1>
+								<p id="valeurCritere">
+									<c:out value="${ uneOffre.logement.adresse }" />
+								</p>
+								<input type="submit" name="${ uneOffre.logement.idLogement}"
+									value="Postuler">
 							</div>
 						</div>
 					</div>	

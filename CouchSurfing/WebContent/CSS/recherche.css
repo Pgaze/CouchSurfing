@@ -1,4 +1,4 @@
-
+<<<<<<< HEAD
 @CHARSET "ISO-8859-1";
 
 /* recherche */
@@ -6,6 +6,11 @@
 #inputCherche
 {
   width: 33%;
+}
+
+#lienProfil{
+	font-size: 13px;
+color: rgb(79, 173, 231);
 }
 
 .date

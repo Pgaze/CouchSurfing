@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 import java.sql.SQLException;
 
 import modele.Data;
-import modele.FormulaireConnexion;
 
 import org.junit.After;
 import org.junit.Before;
@@ -14,6 +13,7 @@ import org.junit.Test;
 
 import utilitaire.ConnectionMySQL;
 import utilitaire.Password;
+import formulaire.FormulaireConnexion;
 
 public class TestFormulaireConnexion {
 	

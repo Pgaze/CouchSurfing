@@ -5,21 +5,32 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Postule {
 	
+	
+	private Utilisateur postulant;
+	private Utilisateur hebergeur;
+	private Logement logement;
+	
 	/**
 	 * @return Liste des Postulation de l'utilisateur qui sont encore valides
-	 * @throws SQLException
+	 * @throws Exception 
 	 */
-	public static ArrayList<Integer> getPostulationsEnCoursByUser(int theIdUser) throws SQLException{
-		ArrayList<Integer> tablePostulation = new ArrayList<Integer>();
+	public static ArrayList<Postule> getPostulationsEnCoursByUser(Utilisateur user) throws Exception{
+		ArrayList<Postule> tablePostulation = new ArrayList<Postule>();
 		PreparedStatement select = Data.BDD_Connection.prepareStatement("SELECT IdLogement FROM Postule "
-				+ "WHERE IdUtilisateur=? AND DateInvalidite > CURDATE() ORDER BY DateInvalidite");
-		select.setInt(1, theIdUser);
+				+ "WHERE IdUtilisateur=?  ");
+		select.setInt(1, user.getIdUser());
 		ResultSet resultSelect=select.executeQuery();
+		
 		while(resultSelect.next()){
-			tablePostulation.add(resultSelect.getInt(1));
+			Postule temp = new Postule();
+			temp.postulant = user;
+			temp.logement = Logement.getLogementById(resultSelect.getInt("IdLogement"));
+			temp.hebergeur =Utilisateur.getUtilisateurByIdLogement(resultSelect.getInt("IdLogement"));
+			tablePostulation.add(temp);
 		}
 		return tablePostulation;
 	}
@@ -89,4 +100,37 @@ public class Postule {
 		}		
 		return false;
 	}
+
+	public Utilisateur getPostulant() {
+		return postulant;
+	}
+
+	public Utilisateur getHebergeur() {
+		return hebergeur;
+	}
+
+	public Logement getLogement() {
+		return logement;
+	}
+
+	public static List<Postule> getDemandeRecuByUser(Utilisateur user) throws Exception {
+		List<Postule> result = new ArrayList<Postule>();
+		String sql = "select Postule.IdUtilisateur,Postule.IdLogement from Postule,Utilisateur "
+				+ "where Postule.IdLogement=Utilisateur.IdLogement "
+				+ "and Utilisateur.IdUtilisateur = ?";
+		PreparedStatement select = Data.BDD_Connection.prepareStatement(sql);
+		select.setInt(1, user.getIdUser());
+		ResultSet resultSelect = select.executeQuery();
+		while(resultSelect.next()){
+			Postule temp = new Postule();
+			temp.hebergeur = user;
+			temp.postulant = Utilisateur.getUtilisateurById(resultSelect.getInt(1));
+			temp.logement = Logement.getLogementById(resultSelect.getInt(2));
+			result.add(temp);
+		}
+		
+		
+		return result;
+	}
+	
 }
