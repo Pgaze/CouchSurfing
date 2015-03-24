@@ -35,12 +35,10 @@
 }
 
 #intituleCritere {
-	  display: inline-block;
-  background-color: rgb(255, 255, 255);
+  display: inline-block;
   font-size: 22px;
   border-radius: 5px;
   width: 22%;
-  border: solid 1px rgb(224, 224, 224);
   text-align: center;
   overflow: hidden;
   vertical-align: top;
@@ -66,13 +64,20 @@
   word-wrap: break-word;
 }
 
+.critereOffreContainer{
+  background-color: rgb(215, 215, 215);
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px 5px 5px 5px;
+}
+
 #btnPostuler{
   vertical-align: top;
   margin-top: 8px;
   height: 29px;
-  border: solid 1px rgb(22, 110, 36);
   background-color: rgb(0, 239, 0);
-  margin-left: 25px;
+  margin-left: 85%;
   border-radius: 8px;
-  color: rgb(50, 61, 49);
+  margin-bottom: 10px;
+  color: black;
 }
